@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<meta charset="utf-8"/>
+<html>
+
+<head>
+    <title>CS147 - Deep Learning | Brown University</title>
+
+    <!-- NOTE: Template needs absolute paths since actual created files may be in different subdirectories  -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://cs.brown.edu/courses/cs1470/style.css">
+
+    <!-- for syntax highlighting of code blocks -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/languages/go.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+    <!-- NOTE: Script closing tags need to be on separate line for markdown-to-html script to process them properly :-(  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="http://cs.brown.edu/courses/cs1470/random-bowties.js">
+    </script>
+    <script type="text/javascript" src="http://cs.brown.edu/courses/cs1470/create-sidebar.js">
+    </script>
+     <script type="text/javascript" src="http://cs.brown.edu/courses/cs1470/common.js">
+     </script>
+
+</head>
+
+<body>
+    <header class="lemons-bg">
+        <div id="navbar" class="fixed">
+            <ul>
+                <li><a href="http://cs.brown.edu/courses/cs1470/index.html">Home</a></li>
+                <li><a href="http://cs.brown.edu/courses/cs1470/resources.html">Resources</a></li>
+                <li><a href="http://cs.brown.edu/courses/cs1470/lectures.html">Lectures</a></li>
+                <li><a href="http://cs.brown.edu/courses/cs1470/assignments.html">Assignments</a></li>
+                <li><a href="http://cs.brown.edu/courses/cs1470/labs.html">Labs</a></li>
+                <li><a href="http://cs.brown.edu/courses/cs1470/calendar.html">Calendar &amp; Hours</a></li>
+                <li><a href="http://cs.brown.edu/courses/cs1470/staff.html">Staff</a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <section class="has-sidebar">
+            <h1 id="hw2cifar2convolutionalneuralnetworks">HW2: CIFAR2: Convolutional Neural Networks</h1>
+            <p>Due <strong>Friday, 10/11/19 at 11:59pm</strong></p>
+
+            <p>Through the eons, humans have interrogated the universe's many fundamental questions. How did we come to be? What comprises a "good" life? From whence can a sentient being derive meaning?</p>
+
+            <p>Of these many questions, one stands alone in its ability to evade consesus and vex the brightest thinkers.</p>
+
+            <p>Of course, it is....<strong>Which are better: Cats or Dogs?</strong></p>
+
+            <p>We will not be able to answer such an intractable question in this short assignment. However, we can work towards our goal in earnest by tackling a simpler subproblem. <strong>We will learn to tell them apart.</strong></p>
+
+            <p>In this assignment, you will be building a Convolutional Neural Network (CNN) with pooling layers using the CIFAR dataset.  <strong><em>Please read this handout in its entirety before beginning the assignment.</em></strong></p>
+
+            <h2 id="gettingthestencil">Getting the stencil</h2>
+
+            <p>You can find the files located <a href="http://cs.brown.edu/courses/cs1470/projects/public/hw2-cnn/stencil_and_data.zip" download>here</a> or on the "Files" column under the Assignments page. The files are compressed into a ZIP file, and to unzip the ZIP file, you can just double click on the ZIP file. There should be the files: assignment.py, convolution.py, preprocess.py, README, and CIFAR_data_compressed folder.
+            You can find the conceptual questions located <a href="http://cs.brown.edu/courses/cs1470/projects/public/hw2-cnn/hw2-conceptual-q.pdf">here</a> or the "Conceptual Questions" column in the Assignments page.</p>
+
+            <h2 id="logistics">Logistics</h2>
+
+            <p>Work on this assignment off of the stencil code provided, but <strong>do not change the stencil except where specified.</strong> Changing the stencil will result in incompatiblity with the autograder and result in a low grade. You shouldn't change any method signatures or add any trainable parameters to <strong>init</strong> that we don't give you (other instance variables are fine).</p>
+
+            <p><strong>This assignment should take longer than the previous assignment. If completed correctly, the model should train and test within 10 minutes on a department machine.</strong> While you will mainly be using TensorFlow functions, the second part of the assignment requires you to write your own convolution function, which is very computationally expensive. To counter this, we only require that you print the accuracy across the test set after finishing all training. On a local machine, training using TensorFlow functions may take about 5 minutes, and testing using your own convolution function may take upwards of 10 minutes. On a department machine, training should take about 3 minutes and testing using your own convolution should take about 2 minutes.</p>
+
+            <p>This assignment requires the TensorFlow, NumPy, and Matplotlib packages. You can install them using pip or run the assignment in a virtual environment. </p>
+
+            <p>To run the virtual environment on a department machine, you can run:</p>
+
+            <pre><code class="bash language-bash">source /course/cs1470/tf-2.0/bin/activate
+            </code></pre>
+
+            <p>You can also check out the Python virtual environment guide to set up TensorFlow 2.0 on your local machine.</p>
+
+            <h2 id="cifar2notcifar10">CIFAR2, not CIFAR10</h2>
+
+            <p>Your task is a binary classification problem. While the CIFAR10 dataset has 10 possible classes (airplane, automobile, bird, cat, deer, frog, horse, ship, and truck), you will build a CNN to take in an image and correctly predict its class to either be a cat or dog, hence CIFAR2. We limit this assignment to a binary classification problem so that you can train the model in a reasonable amount of time.</p>
+
+            <p>The assignment has <strong>3 parts</strong>. </p>
+
+            <p>Our stencil provides a model class with several methods and hyperparameters you need to use for your network. You will also fill out a function that performs the convolution operator. You will also answer a questions related to the assignment and class material as part of this assignment.</p>
+
+            <h1 id="part1themodel">Part 1: The Model</h1>
+
+            <h2 id="roadmap">Roadmap</h2>
+
+            <p>You will notice that the structure of the Model class is very similar to the Model class defined in your first assignment. <strong>We strongly suggest that you first complete the Intro to TensorFlow Lab before starting this assignment.</strong> The lab includes many explanations about the way a Model class is structured, what variables are, and how things work in TensorFlow. If you come into hours with questions about TensorFlow related material that is covered in the lab, we will direct you to the lab.</p>
+
+            <p>Below is a brief outline of some things you should do. We expect you to fill in some of the missing gaps (review lecture slides to understand the pipeline) as this is your second assignment.</p>
+
+            <p>Step 1. Preprocess the data</p>
+
+            <ul>
+            <li>We have provided you with a function <code>unpickle(file)</code> in the preprocess file stencil, which unpickles an object and returns a dictionary. Do not edit it. We have already extracted the inputs and the labels from the pickled file into a dictionary for you, as you can see within <code>get_data</code>. </li>
+
+            <li>You will want to limit the inputs and labels returned by <code>get_data</code> to those representing the first and second classes of your choice. For every image and its corresponding label, if the label is not of the first or second class, then remove the image and label from your inputs and labels arrays. </li>
+
+            <li>At this point, your inputs are still two dimensional. You will want to reshape your inputs into (num_examples, 3, 32, 32) using <code>np.reshape(inputs, (-1, 3, 32 ,32))</code> and then transpose them so that the final inputs you return have shape (num_examples, 32, 32, 3).</li>
+
+            <li>Recall that the label of your first class might be something like 5, representing a dog in the CIFAR dataset, but you will want to turn that to a 0 since this is binary classification problem. Likewise, for all images of the second class, say a cat, you will want to turn those labels to a 1.</li>
+
+            <li>After doing that, you will want to turn your 0s and 1s to one hot vectors, where the index with a 1 represents the class of the correct image. You can do this with the function <code>tf.one_hot(labels, depth=2)</code>.</li>
+
+            <li>This is be a bit confusing so we'll just make it clear: <strong>your labels should be of size (num_images, num_classes).</strong> So for the first example, the corresponding label might be [0, 1] where a 1 in the second index means that it's a cat/dog/hamster/sushi.</li>
+            </ul>
+
+            <p>Step 2. Create your model</p>
+
+            <ul>
+            <li><strong>You will not receive credit if you use the tf.keras, tf.layers, and tf.slim libraries. You can use tf.keras for your optimizer but do NOT use Keras layers!</strong></li>
+
+            <li>Again, you should initialize all hyperparameters within the constructor even though this is not customary. This is still necessary for the autograder. Consider what's being learned in a CNN and intialize those as trainable parameters. In the last assignment, it was our weights and biases. This time around, you will still want weights and biases, but there are other things that are being learned!</li>
+
+            <li>We recommend using an Adam Optimizer [<code>tf.keras.optimizers.Adam</code>] with a learning rate of 1e-3, but feel free to experiment with whatever produces the best results.</li>
+
+            <li>Weight variables should be initialized from a normal distribution
+            (<code>tf.random.truncated_normal</code>) with a standard deviation of 0.1.</li>
+
+            <li>You may use any permutation and number of convolution, pooling, and feed forward layers, as long as you <strong>use at least one convolution layer with strides of [1, 1, 1, 1], one pooling layer, dropout, and one fully connected layer.</strong></li>
+
+            <li>If you are having trouble getting started with model architecture, we have provided an example below:
+
+
+            <ul>
+            <li>Convolution Layer 1 [<code>tf.nn.conv2d</code>]
+
+
+            <ul>
+            <li>16 filters of width 5 and height 5</li>
+
+            <li>strides of 2 and 2</li>
+
+            <li>same padding</li></ul>
+            </li>
+
+            <li>Batch Normalization 1 [<code>tf.nn.batch_normalization</code>]
+
+
+            <ul>
+            <li>Get the mean and variance using [<code>tf.nn.moments</code>]</li></ul>
+            </li>
+
+            <li>ReLU Nonlinearlity 1 [<code>tf.nn.relu</code>]</li>
+
+            <li>Max Pooling 1 [<code>tf.nn.max_pool</code>]
+
+
+            <ul>
+            <li>kernels of width 3 and height 3</li>
+
+            <li>strides of 2 and 2</li></ul>
+            </li>
+
+            <li>Convolution Layer 2
+
+
+            <ul>
+            <li>20 filters of width 5 and height 5</li>
+
+            <li>strides of 1 and 1</li>
+
+            <li>same padding</li></ul>
+            </li>
+
+            <li>Batch Normalization 2</li>
+
+            <li>ReLU Nonlinearlity 2</li>
+
+            <li>Max Pooling 2
+
+
+            <ul>
+            <li>kernels of width 2 and height 2</li>
+
+            <li>strides of 2 and 2</li></ul>
+            </li>
+
+            <li>Convolution Layer 3
+
+
+            <ul>
+            <li>20 filters of width 5 and height 5</li>
+
+            <li>strides of 1 and 1</li>
+
+            <li>same padding</li></ul>
+            </li>
+
+            <li>Batch Normalization 3</li>
+
+            <li>ReLU Nonlinearlity 3</li>
+
+            <li>Dense Layer 1
+
+
+            <ul>
+            <li>Dropout with rate 0.3</li></ul>
+            </li>
+
+            <li>Dense Layer 2
+
+
+            <ul>
+            <li>Dropout with rate 0.3</li></ul>
+            </li>
+
+            <li>Dense Layer 3</li></ul>
+            </li>
+
+            <li>Fill out the call function using the trainable variables you've created. Note that in the lab, we mentioned using a @tf.function decorator to tell TF to run it in graph execution. Do NOT do this for this assignment - we'll explain why the forward pass has to be run in eager execution later. The parameter <code>is_testing</code> will be used in Part 2, do not worry about it when implementing everything in this part.</li>
+
+            <li>Calculate the average softmax cross-entropy loss on the logits compared to the labels. We suggest using <code>tf.nn.softmax_cross_entropy_with_logits</code>.</li>
+            </ul>
+
+            <p>Step 4. Train and test</p>
+
+            <ul>
+            <li>In the main function, you will want to get your train and test data, initialize your model, and train it for many epochs. We suggest training for 10 epochs. For the autograder, we will train it for at most 25 epochs (hard limit 10 of minutes). We have provided for you a train and test method to fill out. The train method will take in the model and do the forward and backward pass for a SINGLE epoch. Yes, this means that, unlike the first assignment, your <code>main</code> function will have a for loop that goes through the number of epochs, calling <code>train</code> each time.</li>
+
+            <li>Even though this is technically part of preprocessing, you should shuffle your inputs and labels when TRAINING. Keep in mind that they have to be shuffled in the same order. We suggest creating a range of indices of length num_examples, then using <code>tf.random.shuffle(indices)</code>. Finally you can use <code>tf.gather(train_inputs, indices)</code> to shuffle your inputs. You can do the same with your labels to ensure they are shuffled the same way.</li>
+
+            <li><strong>You should also reshape the inputs into (batch_size, width, height, in_channels) before calling model.call().</strong> (batch_size, height, width, in_channels) would be fine too - we're aware this is what is listed in the slides. When training, you might find it helpful to actually call <code>tf.image.random_flip_left_right</code> on your batch of image inputs to increase accuracy. Do not call this when testing.</li>
+
+            <li>Call the model's forward pass and calculate the loss within the scope of <code>tf.GradientTape</code>. Then use the model's optimizer to apply the gradients to your model's trainable variables outside of the GradientTape. If you're unsure about this part, please refer to the lab. This is synonymous with doing the <code>gradient_descent</code> function in the first assignment, except that TensorFlow handles all of that for you!</li>
+
+            <li>If you'd like, you can calculate the train accuracy to check that your model does not overfit the training set. If you get upwards of 80% accuracy on the training set but only 65% accuracy on the testing set, you might be overfitting.</li>
+
+            <li>The <code>test</code> method will take in the same model, now with trained parameters, and return the accuracy given the test inputs and test labels. </li>
+
+            <li>At the very end, we have written a method for you to visualize your results. The visualizer will not be graded but you can use it to check out your doggos and kittens.</li>
+
+            <li>For fun, instead of passing in the indexes for dog and cats for your training and testing data, you can pass in other inputs and see how your model does when trying to classify something like bird vs. cat!</li>
+
+            <li>Your README can just contain your accuracy and any bugs you have.</li>
+            </ul>
+
+            <h3 id="mandatoryhyperparameters">Mandatory Hyperparameters</h3>
+
+            <p>You can train with any batch size but you are limited to training for at most 25 epochs (I know, the title of this section is a bit misleading). <strong>However, your model must train using TensorFlow functions and test using your own convolution function within 10 minutes on a department machine. We will be timing this when autograding.</strong> Again, the parameters we suggest are training for 10 epochs using a batch size of 64.</p>
+
+            <h3 id="readinginthedata">Reading in the Data</h3>
+
+            <p>The CIFAR files are pickled objects. We have provided you with a function <code>unpickle(filename)</code>. You should not edit it. <em>Note:</em> You should normalize the pixel values so that they range from 0 to 1
+            (This can easily be done by dividing each pixel value by 255) to avoid any numerical overflow issues.</p>
+
+            <h3 id="dataformat">Data format</h3>
+
+            <p>The testing and training data files to be read in are in the following format:</p>
+
+            <p><code>train</code>: A pickled object of 50,000 train images and labels. This includes images and labels of all 10 classes. After unpickling the file, the dictionary will have the following elements:</p>
+
+            <ul>
+            <li>data -- a 50000x3072 numpy array of uint8s. Each row of the array stores a 32x32 colour image. The first 1024 entries contain the red channel values, the next 1024 the green, and the final 1024 the blue. The image is stored in row-major order, so that the first 32 entries of the array are the red channel values of the first row of the image.</li>
+
+            <li>labels -- a list of 50000 numbers in the range 0-9. The number at index i indicates the label of the ith image in the array data.</li>
+
+            <li>Note that if you download the dataset from online, the training data is actually divided into batches. We have done the job of repickling all of the batches into one single train file for your ease.</li>
+            </ul>
+
+            <p><code>test</code>: A pickled object of 10,000 test images and labels. This includes images and labels of all 10 classes. Unpickling the file gives a dictionary with the same key values as above.</p>
+
+            <p>We've already done the job of unpickling the file and have extracted the unprocessed inputs and labels in the <code>get_data</code> function.</p>
+
+            <p>To get only the images and labels of classes 3 and 5 (representing dog and cat), you will want to loop over the data and only add it to your result array of inputs and labels if they belong to those classes.</p>
+
+            <h2 id="visualizingresults">Visualizing Results</h2>
+
+            <ul>
+            <li>We've provided the <code>visualize_results(image_data, probabilities, image_labels, first_label, second_label)</code> method for you to visualize your predictions against the true labels using matplotlib, a useful Python library for plotting graphs. This method is currently written with the image_labels having a shape of (num_images, num_classes). <strong><em>DO NOT EDIT THIS FUNCTION.</em></strong> You should call this function after training and testing, passing into into <code>visualize_results</code> an input of 10 images, 10 probabilities, 10 labels, the first label name, and second label name. </li>
+
+            <li>Unlike the first assignment, you will need to pass in the strings of the first and second classes. A <code>visualize_results</code> method call might look like: <code>visualize_results(image_inputs, probabilities, image_labels, "cat", "dog")</code>. </li>
+
+            <li>This should result in a visual of 10 images with your predictions and the actual label written above so you can compare your results! You should do this after you are sure you have met the benchmark for test accuracy.</li>
+            </ul>
+
+            <h1 id="part2conv2d">Part 2: Conv2d</h1>
+
+            <p>Before starting this part of the assignment, <strong>you should ensure that you have an accuracy of at least 70%</strong> on the test set using only TensorFlow functions for the problem of classifying dogs and cats.</p>
+
+            <p>As a new addition to this assignment, you will be implementing your very own convolution function! Deep Learning == TensorFlow tutorial no more!</p>
+
+            <p>For the sake of simple math calculations (less is more, no?), we'll require that our <code>conv2d</code> function <strong>only works with a stride of 1</strong> (for both width and height). This is because the calculation for padding size changes as a result of the stride, which would be way more complex and unreasonable for a second assignment.</p>
+
+            <p>Do <strong>NOT</strong> change the parameters of the function we have provided. Even though the <code>conv2d</code> function takes in a strides argument, you should <strong>ALWAYS</strong> pass in [1, 1, 1, 1]. Leaving in strides as an argument was a conscious design choice - if you wanted to eventually make the function work for other kinds of strides in your own time, this would allow you to easily change it.</p>
+
+            <h2 id="roadmap-1">Roadmap</h2>
+
+            <ul>
+            <li>Your inputs will have 4 dimensions. If we are to use this <code>conv2d</code> function for the first layer, the inputs would be [batch_size, in_height, in_width, input_channels]. </li>
+
+            <li>You should ensure that the input's number of "in channels" is equivalent to the filters' number of "in channels". Make sure to add an assert statement or throw an error if the number of input in channels are not the same as the filters in channels. You will lose points if you do not do this.</li>
+
+            <li>When calculating how much padding to use for SAME padding,  padding is just <code>(filter_size - 1)/2</code> if you are using strides of 1. The calculation of padding differs if you increase your strides and is much more complex, so we won’t be dealing with that. If you are interested, you may read about it <a href="http://cs231n.github.io/convolutional-networks/">here</a>.</li>
+
+            <li>You can use this hefty NumPy function <code>np.pad</code> to padd your input! Note that for SAME padding, the way you pad may result in different output shapes for inputs with odd dimensions depending on the way you pad. This is ok. <strong>EDIT: To be fully transparent, we will only test that your convolution function matches TensorFlow's using inputs and filters whose output dimensions do not change if you floor your padding. This means that if your calculation for padding is not an integer, you should floor it, and if that results in output dimensions that are slightly smaller, that is ok.</strong> Alternatively, if you have decided to handle padding fractional values separately by doing a sort of shifting, that's ok too.</li>
+
+            <li>After padding (if needed), you will want to go through the entire batch of images and perform the convolution operator on each image. There are two ways of going about this - you can continuously append to multi dimensional NumPy arrays to an output array or you can create a NumPy array with the correct output dimensions, and just update each element in the output as you perform the convolution operator. We suggest doing the latter - it's conceptually easier to keep track of things this way. </li>
+
+            <li>Your output dimension height is equal to <code>(in_height + 2*padY - filter_height) / strideY + 1</code> and your output dimension width is equal to <code>(in_width + 2*padX - filter_width) / strideX + 1</code>. Again, <code>strideX</code> and <code>strideY</code> will always be 1 for this assignment. Refer to the slides if you'd like to understand this derivation.</li>
+
+            <li>You will want to iterate the entire height and width including padding, stopping when you cannot fit a filter over the rest of the padding input. For convolution with many input channels, you will want to perform the convolution per input channel and sum those dot products together.</li>
+            </ul>
+
+            <p>Testing out your own <code>conv2d</code>:</p>
+
+            <ul>
+            <li>We have provided for you a few tests that compare the result of your very own <code>conv2d</code> and TensorFlow's <code>conv2d</code>. If you've implemented it correctly, the results should be very similar.</li>
+
+            <li><strong>The last super important part of this project is that you should call your <code>conv2d</code> function IN your model.</strong> TensorFlow cannot build a graph/differentiate with NumPy operators so you should not add a @tf.function decorator.</li>
+
+            <li>In your model, you should set <code>is_testing</code> to True when testing, then make sure that if <code>is_testing</code> is True, you use your own convolution rather than TensorFlow's <code>conv2d</code> on a <strong>SINGLE</strong> convolution layer. If you follow the architecture described above, we suggest adding in an if statement before the third convolution layer (ie. switch out the <code>conv2d</code> for your third convolution). This part will take the longest, and is why we say it might actually take up to 15 minutes on a local machine.</li>
+            </ul>
+
+            <h2 id="autograder">Autograder</h2>
+
+            <p>Your model must complete training within 10 minutes AND/or under 25 epochs on a department machines.</p>
+
+            <p>Our autograder will import your model and your preprocessing functions. We will feed the result of your <code>get_data</code> function called on a path to our data and pass the result to your train method in order to return a fully trained model. After this, we will feed in your trained model, alongside the TA pre-processed data, to our custom test function. This will just batch the testing data using YOUR batch size and run it through your model's <code>call</code> function. <strong>However, we will test that your model can test with any batch size, meaning that you should not harcode <code>self.batch_size</code> in your <code>call</code> function.</strong> The <strong>logits</strong> which are returned will then be fed through an accuracy function. When testing your own convolution function, we will only test on inputs with even inputs and filters dimensions for SAME padding that are not affected when the floor function is applied to the calculation of padding. This is because you might result in different output dimensions that TensorFlow's convolution function when using SAME padding on odd inputs. In order to ensure you don't lose points, you need to make sure that you... A) correctly return training inputs and labels from <code>get_data</code>, B ) ensure that your model's <code>call</code> function returns logits from the inputs specified, and that it does not break on different batch sizes when testing, C) make sure your own convolution function works, and D) no part of your code relies on any packages outside of TensorFlow, NumPy, MatplotLib, or the Python standard library.</p>
+
+            <h1 id="part3conceptualquestions">Part 3: Conceptual Questions</h1>
+
+            <p>Fill out conceptual questions and submit in either PDF or .txt format. Submitting a scan of written work is also fine as long as it is readable. Please copy over the questions and write well thought out answers to the questions.</p>
+
+            <h1 id="grading">Grading</h1>
+
+            <p><strong>Code:</strong> You will be primarily graded on functionality. Your model should have an accuracy that is at least greater than 70% on the testing data.</p>
+
+            <p><strong>Conceptual:</strong> You will be primarily graded on correctness (when applicable), thoughtfulness, and clarity. </p>
+
+            <p><strong>You will not receive credit if you use the tf.keras, tf.layers, and tf.slim libraries. You can use tf.keras for your optimizer but do NOT use Keras layers!</strong></p>
+
+            <h1 id="cs2470students">CS2470 Students</h1>
+
+            <p>1. Please complete the CS2470-only conceptual questions <strong>in addition</strong> to the coding assignment and the CS1470 conceptual questions.
+            <strong>Note: Questions about 2470 will only be answered on Piazza, or by TAs marked with an asterisk (*) on the calendar.</strong></p>
+            
+            <p>2. <strong>You must receive an accuracy of at least 70% within 10 epochs of training your model.</strong> This means that you must choose an architecture/play around with hyperparameters to reach an accuracy that is of 70% in a shorter amount of time.</p>
+
+            <h1 id="handingin">Handing In</h1>
+
+            <p>You should submit the assignment using <a href="https://docs.google.com/forms/d/e/1FAIpQLSe8oRO1a1g6iEW3ixpjmtzL9-da4No-ZrOmduZyv7P904LvUw/viewform">this Google Form</a>. You must be logged in with your Brown account. Your assignment.py, preprocess.py, and convolution.py files should be Python files, while the written up conceptual questions should be either of PDF or txt format. The README can be any format.</p>
+            <strong>If you receive an alert that your file has to be renamed, but you know it is actually correctly submitted with the formats from above, do not worry. Everything is fine!! :)</strong>
+
+            <h1 id="catsvsdogs">Cats vs. Dogs? <span style="font-size:10px">from the creators of this assignment</span></h1>
+
+            <p>"I am currently neither, and I have been both in the past" - Daniel Ritchie</p>
+
+            <p>"Definitely a dog person. In fact I’m allergic to cats" - David Oyeka</p>
+
+            <p>"I’m a dog. But I am a cat person" - Zach Horvitz</p>
+
+            <p>"I'm a big time doggo" - Brian Oppenheim</p>
+
+            <p>"I feel like I'm neither dog or cat. I'm a bull" - Amy Pu (I'm actually a huge dog person)</p>
+
+            <p><img style="height:150px" src="https://media3.giphy.com/media/yNrO4XhUNf0zK/giphy.gif"><img style="height:150px" src="https://media1.giphy.com/media/Rh3C5O8eLkr04/source.gif"><img style="height:150px" src="https://media2.giphy.com/media/j2Fwurg6KtC2Q/source.gif"><img style="height:150px" src="https://media1.giphy.com/media/RvsgIECoRvKuI/source.gif"><img style="height:150px" src="https://media3.giphy.com/media/IF6nSDWpHmvrq/source.gif"><img style="height:150px" src="https://media.giphy.com/media/XLWln4SEvDdLO/giphy.gif"></p>
+        </section>
+        <aside style="top:50px">
+        </aside>
+    </main>
+
+    <footer class="dark-footer">
+        <img id="footer-earmuffs" class="random-earmuffs" src="http://cs.brown.edu/courses/cs1470/img/earmuffs_1.png">
+        <ul class="menu">
+            <li>&copy; 2019 CS1470/2470 TA Staff | Computer Science Department | Brown University</li>
+        </ul>
+        <br>
+    </footer>
+
+</body>
+
+</html>

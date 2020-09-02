@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<meta charset="utf-8"/>
+<html>
+
+<head>
+    <title>CS147 - Deep Learning | Brown University</title>
+
+    <!-- NOTE: Template needs absolute paths since actual created files may be in different subdirectories  -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://cs.brown.edu/courses/cs1470/style.css">
+
+    <!-- for syntax highlighting of code blocks -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/languages/go.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+    <!-- NOTE: Script closing tags need to be on separate line for markdown-to-html script to process them properly :-(  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="http://cs.brown.edu/courses/cs1470/random-bowties.js">
+    </script>
+    <script type="text/javascript" src="http://cs.brown.edu/courses/cs1470/create-sidebar.js">
+    </script>
+     <script type="text/javascript" src="http://cs.brown.edu/courses/cs1470/common.js">
+     </script>
+
+</head>
+
+<body>
+    <header class="lemons-bg">
+        <div id="navbar" class="fixed">
+            <ul>
+                <li><a href="http://cs.brown.edu/courses/cs1470/index.html">Home</a></li>
+                <li><a href="http://cs.brown.edu/courses/cs1470/resources.html">Resources</a></li>
+                <li><a href="http://cs.brown.edu/courses/cs1470/lectures.html">Lectures</a></li>
+                <li><a href="http://cs.brown.edu/courses/cs1470/assignments.html">Assignments</a></li>
+                <li><a href="http://cs.brown.edu/courses/cs1470/labs.html">Labs</a></li>
+                <li><a href="http://cs.brown.edu/courses/cs1470/calendar.html">Calendar &amp; Hours</a></li>
+                <li><a href="http://cs.brown.edu/courses/cs1470/staff.html">Staff</a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <section class="has-sidebar">
+            <h1 id="hw5mpnnsmessagepassingneuralnetworks">HW5: MPNNs: Message Passing Neural Networks</h1>
+
+            <p>Due <strong>Wednesday, 11/13/19 at 11:59pm</strong></p>
+
+            <p>You all heard how that this class was a TensorFlow tutorial last year. One of our main goals this year was to change that. And that's why we're now a PyTorch tutorial.</p>
+
+            <p>In this assignment, you will be building a Message Passing Neural Network to detect if certain molecules are active against cancer.  <strong><em>Please read this handout in its entirety before beginning the assignment.</em></strong></p>
+
+            <h2 id="gettingthestencil">Getting the stencil</h2>
+
+            <p>You can find the files located <a href="http://cs.brown.edu/courses/cs1470/projects/public/hw5-mpnns/stencil_and_data.zip">here</a> on the "Files" column under the Assignments page. The files are compressed into a ZIP file, and to unzip the ZIP file, you can just double click on the ZIP file. There should be the files: assignment.py, preprocess.py, README, molecule.py, sdf_iterator.py, and 1-balance.sdf.
+            You can find the conceptual questions <a href="http://cs.brown.edu/courses/cs1470/projects/public/hw5-mpnns/hw5-conceptual-q.pdf">here</a> or located on the "Conceptual Questions" column in the Assignments page.</p>
+
+            <h2 id="logistics">Logistics</h2>
+
+            <p>Work on this assignment off of the stencil code provided, but <strong>do not change the stencil except where specified.</strong> Changing the stencil will result in incompatiblity with the autograder and result in a low grade. You shouldn't change any method signatures or add any trainable parameters to <strong>init</strong> that we don't give you (other instance variables are fine).</p>
+
+            <p>This assignment requires the <a href="https://pytorch.org/get-started/locally/"><strong>PyTorch</strong></a>, NumPy, and <a href="https://docs.dgl.ai/en/latest/install/"><strong>dgl</strong></a> packages. You can install them using pip or run the assignment in a virtual environment.</p>
+
+            <p>To run the virtual environment on a department machine, you can run:</p>
+
+            <code class="bash language-bash">source /course/cs1470/torch/bin/activate
+            </code>
+
+            <p>Notice that we have created a dedicated environment for PyTorch. Don't try to use the tf-2.0 version.</p>
+
+            <p>If you would like to create a PyTorch environment locally, here are the packages you will need in addition to those that come along with a Python virtual environment:</p>
+
+            <ul>
+            <li>dgl==0.4</li>
+            <li>future==0.18.2</li>
+            <li>numpy==1.17.3 </li>
+            <li>periodictable==1.5.1</li>
+            <li>torch==1.3.0  </li>
+            <li>torchvision==0.4.1</li>
+            </ul>
+
+            <p>You get both torch and torchvision by running in your local terminal:</p>
+
+            <code class="bash language-bash">pip install torch torchvision
+            </code>
+
+            <h2 id="nci1">NCI 1</h2>
+
+            <p>There are all sort of tasks with inherent graph structure that we could consider learning on, like social networks, knowledge graphs, and traffic flows. However, we'll be honing in on chemistry for this assignment. You can think of the atoms and bonds of a molecule
+            as nodes and edges in an undirected graph, respectively. One of the major baselines for networks that operate on graphs are the NCI datasets. These are datasets of molecules that have been annotated with binary labels marking them as either "active" or
+            "inactive" against a certain kind of cancer (we look specifically at a variant of lung cancer). Strikingly, they have no other information besides the types of atoms that exist, and the edges (bonds) between them. This makes it a sort of "symbolic" graph because there are no features like mass/charge/position for an atom, or the type of bond (single/double etc.). However, this is what partially makes it a good baseline, even though we're missing some of the features needed to get high accuracies.</p>
+
+            <p>Making sure that we actually learn about this structure is hugely important to being able to classify the graph as a whole (or any of its subpieces, like certain nodes or edges). If we just encode, say, all the nodes into vectors and feed them through a feed-forward layer, we're losing all of our information about how this graph is connected! To this end, you'll be implementing a neural network that performs message passing among nodes (with a little bit of help), similar to how you've seen in lecture.</p>
+
+            <h1 id="whydothisinpytorch">Why do this in PyTorch?</h1>
+
+            <p>As much as we love TensorFlow, not all neural network frameworks have reached parity with each other in every aspect yet. Because of how new MPNNs are, TF is just starting to release libraries to formally handle these types of interactions (they just released a library for Neural Structured Learning, or NSL, last month), but PyTorch has had these libraries around for quite some time.</p>
+
+            <p>Instead of making you handle the low-level mechanics of how to perform message passing in a way that is A) differentiable, and B) not incredibly slow, we'll be using a PyTorch framework called DGL (Deep Graph Library) that lets you define how messages should be sent and received instead. We also hope that, as you begin to read other researcher's code for your final projects, being exposed to other frameworks will ease the burden somewhat.</p>
+
+            <h2 id="pytorchresources">PyTorch Resources</h2>
+
+            <p>We think you'll find that TensorFlow 2.0 and PyTorch are actually far more similar than they are different. There are a few key differences, but we hope that the stencil elucidates enough to get you by. Nevertheless, we recommend take a peek at these sections of the PyTorch 60-minute blitz: <a href="https://pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html#sphx-glr-beginner-blitz-neural-networks-tutorial-py">Building a simple neural network</a> and <a href="https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html#sphx-glr-beginner-blitz-autograd-tutorial-py">How autodiff works</a>. We have also released a TF2 implementation of MNIST, and its corresponding PyTorch translation. <a href="http://cs.brown.edu/courses/cs1470/projects/public/hw5-mpnns/torch-tutorial.py">This</a> should show how to map your TensorFlow knowledge to a PyTorch assignment.</p>
+
+            <h2 id="dglresources">DGL Resources</h2>
+
+            <p>PyTorch isn't the only new thing in this assignment. DGL is a powerful library for graph representations. Nevertheless, it can be a little tricky to use for the first time! Here are some tips...
+            
+            <ol>
+
+            <li>DGL represents their graphs as a DGLGraph class <a href="https://docs.dgl.ai/en/latest/api/python/graph.html">documentation</a>. It stores the nodes, edges, and features for each of these. When you wish to perform message passing, it will only pass messages from nodes to other nodes they are connected to. Nodes are just indices (e.g if you have ten nodes in your graph g , g.nodes will just be a list from 0-9). Edges are represented as connections between these node indices (e.g [(0, 5), (1, 9), (2, 8)]).</li>
+
+            <li>Each node can carry data under some attribute (this data will be the node vector that represents the current state of each node during message passing). You'll need to set data for each node before you do this message passing. If you have 3 nodes and a tensor t containing node features a, b, and c, you can set them all at the same time by saying <code>g.ndata['attribute_name'] = t</code>. This will give node 0 the "a" tensor, 1 the "b" tensor, and 2 the "c" tensor, all queryable under <code>'attribute_name'</code>. You can think of ndata as map storing all of the data for all the nodes under some key. In this case we set it to the key named <code>'attribute_name'</code>. You can name this whatever you want, so long as it's consistent. If you want to remove and return the ndata for the graph, you can call pop on it (e.g <code>all_node_features = g.ndata.pop('attribute_name')</code>).
+            </li>
+            
+            <li>Once the ndata has been set, you're ready to start message passing. This is handled by calling <code>send</code> and <code>recv</code> on your graph with the appropriate arguments. Documentation <a href="https://docs.dgl.ai/en/latest/generated/dgl.DGLGraph.send.html">here</a>, <a href="https://docs.dgl.ai/en/latest/generated/dgl.DGLGraph.recv.html">here</a>, and in the stencil.</li>
+            
+            </ol>
+            </p>
+
+            <h1 id="part1preprocessing">Part 1: Preprocessing</h1>
+
+            <p>Step 1. Preprocess the data</p>
+
+            <ul>
+            <li>Reading sdf files is a major pain, so we've written a parser for you. Call <code>read_file(file_name)</code> on the file name passed to <code>get_data</code>, and it will return a list of molecules (see the stencil for more details). In essence, a molecule is a list of nodes, where each "node" is an atomic number of some element, a list of edges (tuples of integers i, j representing a connection between nodes i and j), and a label of active or inactive against cancer (0 or 1). From here, you need to one-hot encode these nodes, shuffle the data, and return a training and testing split of 0.9 to 0.1. Your nodes should be 2-D numpy arrays of size (number_of_atoms x 119) (more details in stencil).</li>
+            </ul>
+
+            <p>Step 2: Represent it as a DGL Graph</p>
+            <ul>
+            <li>
+            In the <code>build_graph</code> method, you should instantiate a DGL Graph and add as many nodes as you have in your molecule. Then, add edges between all nodes: <a href="https://docs.dgl.ai/en/latest/api/python/graph.html">DGL Graph Documentation</a>. You should also turn the nodes of the molecule into a tensor, and assign it as the initial node features of the graph. The stencil will have more information. In order to batch your molecules together, you'll need to collect all of the graphs representing each molecule into a list, and then call <code><a href="https://docs.dgl.ai/en/latest/generated/dgl.batch.html">dgl.batch</a></code> to turn them into a batched graph that you can perform message passing
+            on as you would a smaller one.
+            </li>
+            </ul>
+
+            <h1 id="part2themodel">Part 2: The Model</h1>
+
+            <h2 id="roadmap">Roadmap</h2>
+
+            <p>You will notice that the structure of the Model class is very similar to the Model class defined in your TensorFlow assignments. In fact, you can functionally treat them the same. Instead of subclassing from <code>tf.keras.model</code>, it subclasses from <code>pytorch.nn.module</code>, which gives you all of the features you're accustomed to (like a list of trainable variables. In this case: <code>model.parameters()</code>).</p>
+
+            <p>You'll also notice that you have two classes to fill out this time: One for the Model itself, and one that's re-used quite a bit: The MPLayer (Message Passing Layer). This handles a single round of message passing in our network. We define it as a layer of sorts so that you can re-use it to perform many rounds of message passing.</p>
+
+            <p>The overall architecture of your model should look like:
+            <ol>
+
+            <li>After representing a batch of molecules as a graph, you want to use a single feed-forward layer as a lifting network to transform our node features from raw_features (ie. the symbol of the atom) into a higher dimensional space where we will perform message passing.</li>
+
+            <li>For each MPLayer: set the ndata to be the node features from the previous round of propagation, perform message passing, and then pop the node features. Feed these through a linear layer and return the result so that it can be ReLU'd and passed back in as the node data for the next round. (You should be doing this in the MPLayer class.)
+            </li>
+                <ol>
+                <li>
+                When computing a message from a node and its vector v1 to a node n2, use the message rule m = ReLU(f(v1)), where f is a feed-forward layer.
+                </li>
+                <li>
+                When aggregating messages at a node, just sum them all up and replace the node's vector with the result (a la convolution)
+                </li>
+                </ol>
+            <li>Back in the Model class, after ReLUing the output of your final mp layer, you should feed the result into your <code>readout</code> function in order  to "classify" the graph into logits. The readout function we request that you implement is a summation over all of the features, after they have been fed through a neural network to reduce their dimensionality to 2. You can sum over a batched graph with <code><a href="https://docs.dgl.ai/en/latest/generated/dgl.sum_nodes.html">dgl.sum</em>nodes</a></code>
+            </li>
+            
+            </ol>
+            </p>
+
+            <p>MPNNs can be quite finnicky, and the dataset is quite small, so our particular recommendation for architecture is:</p>
+
+            <ul>
+            <li>Adam Optimizer with learning_rate: 5e-4</li>
+            <li>lifting layer of size (119, 300)</li>
+            <li>3 mp layers of size (300, 300)</li>
+            <li>final readout layer of size (300, 2)</li>
+            <li>batch size 10
+            </li>
+            </ul>
+            Feel free to experiment with this.
+
+            <h1 id="part3traintest">Part 3: Train / Test</h1>
+
+            <p>After reading in your data, you should form a graph out of each of your molecules. You can then batch these into a graph, and run this through your model, which will return logits. Feed these logits and a batch of labels through <code>pytorch.nn.CrossEntropyLoss</code> (this takes logits, not probabilities!) to get a loss value. Follow the steps in the stencil to update your weights correctly from this point. After training has completed for one epoch, print the testing accuracy on the test set. Because of the small dataset, we ask that you print the testing accuracy after every epoch. <strong>You should train for at most 15 epochs.</strong></p>
+
+            <h2 id="results">Results:</h2>
+
+            <p>As mentioned before, this symbolic graph lacks a lot of details that we'd need to make really good predictions. Because of this, even <a href="https://paperswithcode.com/sota/graph-classification-on-nci1">some novel papers</a> from the last few years struggle to get above 65-70% accuracy. <strong>You will get full points on the autograder if you get above 65% testing accuracy after any epoch.</strong> Don't be worried about some variance in testing accuracy. Again due to the small size of the dataset, you should expect some fluctuation in your top accuracy. A correct model should always score above 65%, but you ought to see it break above 70 in many cases. Like previous assignments, do not alter any of the stencil, and fill all of it out. Not doing so puts you at risk of failing the autograder.</p>
+
+            <h1 id="conceptualquestions">Conceptual Questions</h1>
+
+            <p>Fill out conceptual questions and submit in PDF format. Submitting a scan of written work is also fine as long as it is readable. Please copy over the questions and write well thought out answers to the questions.</p>
+
+            <p><strong>We will not accept anything other than a PDF.</strong></p>
+
+            <h2 id="cs2470students">CS2470 Students</h2>
+
+            <p>Please complete the CS2470-only conceptual questions <strong>in addition</strong> to the coding assignment and the CS1470 conceptual questions.
+            <strong>Note: Questions about 2470 will only be answered on Piazza, or by TAs marked with an asterisk (*) on the calendar.</strong></p>
+
+            <h2 id="handingin">Handing In</h2>
+
+            <p>You should submit the assignment using <a href="https://docs.google.com/forms/d/e/1FAIpQLSe8oRO1a1g6iEW3ixpjmtzL9-da4No-ZrOmduZyv7P904LvUw/viewform">this Google Form</a>. You must be logged in with your Brown account. Your assignment.py, preprocess.py, sdf_iterator.py, and molecule.py files should be Python files, while the written up conceptual questions have to be PDFs. The README can be any format.</p>
+
+            <h2 id="acknowledgements">Acknowledgements:</h2>
+
+            <p>This assignment was created by Brian Oppenheim and Josh Roy, with edits by Amy Pu.</p>
+
+            <p>Cleaned version of the NCI1 Dataset is courtesy of Shirui Pan:
+            <ul>
+
+            
+            <li>Shirui Pan, Jia Wu, Xingquan Zhu, Chengqi Zhang, Philip S. Yu. "Joint Structure Feature Exploration and Regularization for Multi-Task Graph Classification." IEEE Trans. Knowl. Data Eng. 28(3): 715-728 (2016)
+            </li>
+            <li>Shirui Pan, Jia Wu, and Xingquan Zhu “CogBoost: Boosting for Fast Cost-sensitive Graph Classification", IEEE Transactions on Knowledge and Data Engineering (TKDE), 27(11): 2933-2946 (2015)
+            </li>
+            </ul>
+            </p>
+        </section>
+        <aside style="top:50px">
+        </aside>
+    </main>
+
+    <footer class="dark-footer">
+        <img id="footer-earmuffs" class="random-earmuffs" src="http://cs.brown.edu/courses/cs1470/img/earmuffs_1.png">
+        <ul class="menu">
+            <li>&copy; 2019 CS1470/2470 TA Staff | Computer Science Department | Brown University</li>
+        </ul>
+        <br>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<meta charset="utf-8"/>
+<html>
+    <head>
+        <title>Staff | CS147 - Deep Learning | Brown University</title>
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript" src="random-bowties.js"></script>
+        <script type="text/javascript" src="common.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript" src="jquery.csv.min.js"></script>
+    </head>
+        
+    <body>
+        <header>
+            <div class="accomplishments-bg">
+            <div id="navbar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="lectures.html">Lectures</a></li>
+                    <li><a href="assignments.html">Assignments</a></li>
+                    <li><a href="labs.html">Labs</a></li>
+                    <li><a href="calendar.html ">Calendar &amp; Hours</a></li>
+                    <li><a href="staff.html">Staff</a></li>
+                </ul>
+            </div>
+        </header>
+        <main>
+            <section>
+                <h1>Instructor</h1>
+                <div id="instructor"></div>
+                <h2>HTAs</h2>
+                <div id="uta-div">
+                <div id="hta"></div>
+                <h2>UTAs</h2>
+                <div id="uta-div">
+                <div id="tas"></div>
+                <script>
+                    $(document).ready(function () {
+                        let htas = ['apu1', 'zhorvitz', 'boppenhe']
+                        let instructor = 'dritchi1'
+                        $.ajax({
+                            type: "GET",
+                            url: "./staff_info.csv",
+                            dataType: "text",
+                            success: function (response) {
+                                var table = $.csv.toArrays(response).splice(1);
+                                table.forEach(row => {
+                                    var [name, login, email, number, pronouns, homeTown, year, blurb, quote] = row
+                                    var section = '#tas';
+                                    if (htas.includes(login)) {
+                                        section = '#hta';
+                                    } else if (login == instructor) {
+                                        section = '#instructor'
+                                    }
+                                    $(section).append(
+                                        `<div class ='staff'>
+                                            <img id=${login} class='staff-pic' src='img/portrait/${login}.jpg' alt="${name} is currently in deep thought." onmouseover='changeImage(this)' onmouseout='restoreImage(this)'/>
+                                            <p>
+                                                <strong>${name}</strong> (${login})<br/>
+                                                <strong>Pronouns:</strong> ${pronouns} <br/>
+                                                <strong>Year:</strong> ${year} <br/>
+                                                <strong>Hometown:</strong> ${homeTown} <br/>
+                                                <strong>About:</strong>${blurb} <br/> 
+                                                <strong>Deep Words:</strong> ${quote}
+                                            </p>
+                                        </div>`
+                                    )
+                                });
+                            }
+                        });
+                    });
+                </script>
+            </section>
+        </main>
+        <footer class="dark-footer">
+            <img id="footer-earmuffs" class="random-earmuffs" src="img/earmuffs.png">
+            <ul class="menu">
+                <li>&copy; 2019 CS1470/2470 TA Staff | Computer Science Department | Brown University</li>
+            </ul>
+            <br>
+        </footer>
+    </body>
+</html>
