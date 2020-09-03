@@ -12,7 +12,7 @@ Fun features
 for anyone: look online for nice things and #steal their codepens??
 
 
-- [ x ] Home - Katherine
+- [x] Home - Katherine
 - [ ] Resources - Katherine
 - [ ] Lectures - Naomi
 - [ ] Assignments Page
