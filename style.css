@@ -111,15 +111,16 @@ body>header {
 
 /* announcement for home page */
 .announcement {
-    background-color: #F7BF5C;
-    color: #1B2367;
+    background-color: var(--accent-yellow);
+    color: var(--dark-blue);
     border-radius: 4px;
     padding: 15px;
+    margin-bottom: 20px;
 }
 
 .announcement a {
-    color: #1B2367;
-    border-bottom: 1px solid #1B2367;
+    color: var(--dark-blue);
+    border-bottom: 1px solid var(--dark-blue);
 }
 
 /* STYLING FOR ANY PAGE THAT HAS DARK CONTENT */
@@ -159,49 +160,10 @@ body>header {
     border-bottom: 1px solid var(--accent-yellow);
 }
 
+/* for reference if we want banner images in header */
 .live-laugh-logit-bg {
     background-color: #1152bd;
     background-image: url("img/live_laugh_logit.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 350px;
-    color: #FFFFFF;
-}
-
-.accomplishments-bg {
-    background-color: #1152bd;
-    background-image: url("img/accomplishments.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 350px;
-    color: #FFFFFF;
-}
-
-.lemons-bg {
-    background-color: #1152bd;
-    background-image: url("img/lemons.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 350px;
-    color: #FFFFFF;
-}
-
-.believe-bg {
-    background-color: #1152bd;
-    background-image: url("img/believe.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 350px;
-    color: #FFFFFF;
-}
-
-.local-minimum-bg {
-    background-color: #1152bd;
-    background-image: url("img/local-minimum.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -216,20 +178,18 @@ body>header {
 
 #navbar {
     width: 100%;
-    font-size: 1.2em;
+    font-size: 1.2rem;
     font-family: 'Krona One', sans-serif;
-    line-height: 1.2em;
+    line-height: 1.2rem;
     padding-bottom: 10px;
 }
 
 #navbar.fixed {
     left: 0px;
-    /* bottom: inherit; */
     top: 0px;
     position: fixed;
-    
     z-index: 1;
-    background: #1B2367;
+    background: var(--dark-blue);
     width: 100%;
     margin: 0 0%;
     padding: 2% 6% 2% 12%;
@@ -238,7 +198,7 @@ body>header {
 #navbar a{
     color: #E4E841;
     display: inline-block;
-    padding: 0px 20px 0px 10px;
+    margin: 20px 15px 10px 0px;
     text-decoration: none;
     line-height: 1.2em;
 }
@@ -333,7 +293,7 @@ section .section-header {
     color: #2D2B38;
     font-family: 'Inter', sans-serif;
     font-weight: bold;
-    font-size: 2em;
+    font-size: 2rem;
 }
 
 section h1,
@@ -349,7 +309,7 @@ section h6 {
 }
 
 section h1 {
-    font-size: 2em;
+    font-size: 2rem;
 }
 
 section hr {
@@ -480,3 +440,42 @@ footer ul {
     font-size: .9em;
 }
 
+
+/* MOBILE STYLING */
+@media screen and (max-width: 992px) {
+    body {
+        font-size: 3rem;
+        line-height: 4.5rem;
+    }
+    
+    .dark h1, h1 {
+        font-size: 6rem;
+        line-height: 6rem;
+    }
+    .dark h2, h2 {
+        font-size: 5rem;
+        line-height: 5rem;
+    }
+    .dark h3, h3 {
+        font-size: 4rem;
+        line-height: 4rem;
+    }
+
+    /* header formatting */
+    .header__subtitle {
+        font-size: 3rem;
+        line-height: 3rem;
+    }
+    .header__maintitle {
+        font-size: 5rem;
+        line-height: 5rem;
+    }
+    nav {
+        margin-top: 50px;
+    }
+    nav#navbar a {
+        text-align: center;
+        display: block;
+        font-size: 3rem;
+    }
+}
