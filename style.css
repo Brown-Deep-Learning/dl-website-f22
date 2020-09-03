@@ -72,7 +72,7 @@ body>header {
     line-height: 100px;
     width: 100%;
     margin: 0 10%;
-    padding: 10% 2% 1% 2%;
+    padding: 5% 2% 1% 2%;
 }
 
 .header__content {
@@ -103,6 +103,19 @@ body>header {
 .header__sparkle img{
     width: 80px; 
     padding: 10px;
+}
+
+/* announcement for home page */
+.announcement {
+    background-color: #F7BF5C;
+    color: #1B2367;
+    border-radius: 4px;
+    padding: 15px;
+}
+
+.announcement a {
+    color: #1B2367;
+    border-bottom: 1px solid #1B2367;
 }
 
 /* STYLING FOR ANY PAGE THAT HAS DARK CONTENT */
@@ -450,17 +463,6 @@ code.cslogin {
     margin: 0px;
 }
 
-.announcement {
-    background-color: #F7BF5C;
-    color: #1B2367;
-    border-radius: 4px;
-    padding: 15px;
-}
-
-.announcement a{
-    color: #1B2367;
-    border-bottom: 1px solid #1B2367;
-}
 
 footer {
     background-position: bottom;
