@@ -32,6 +32,27 @@ a:hover {
     color: #ffffff; 
 }
 
+/* HEADER STYLES FOR THE OTHER PAGES */
+
+.page__header {
+    margin: 0 10%;
+    padding: 5% 2% 1% 2%;
+}
+
+.page__title img {
+    height: 50px;
+}
+.page__title {
+    font-size: 3em;
+}
+
+.page__header__quote {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-size: 1.2em;
+    font-family: 'Inter', sans-serif;
+}
+
 /* HEADER STYLES FOR FRONT PAGE */
 body>header {
     overflow-x: hidden;
@@ -42,11 +63,12 @@ body>header {
     width: 100%;
     background: #1B2367;
     border-bottom: 1px solid #E4E841;
-}
-
-.home__header {
     color: #E4E841;
     font-family: 'Krona One', sans-serif;
+}
+
+
+.home__header {
     line-height: 100px;
     width: 100%;
     margin: 0 10%;
@@ -84,6 +106,7 @@ body>header {
 }
 
 /* STYLING FOR ANY PAGE THAT HAS DARK CONTENT */
+
 .dark {
     background: #1B2367;
     color: #FFFFFF;
@@ -169,36 +192,30 @@ body>header {
     color: #FFFFFF;
 }
 
-.dream-bg {
-    background-color:#1152bd;
-    background-image: url("img/dream.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 350px;
-    color: #FFFFFF;
-}
-
 .dark-footer {
     background-color: #1B2367;
     color: #FFFFFF;
 }
 
 #navbar {
+    width: 100%;
     font-size: 1.2em;
-    padding: 30px;
     font-family: 'Krona One', sans-serif;
     line-height: 1.2em;
+    padding: 0% 6% 2% 0%;
 }
 
 #navbar.fixed {
+    left: 0px;
     /* bottom: inherit; */
-    margin-top: 0px;
     top: 0px;
     position: fixed;
-    width: 100%;
+    
     z-index: 1;
     background: #1B2367;
+    width: 100%;
+    margin: 0 0%;
+    padding: 2% 6% 2% 12%;
 }
 
 #navbar a{
@@ -441,7 +458,7 @@ code.cslogin {
 }
 
 .announcement a{
-    color: #1B2368;
+    color: #1B2367;
     border-bottom: 1px solid #1B2367;
 }
 
