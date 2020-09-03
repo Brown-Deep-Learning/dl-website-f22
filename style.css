@@ -2,6 +2,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Krona+One&display=swap');
 
+:root {
+    --dark-blue: #1B2367;
+    --accent-yellow: #F7BF5C;
+}
+
 html {
     height: 100%;
 }
@@ -17,18 +22,18 @@ body {
 }
 
 a {
-    color: #1B2367;
+    color: var(--dark-blue);
     border-bottom: 1px solid transparent;
     text-decoration: none;
 }
 
 a:hover {
-    color: #F7BF5C;
-    border-bottom: 1px solid #F7BF5C;
+    color: var(--accent-yellow);
+    border-bottom: 1px solid var(--accent-yellow);
 }
 
 ::selection {
-    background: #F7BF5C;
+    background: var(--accent-yellow);
     color: #ffffff; 
 }
 
@@ -61,7 +66,7 @@ body>header {
     padding-bottom: 0;
     position: relative;
     width: 100%;
-    background: #1B2367;
+    background: var(--dark-blue);
     border-bottom: 1px solid #E4E841;
     color: #E4E841;
     font-family: 'Krona One', sans-serif;
@@ -121,7 +126,7 @@ body>header {
 /* STYLING FOR ANY PAGE THAT HAS DARK CONTENT */
 
 .dark {
-    background: #1B2367;
+    background: var(--dark-blue);
     color: #FFFFFF;
     width: 100%;
 }
@@ -151,8 +156,8 @@ body>header {
 }
 
 .dark__content a:hover {
-    color: #F7BF5C;
-    border-bottom: 1px solid #F7BF5C;
+    color: var(--accent-yellow);
+    border-bottom: 1px solid var(--accent-yellow);
 }
 
 .live-laugh-logit-bg {
@@ -206,7 +211,7 @@ body>header {
 }
 
 .dark-footer {
-    background-color: #1B2367;
+    background-color: var(--dark-blue);
     color: #FFFFFF;
 }
 
@@ -240,7 +245,7 @@ body>header {
 }
 
 #navbar a:hover {
-    color: #F7BF5C;
+    color: var(--accent-yellow);
     border-bottom: 1px solid transparent;
 }
 
@@ -256,20 +261,29 @@ main section {
 }
 
 aside {
-    position: fixed;
+    background-color: var(--accent-yellow);
+    float: right;
+    position: -webkit-sticky;
+    position: sticky;
+    margin-top: 50px;
     top: 50px;
     right: 10px;
     width: 20%;
-    background: #FFF;
 }
 
 aside a {
+    color: var(--dark-blue);
+    text-decoration: none;
+}
+
+aside a:hover {
+    color: var(--dark-blue);
     text-decoration: none;
 }
 
 aside ul {
     list-style-type: none;
-    padding: 0;
+    padding-left: 25px;
 }
 
 aside li {
@@ -283,26 +297,6 @@ aside li.active {
 
 aside li.active a {
     color: #FFFFFF;
-}
-
-aside ul>ul>li {
-    padding-left: 25px;
-}
-
-aside ul>ul>ul>li {
-    padding-left: 50px;
-}
-
-aside ul>ul>ul>ul>li {
-    padding-left: 75px;
-}
-
-aside ul>ul>ul>ul>ul>li {
-    padding-left: 100px;
-}
-
-aside ul>ul>ul>ul>ul>ul>li {
-    padding-left: 125px;
 }
 
 section {
@@ -334,7 +328,7 @@ section.has-sidebar {
     width: 60%;
     position: relative;
     float: left;
-    /* margin: 0 5%; */
+    padding: 0;
 }
 
 section .section-header {
