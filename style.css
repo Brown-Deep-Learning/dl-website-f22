@@ -75,7 +75,6 @@ body>header {
 
 .home__header {
     line-height: 100px;
-    width: 100%;
     margin: 0 10%;
     padding: 5% 2% 1% 2%;
 }
@@ -220,7 +219,7 @@ body>header {
     font-size: 1.2em;
     font-family: 'Krona One', sans-serif;
     line-height: 1.2em;
-    padding: 0% 6% 2% 0%;
+    padding-bottom: 10px;
 }
 
 #navbar.fixed {
@@ -239,7 +238,7 @@ body>header {
 #navbar a{
     color: #E4E841;
     display: inline-block;
-    padding: 0px 10px 0px 10px;
+    padding: 0px 20px 0px 10px;
     text-decoration: none;
     line-height: 1.2em;
 }
@@ -303,7 +302,6 @@ section {
     margin-left: 5%;
     margin-right: 5%;
     max-width: 80%;
-    width: 80%;
     padding-bottom: 1em;
 }
 
