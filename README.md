@@ -10,9 +10,9 @@ Fun features
 
 - [x] Home - Katherine
 - [x] Resources - Katherine
-- [ ] Lectures - Naomi
-- [ ] Assignments Page
-   *  Actual Page - Naomi
+- [x] Lectures - Katherine
+- [] Assignments Page
+   *  [x] Actual Page - Katherine
    *  [x] Changing all the assignment pages to have nicer menu positioning + update header - Raymond
    *  [ ] 1
    *  [ ] 2
