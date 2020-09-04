@@ -5,6 +5,7 @@
 :root {
     --dark-blue: #1B2367;
     --accent-yellow: #F7BF5C;
+    --bright-yellow: #E4E841;
 }
 
 html {
@@ -34,7 +35,7 @@ a:hover {
 
 ::selection {
     background: var(--accent-yellow);
-    color: #ffffff; 
+    color: #ffffff;
 }
 
 /* HEADER STYLES FOR THE OTHER PAGES */
@@ -67,8 +68,8 @@ body>header {
     position: relative;
     width: 100%;
     background: var(--dark-blue);
-    border-bottom: 1px solid #E4E841;
-    color: #E4E841;
+    border-bottom: 1px solid var(--bright-yellow);
+    color: var(--bright-yellow);
     font-family: 'Krona One', sans-serif;
 }
 
@@ -105,7 +106,7 @@ body>header {
 }
 
 .header__sparkle img{
-    width: 80px; 
+    width: 80px;
     padding: 10px;
 }
 
@@ -131,9 +132,15 @@ body>header {
     width: 100%;
 }
 
-.dark h1, h2, h3 {
-    color: #E4E841;
+.dark h1,
+.dark h2,
+.dark h3 {
+    color: var(--bright-yellow);
     font-family: 'Krona One', sans-serif;
+}
+
+.dark h4 {
+    color: white;
 }
 
 .dark__content {
@@ -196,7 +203,7 @@ body>header {
 }
 
 #navbar a{
-    color: #E4E841;
+    color: var(--bright-yellow);
     display: inline-block;
     margin: 20px 15px 10px 0px;
     text-decoration: none;
@@ -215,7 +222,7 @@ main {
 
 main section {
     margin: 0 10%;
-    padding-left:2%; 
+    padding-left:2%;
     padding-right:2%;
 }
 
@@ -345,7 +352,7 @@ table tbody tr {
 }
 
 table tbody tr:nth-child(2n+1) {
-    background-color: rgba(45, 46, 43, 0.10);
+    background-color: rgba(45, 46, 43, 0.3);
 }
 
 th {
@@ -420,7 +427,13 @@ footer {
     background-position: bottom;
     text-align: center;
     width: 100%;
-    border-top: 1px solid #E4E841;
+    border-top: 1px solid var(--bright-yellow);
+}
+
+.random-earmuffs {
+    height: 50px;
+    width: auto;
+    padding-top: 10px;
 }
 
 #footer-bowtie {
@@ -447,7 +460,7 @@ footer ul {
         font-size: 3rem;
         line-height: 4.5rem;
     }
-    
+
     .dark h1, h1 {
         font-size: 6rem;
         line-height: 6rem;

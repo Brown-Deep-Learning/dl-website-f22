@@ -4,7 +4,7 @@
 ### TODOS
 
 Fun features
-- [ ] each page has a different planet - Katherine 
+- [ ] each page has a different planet - Katherine
 - [x] sparkles (multiple sparkles/ diff shapes)
 - [ ] different icon in footer (earmuffs part 4) - Griffin
 - [ ] neon headers :000 - Naomi
@@ -26,8 +26,8 @@ for anyone: look online for nice things and #steal their codepens??
    *  [ ] 5
    *  [ ] 6
    *  [ ] 7
-- [ ] Labs - Griffin
-- [ ] Calendar & Hours  - Griffin
+- [x] Labs - Griffin
+- [x] Calendar & Hours  - Griffin
 - [ ] Staff - Raymond
 
 QUOTES
