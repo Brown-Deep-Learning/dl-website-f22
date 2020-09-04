@@ -109,19 +109,6 @@ body>header {
     padding: 10px;
 }
 
-/* announcement for home page */
-.announcement {
-    background-color: var(--accent-yellow);
-    color: var(--dark-blue);
-    border-radius: 4px;
-    padding: 15px;
-    margin-bottom: 20px;
-}
-
-.announcement a {
-    color: var(--dark-blue);
-    border-bottom: 1px solid var(--dark-blue);
-}
 
 .announcement a:hover {
     color: var(--dark-blue);
@@ -160,6 +147,7 @@ body>header {
     padding: 10px;
     max-width: 300px;
 }
+
 .dark a {
     color: var(--accent-yellow);
     border-bottom: 1px solid transparent;
@@ -169,6 +157,26 @@ body>header {
     color: var(--accent-yellow);
     border-bottom: 1px solid var(--accent-yellow);
 }
+
+/* announcement for home page */
+.announcement {
+    background-color: var(--accent-yellow);
+    color: var(--dark-blue);
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.announcement a {
+    color:  var(--dark-blue);
+    border-bottom: 1px solid var(--dark-blue);
+}
+
+.announcement a:hover{
+    color:  var(--dark-blue);
+    border-bottom: 1px solid var(--dark-blue);
+}
+
 
 /* for reference if we want banner images in header */
 .live-laugh-logit-bg {

@@ -27,9 +27,9 @@ Fun features
 - [ ] Mobile support - Raymond
 
 Content 
-- [ ] Lecture - Katherine 
-- [ ] Assignments - Griffin
-- [ ] Lab - ??
+- [x] Lecture - Katherine 
+- [x] Assignments - Griffin
+- [ ] Lab - Naomi
 
 After all that done..
 - [ ] Let HTAs check to make sure content is good (capstone form link, collab policy, requirements.txt, etc)
