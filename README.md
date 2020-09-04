@@ -8,17 +8,13 @@ Fun features
 - [x] sparkles (multiple sparkles/ diff shapes)
 - [x] different icon in footer (earmuffs part 4) - Griffin
 - [ ] neon headers :000 - Naomi
-- [ ] gradient?? -- on hold T_T  @George
-
-for anyone: look online for nice things and #steal their codepens??
-
 
 - [x] Home - Katherine
 - [x] Resources - Katherine
 - [ ] Lectures - Naomi
 - [ ] Assignments Page
    *  Actual Page - Naomi
-   *  [ ] Changing all the assignment pages to have nicer menu positioning + update header - Raymond
+   *  [x] Changing all the assignment pages to have nicer menu positioning + update header - Raymond
    *  [ ] 1
    *  [ ] 2
    *  [ ] 3
@@ -30,4 +26,6 @@ for anyone: look online for nice things and #steal their codepens??
 - [x] Calendar & Hours  - Griffin
 - [ ] Staff - Raymond
 
-QUOTES
+After all that done..
+- [ ] Let HTAs check to make sure content is good (capstone form link, collab policy, requirements.txt, etc)
+- [ ] Push to website and verify that the scripts for downloading data work - Katherine
