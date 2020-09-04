@@ -10,7 +10,7 @@
 
 html {
     height: 100%;
-    background-color: var(--dark-blue);
+    /* background-color: var(--dark-blue); */
 }
 
 body {
@@ -158,12 +158,12 @@ body>header {
     padding: 10px;
     max-width: 300px;
 }
-.dark__content a {
+.dark a {
     color: #FFFFFF;
     border-bottom: 1px solid #FFFFFF;
 }
 
-.dark__content a:hover {
+.dark a:hover {
     color: var(--accent-yellow);
     border-bottom: 1px solid var(--accent-yellow);
 }
