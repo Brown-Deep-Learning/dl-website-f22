@@ -161,8 +161,8 @@ body>header {
     max-width: 300px;
 }
 .dark a {
-    color: #FFFFFF;
-    border-bottom: 1px solid #FFFFFF;
+    color: var(--accent-yellow);
+    border-bottom: 1px solid transparent;
 }
 
 .dark a:hover {
