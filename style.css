@@ -535,6 +535,11 @@ footer ul {
         word-wrap: break-word;
     }
 
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+
     section.has-sidebar {
         max-width: unset;
         width: unset;
