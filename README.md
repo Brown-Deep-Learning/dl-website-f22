@@ -7,7 +7,6 @@ Fun features
 - [x] each page has a different planet - Katherine
 - [x] sparkles (multiple sparkles/ diff shapes)
 - [x] different icon in footer (earmuffs part 4) - Griffin
-- [ ] neon headers :000 - Naomi
 
 - [x] Home - Katherine
 - [x] Resources - Katherine
@@ -22,9 +21,15 @@ Fun features
    *  [ ] 5
    *  [ ] 6
    *  [ ] 7
-- [x] Labs - Griffin
-- [x] Calendar & Hours  - Griffin
+- [x] Labs - Griffin 
+- [x] Calendar & Hours - Griffin
 - [ ] Staff - Raymond
+- [ ] Mobile support - Raymond
+
+Content 
+- [ ] Lecture - Katherine 
+- [ ] Assignments - Griffin
+- [ ] Lab - ??
 
 After all that done..
 - [ ] Let HTAs check to make sure content is good (capstone form link, collab policy, requirements.txt, etc)
