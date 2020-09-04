@@ -23,6 +23,14 @@ body {
     line-height: 30px;
 }
 
+/* Compensate for fixed header when jumping to a specific part of a page */
+:target:before {
+    content: '';
+    display: block;
+    height: 70px; /* fixed header height*/
+    margin: -70px 0 0; /* negative fixed header height */
+}
+
 a {
     color: var(--dark-blue);
     border-bottom: 1px solid transparent;
@@ -524,6 +532,16 @@ footer ul {
     body {
         font-size: 1.25rem;
         line-height: 1.5rem;
+        word-wrap: break-word;
+    }
+
+    section.has-sidebar {
+        max-width: unset;
+        width: unset;
+        position: unset;
+        float: unset;
+        padding: 0;
+        margin: 1em;
     }
 
     /* header formatting */

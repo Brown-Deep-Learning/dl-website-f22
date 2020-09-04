@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<meta charset="utf-8"/>
 <html>
 
 <head>
     <title>CS147 - Deep Learning | Brown University</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" type="text/css" href="../../../normalize.css">
 
     <!-- for syntax highlighting of code blocks -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
@@ -25,11 +27,11 @@
     <!-- NOTE: Script closing tags need to be on separate line for markdown-to-html script to process them properly :-(  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js">
     </script>
-    <script type="text/javascript" src="http://cs.brown.edu/courses/cs1470/random-bowties.js">
+    <script type="text/javascript" src="../../../random-bowties.js">
     </script>
-    <script type="text/javascript" src="http://cs.brown.edu/courses/cs1470/create-sidebar.js">
+    <script type="text/javascript" src="../../../create-sidebar.js">
     </script>
-     <script type="text/javascript" src="http://cs.brown.edu/courses/cs1470/common.js">
+     <script type="text/javascript" src="../../../common.js">
      </script>
 
 </head>
@@ -48,13 +50,18 @@
             </div>
 
             <nav id="navbar">
-                <a href="../../../index.html">Home</a>
-                <a href="../../../resources.html">Resources</a>
-                <a href="../../../lectures.html">Lectures</a>
-                <a href="../../../assignments.html">Assignments</a>
-                <a href="../../../labs.html">Labs</a>
-                <a href="../../../calendar.html">Calendar &amp; Hours</a>
-                <a href="../../../staff.html">Staff</a>
+                <button id="hamburger" onclick="toggleMobileMenu(this)">
+                    <div id="hamburger-bar-1"></div>
+                    <div id="hamburger-bar-2"></div>
+                    <div id="hamburger-bar-3"></div>
+                </button>
+                <a class="nav-link" href="../../../index.html">Home</a>
+                <a class="nav-link" href="../../../resources.html">Resources</a>
+                <a class="nav-link" href="../../../lectures.html">Lectures</a>
+                <a class="nav-link" href="../../../assignments.html">Assignments</a>
+                <a class="nav-link" href="../../../labs.html">Labs</a>
+                <a class="nav-link" href="../../../calendar.html">Calendar &amp; Hours</a>
+                <a class="nav-link" href="../../../staff.html">Staff</a>
             </nav>
         </div>
     </header>
