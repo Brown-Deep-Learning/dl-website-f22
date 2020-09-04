@@ -17,3 +17,14 @@ function changeImage(login) {
 function restoreImage(login) {
     login.src='img/portrait/' + login.id + '.jpg'
 }
+
+function toggleMobileMenu(element) {
+    element.classList.toggle('menu-open');
+    document.querySelectorAll('.nav-link').forEach(link => {
+        if (element.classList.contains('menu-open')) {
+            link.style.display = 'block';
+        } else {
+            link.style.display = 'none';
+        }
+    })
+}
