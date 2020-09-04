@@ -4,9 +4,9 @@
 ### TODOS
 
 Fun features
-- [ ] each page has a different planet - Katherine
+- [x] each page has a different planet - Katherine
 - [x] sparkles (multiple sparkles/ diff shapes)
-- [ ] different icon in footer (earmuffs part 4) - Griffin
+- [x] different icon in footer (earmuffs part 4) - Griffin
 - [ ] neon headers :000 - Naomi
 - [ ] gradient?? -- on hold T_T  @George
 
@@ -14,7 +14,7 @@ for anyone: look online for nice things and #steal their codepens??
 
 
 - [x] Home - Katherine
-- [ ] Resources - Katherine
+- [x] Resources - Katherine
 - [ ] Lectures - Naomi
 - [ ] Assignments Page
    *  Actual Page - Naomi
@@ -31,6 +31,3 @@ for anyone: look online for nice things and #steal their codepens??
 - [ ] Staff - Raymond
 
 QUOTES
-- "Blueno left a black hole in my heart"
-- "That’s one small gradient step for a lamp/bear…one giant leap for lamp/bear-kind"
-

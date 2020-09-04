@@ -42,8 +42,7 @@ a:hover {
 /* HEADER STYLES FOR THE OTHER PAGES */
 
 .page__header {
-    margin: 0 10%;
-    padding: 5% 2% 1% 2%;
+    padding: 5% 0% 1% 12%;
 }
 
 .page__title img {
@@ -77,8 +76,7 @@ body>header {
 
 .home__header {
     line-height: 5.5rem;
-    margin: 0 10%;
-    padding: 5% 2% 1% 2%;
+    padding: 5% 0% 1% 12%;
 }
 
 .header__content {
@@ -199,8 +197,7 @@ body>header {
     z-index: 1;
     background: var(--dark-blue);
     width: 100vw;
-    margin: 0 0%;
-    padding: 2% 0;
+    padding: 2% 0% 1% 12%;
 }
 
 #navbar a{
@@ -266,10 +263,10 @@ aside {
     float: right;
     position: -webkit-sticky;
     position: sticky;
-    margin-top: 50px;
-    top: 50px;
+    top: 5rem;
     right: 10px;
     width: 20%;
+    z-index: 2;
 }
 
 aside a {
@@ -365,7 +362,7 @@ section hr {
 }
 
 code {
-    background-color: rgba(45, 46, 43, 0.55);
+    background-color: #dddddd;
     border-radius: 0.25em;
     border: solid 1px rgba(45, 46, 43, 0.65);
     display: inline-block;
@@ -446,6 +443,10 @@ div.staff img.staff-pic {
     /*object-fit: cover;*/
     max-height: 350px;
     /* object-position: left; */
+}
+
+.dark code {
+    background: #2D2B38;
 }
 
 code.cslogin {
