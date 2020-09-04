@@ -75,8 +75,10 @@ body>header {
 
 
 .home__header {
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 50px;
     line-height: 5.5rem;
-    padding: 5% 0% 1% 12%;
 }
 
 .header__content {
@@ -134,18 +136,21 @@ body>header {
 }
 
 .dark__content {
-    display: inline-flex;
+    display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
 }
 
 .dark__welcome {
-    max-width: 700px;
+    flex: 2;
+    /* max-width: 700px; */
     padding: 10px;
 }
 
 .dark__sidebar {
+    flex: 1;
     padding: 10px;
-    max-width: 300px;
+    /* max-width: 300px; */
 }
 
 .dark a {
@@ -209,7 +214,18 @@ body>header {
     z-index: 1;
     background: var(--dark-blue);
     width: 100vw;
-    padding: 2% 0% 1% 12%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    margin: 0;
+}
+@media screen and (max-width: 992px) {
+    #navbar.fixed {
+        display: block;
+        /* justify-content: center; */
+        padding: 2% 0;
+        margin: 0;
+    }
 }
 
 #navbar a{
@@ -226,7 +242,7 @@ body>header {
 }
 
 button#hamburger {
-    margin-left: 10px;
+    margin-left: 2em;
     display: none;
     border-width: 0;
     background: inherit;
@@ -237,37 +253,31 @@ button#hamburger {
     button#hamburger { display: block; }
     #navbar > .nav-link {
         display: none;
-        font-size: 1.75rem;
+        font-size: 4rem;
     }
 }
 #hamburger-bar-1, #hamburger-bar-2, #hamburger-bar-3 {
-    width: 35px;
-    height: 5px;
+    width: 105px;
+    height: 15px;
     background-color: var(--accent-yellow);
-    margin: 6px 0;
+    margin: 15px 0;
     transition: 0.4s;
 }
 .menu-open #hamburger-bar-1 {
     -webkit-transform: rotate(-45deg) translate(-9px, 6px);
-    transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-22px, 22px);
 }
 .menu-open #hamburger-bar-2 {
     opacity: 0;
 }
 .menu-open #hamburger-bar-3 {
     -webkit-transform: rotate(45deg) translate(-8px, -8px);
-    transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-20px, -20px);
 }
 
 main {
     flex: 1;
     width: 100%;
-}
-
-main section {
-    margin: 0 10%;
-    padding-left:2%;
-    padding-right:2%;
 }
 
 aside {
@@ -310,10 +320,10 @@ aside li.active a {
 }
 
 section {
-    margin-left: 5%;
-    margin-right: 5%;
-    max-width: 80%;
+    margin: auto;
+    max-width: 1000px;
     padding-bottom: 1em;
+    padding: 1em 1em;
 }
 
 
