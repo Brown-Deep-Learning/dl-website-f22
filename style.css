@@ -41,10 +41,6 @@ a:hover {
 
 /* HEADER STYLES FOR THE OTHER PAGES */
 
-.page__header {
-    padding: 5% 0% 1% 12%;
-}
-
 .page__title img {
     height: 50px;
 }
@@ -53,9 +49,10 @@ a:hover {
 }
 
 .page__header__quote {
-    margin-top: 40px;
-    margin-bottom: 40px;
-    font-size: 1.2em;
+    margin: 20px auto;
+    padding: 0 1em;
+    font-size: 1.2rem;
+    line-height: 1.2rem;
     font-family: 'Inter', sans-serif;
 }
 
@@ -74,7 +71,7 @@ body>header {
 }
 
 
-.home__header {
+.home__header, .page__header {
     max-width: 1000px;
     margin: auto;
     margin-top: 50px;
@@ -242,7 +239,7 @@ body>header {
 }
 
 button#hamburger {
-    margin-left: 2em;
+    margin-left: 1em;
     display: none;
     border-width: 0;
     background: inherit;
@@ -253,26 +250,26 @@ button#hamburger {
     button#hamburger { display: block; }
     #navbar > .nav-link {
         display: none;
-        font-size: 4rem;
+        font-size: 1.5rem;
     }
 }
 #hamburger-bar-1, #hamburger-bar-2, #hamburger-bar-3 {
-    width: 105px;
-    height: 15px;
+    width: 35px;
+    height: 5px;
+    margin: 6px 0;
     background-color: var(--accent-yellow);
-    margin: 15px 0;
     transition: 0.4s;
 }
 .menu-open #hamburger-bar-1 {
-    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
-    transform: rotate(-45deg) translate(-22px, 22px);
+    -webkit-transform: rotate(-45deg) translate(-9px, 7px);
+    transform: rotate(-45deg) translate(-9px, 7px);
 }
 .menu-open #hamburger-bar-2 {
     opacity: 0;
 }
 .menu-open #hamburger-bar-3 {
     -webkit-transform: rotate(45deg) translate(-8px, -8px);
-    transform: rotate(45deg) translate(-20px, -20px);
+    transform: rotate(45deg) translate(-7px, -7px);
 }
 
 main {
@@ -433,6 +430,7 @@ tr.no-lecture {
 
 ul.menu {
     list-style-type: none;
+    padding: 0;
 }
 
 div.staff {
@@ -524,34 +522,31 @@ footer ul {
     }
 
     body {
-        font-size: 3rem;
-        line-height: 4.5rem;
-    }
-
-    .dark h1, h1 {
-        font-size: 6rem;
-        line-height: 6rem;
-    }
-    .dark h2, h2 {
-        font-size: 5rem;
-        line-height: 5rem;
-    }
-    .dark h3, h3 {
-        font-size: 4rem;
-        line-height: 4rem;
+        font-size: 1.25rem;
+        line-height: 1.5rem;
     }
 
     /* header formatting */
-    .header__subtitle {
-        font-size: 3rem;
-        line-height: 3rem;
+    header {
+        text-align: center;
     }
-    .header__maintitle {
-        font-size: 5rem;
-        line-height: 5rem;
+    .header__text {
+        padding: 0;
+        margin: auto;
+    }
+    .header__subtitle {
+        font-size: 2rem;
+        line-height: 2rem;
+    }
+    .header__maintitle, .page__title {
+        font-size: 2.5rem;
+        line-height: 2.5rem;
+    }
+    .header__image {
+        margin: auto;
     }
     nav {
-        margin-top: 50px;
+        margin-top: 0;
     }
     nav#navbar a {
         text-align: center;

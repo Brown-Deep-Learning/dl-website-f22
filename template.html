@@ -8,12 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- NOTE: Template needs absolute paths since actual created files may be in different subdirectories  -->
-    <link rel="stylesheet" type="text/css" href="http://cs.brown.edu/courses/cs1470/style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="normalize.css">
 
     <!-- for syntax highlighting of code blocks -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js">
-    </script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
     <script>
         hljs.initHighlightingOnLoad();
     </script>
@@ -47,13 +47,18 @@
                 "Blueno leaving left a black hole in my heart"
             </div>
             <nav id="navbar">
-                <a href="index.html">Home</a>
-                <a href="resources.html">Resources</a>
-                <a href="lectures.html">Lectures</a>
-                <a href="assignments.html">Assignments</a>
-                <a href="labs.html">Labs</a>
-                <a href="calendar.html">Calendar &amp; Hours</a>
-                <a href="staff.html">Staff</a>
+                <button id="hamburger" onclick="toggleMobileMenu(this)">
+                    <div id="hamburger-bar-1"></div>
+                    <div id="hamburger-bar-2"></div>
+                    <div id="hamburger-bar-3"></div>
+                </button>
+                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="resources.html">Resources</a>
+                <a class="nav-link" href="lectures.html">Lectures</a>
+                <a class="nav-link" href="assignments.html">Assignments</a>
+                <a class="nav-link" href="labs.html">Labs</a>
+                <a class="nav-link" href="calendar.html">Calendar &amp; Hours</a>
+                <a class="nav-link" href="staff.html">Staff</a>
             </nav>
         </div>
     </header>

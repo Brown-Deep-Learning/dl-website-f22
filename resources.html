@@ -6,10 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script type="text/javascript" src="random-bowties.js">
-    </script>
-    <script type="text/javascript" src="common.js">
-    </script>
+    <link rel="stylesheet" type="text/css" href="normalize.css">
+    <script type="text/javascript" src="random-bowties.js"></script>
+    <script type="text/javascript" src="common.js"></script>
 </head>
 
 <body>
@@ -23,13 +22,18 @@
                 "Blueno left a black hole in my heart"
             </div>
             <nav id="navbar">
-                <a href="index.html">Home</a>
-                <a href="resources.html">Resources</a>
-                <a href="lectures.html">Lectures</a>
-                <a href="assignments.html">Assignments</a>
-                <a href="labs.html">Labs</a>
-                <a href="calendar.html">Calendar &amp; Hours</a>
-                <a href="staff.html">Staff</a>
+                <button id="hamburger" onclick="toggleMobileMenu(this)">
+                    <div id="hamburger-bar-1"></div>
+                    <div id="hamburger-bar-2"></div>
+                    <div id="hamburger-bar-3"></div>
+                </button>
+                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="resources.html">Resources</a>
+                <a class="nav-link" href="lectures.html">Lectures</a>
+                <a class="nav-link" href="assignments.html">Assignments</a>
+                <a class="nav-link" href="labs.html">Labs</a>
+                <a class="nav-link" href="calendar.html">Calendar &amp; Hours</a>
+                <a class="nav-link" href="staff.html">Staff</a>
             </nav>
         </div>
     </header>
@@ -62,7 +66,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="margin-top:3%">
+            <table style="margin-top:3em">
                 <thead>
                     <tr>
                         <th>Working from Home</th>
@@ -79,68 +83,68 @@
                     </tr>
                 </tbody>
             </table>
-            <table style="margin-top:3%">
-                    <thead>
-                        <tr>
-                            <th>Department Resources</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><a target="_blank" href="https://cs.brown.edu/courses/cs015/docs/LinuxCommandsGuide.pdf">Linux Cheat Sheet</a></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td><a target="_blank" href="http://cs.brown.edu/about/system/accounts/email/">Setting Up Email</a></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td><a target="_blank" href="https://ithelp.brown.edu/">IT Services</a></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td><a target="_blank" href="https://it.brown.edu/services/type/loaner-laptops-cameras-and-projectors">IT Loaner Laptops</a></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table style="margin-top:3%">
-                    <thead>
-                        <tr>
-                            <th>Organizations</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><a target="_blank" href="https://www.brown.edu/campus-life/support/counseling-and-psychological-services/">CAPS</a></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td><a target="_blank" href="https://cs.brown.edu/people/orgs/wics/">Women in Computer Science</a></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td><a target="_blank" href="https://mosaic-plus.tumblr.com/">Mosaic+</a></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td><a target="_blank" href="https://www.brown.edu/about/administration/title-ix/">Title X</a></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td><a target="_blank" href="https://cs.brown.edu/about/diversity/health-wellness-student-advocates/">Health and Wellness Advocates</a></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td><a target="_blank" href="https://cs.brown.edu/about/diversity/student-advocates-diversity-and-inclusion/">Diversity and Inclusion</a></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td><a target="_blank" href="http://cs.brown.edu/people/orgs/dug/">CS Dug</a></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <table style="margin-top:3em">
+                <thead>
+                    <tr>
+                        <th>Department Resources</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a target="_blank" href="https://cs.brown.edu/courses/cs015/docs/LinuxCommandsGuide.pdf">Linux Cheat Sheet</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><a target="_blank" href="http://cs.brown.edu/about/system/accounts/email/">Setting Up Email</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><a target="_blank" href="https://ithelp.brown.edu/">IT Services</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><a target="_blank" href="https://it.brown.edu/services/type/loaner-laptops-cameras-and-projectors">IT Loaner Laptops</a></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table style="margin-top:3em">
+                <thead>
+                    <tr>
+                        <th>Organizations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a target="_blank" href="https://www.brown.edu/campus-life/support/counseling-and-psychological-services/">CAPS</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><a target="_blank" href="https://cs.brown.edu/people/orgs/wics/">Women in Computer Science</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><a target="_blank" href="https://mosaic-plus.tumblr.com/">Mosaic+</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><a target="_blank" href="https://www.brown.edu/about/administration/title-ix/">Title X</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><a target="_blank" href="https://cs.brown.edu/about/diversity/health-wellness-student-advocates/">Health and Wellness Advocates</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><a target="_blank" href="https://cs.brown.edu/about/diversity/student-advocates-diversity-and-inclusion/">Diversity and Inclusion</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><a target="_blank" href="http://cs.brown.edu/people/orgs/dug/">CS Dug</a></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
     </main>
     <footer class="dark-footer">

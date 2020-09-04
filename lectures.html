@@ -7,12 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="normalize.css">
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="random-bowties.js">
-    </script>
-    <script type="text/javascript" src="common.js">
-    </script>
+    <script type="text/javascript" src="random-bowties.js"></script>
+    <script type="text/javascript" src="common.js"></script>
 </head>
 
 <body>
@@ -26,13 +25,18 @@
                 "To go where no untitled lamp/bear has gone before, Deep (Learning) Space!"
             </div>
             <nav id="navbar">
-                <a href="index.html">Home</a>
-                <a href="resources.html">Resources</a>
-                <a href="lectures.html">Lectures</a>
-                <a href="assignments.html">Assignments</a>
-                <a href="labs.html">Labs</a>
-                <a href="calendar.html">Calendar &amp; Hours</a>
-                <a href="staff.html">Staff</a>
+                <button id="hamburger" onclick="toggleMobileMenu(this)">
+                    <div id="hamburger-bar-1"></div>
+                    <div id="hamburger-bar-2"></div>
+                    <div id="hamburger-bar-3"></div>
+                </button>
+                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="resources.html">Resources</a>
+                <a class="nav-link" href="lectures.html">Lectures</a>
+                <a class="nav-link" href="assignments.html">Assignments</a>
+                <a class="nav-link" href="labs.html">Labs</a>
+                <a class="nav-link" href="calendar.html">Calendar &amp; Hours</a>
+                <a class="nav-link" href="staff.html">Staff</a>
             </nav>
         </div>
     </header>
