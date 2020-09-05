@@ -10,14 +10,6 @@ window.onscroll = function() {
     }
 };
 
-function changeImage(login) {
-    login.src='img/hover/' + login.id + '.jpg';
-}
-
-function restoreImage(login) {
-    login.src='img/portrait/' + login.id + '.jpg'
-}
-
 function toggleMobileMenu(element) {
     element.classList.toggle('menu-open');
     document.querySelectorAll('.nav-link').forEach(link => {

@@ -473,36 +473,28 @@ ul.menu {
     padding: 0;
 }
 
+#instructors, #htas, #tas {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 div.staff {
-    display: inline-block;
-    width: 100%;
-    min-width: 320px;
-    margin: 20px;
+    border-radius: 5px;
+    width: 260px;
+    margin: 10px;
+    padding: 20px;
+    padding-bottom: 0;
     overflow: hidden;
-    text-align: left;
+    color: var(--dark-blue);
+    background-color: var(--accent-yellow);
 }
 
-div.uta,
-div.staff_uta {
-    width: 25%;
-    margin: 20px;
-}
-
-div#hta-div {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-div#uta-div {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-div.staff img.staff-pic {
-    border: 2px solid #2D2B38;
-    /*object-fit: cover;*/
-    max-height: 350px;
-    /* object-position: left; */
+div.staff .staff-pic {
+    width: 100%;
+    padding-bottom: 100%;
+    background-position: center;
+    background-size: cover;
 }
 
 .dark code {
