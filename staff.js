@@ -1,34 +1,52 @@
 
 function changeImage(login) {
-  // login.src='img/hover/' + login.id + '.jpg';
+  const imagePath = `img/hover/${login.id}.jpg`;
+  $(login).css(
+    'background-image',
+    `url(${imagePath}), url(assets/blueno_staff.png)`
+  );
 }
 
 function restoreImage(login) {
-  // login.src='img/portrait/' + login.id + '.jpg'
+  const imagePath = `img/portrait/${login.id}.jpg`;
+  $(login).css(
+    'background-image',
+    `url(${imagePath}), url(assets/blueno_staff.png)`
+  );
 }
 
 function createStaffCard(staffObject) {
-  const {
-    name, login, pronouns, homeTown, year, blurb, quote
+  let {
+    name, login, pronouns, hometown, year, blurb, quote
   } = staffObject;
-  // const imagePath = `img/portrait/${login}.jpg`;
-  const imagePath = `assets/blueno_staff.png`;
 
-  //<img id=${login} class='staff-pic' src='${imagePath}' alt="${name} is doing something fun!" onmouseover='changeImage(this)' onmouseout='restoreImage(this)'/>
+  // Formatting and seeting defaults
+  pronouns = pronouns.toLowerCase();
+  if (hometown === '') { hometown = 'Earth'; }
+  if (year === '') { year = 'The future'; }
+  if (blurb === '') { blurb = `I'm a human on planet Earth!`; }
+  if (quote === '') { quote = 'The world may never know!'; }
+
+  const imagePath = `img/portrait/${login}.jpg`;
   return (`
     <div class="staff">
       <div class="staff-img-container">
-        <div id=${login} class='staff-pic' style='background-image:url(${imagePath})' alt="${name} is doing something fun!" onmouseover='changeImage(this)' onmouseout='restoreImage(this)'/>
+        <div
+          id=${login}
+          class="staff-pic"
+          style="background-image:url(${imagePath}), url(assets/blueno_staff.png)"
+          alt="${name} is doing something fun!"
+          onmouseover="changeImage(this)"
+          onmouseout="restoreImage(this)"
+        />
       </div>
-      <div class="staff-text-container">
-        <p>
-          <strong>${name}</strong> (${login})<br/>
-          <strong>Pronouns:</strong> ${pronouns} <br/>
-          <strong>Year:</strong> ${year} <br/>
-          <strong>Hometown:</strong> ${homeTown} <br/>
-          <strong>About:</strong>${blurb} <br/>
-          <strong>What will Blueno do in space?</strong> ${quote}
-        </p>
+      <div class="staff-text">
+        <p><strong>${name}</strong> (${login}) </p>
+        <p><strong>Pronouns:</strong> ${pronouns} </p>
+        <p><strong>Year:</strong> ${year} </p>
+        <p><strong>Hometown:</strong> ${hometown} </p>
+        <p><strong>About:</strong> ${blurb} </p>
+        <p><strong>What will Blueno do in space?</strong> ${quote} </p>
       </div>
     </div>
   `);
@@ -44,8 +62,8 @@ $(document).ready(function () {
     success: function (response) {
       const table = $.csv.toArrays(response).splice(1);
       table.forEach(row => {
-        const [name, login, email, number, pronouns, homeTown, year, blurb, quote] = row;
-        const staffObject = { name, login, email, number, pronouns, homeTown, year, blurb, quote };
+        const [name, login, email, number, pronouns, hometown, year, blurb, quote] = row;
+        const staffObject = { name, login, email, number, pronouns, hometown, year, blurb, quote };
         if (instructors.includes(login)) {
           $('#instructors').append(createStaffCard(staffObject));
         } else if (htas.includes(login)) {
