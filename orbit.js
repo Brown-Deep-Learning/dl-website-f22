@@ -32,6 +32,7 @@ window.onload = () => {
         planet.height = bodyLength;
         planet.width = i === 5 ? bodyLength * 1.5 : bodyLength; // account for saturn lol
         planet.style = `position: absolute; top: ${container_dims.height / 2}px; left: 0; right: 0; margin: auto; opacity: 0.8;`;
+        planet.draggable = false;
         document.getElementById('orbit-container').appendChild(planet);
         orbitBody(
             `orbit${i + 1}`,
