@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<meta charset="utf-8"/>
+<meta charset="utf-8" />
 <html>
 
 <head>
@@ -12,7 +12,8 @@
     <!-- for syntax highlighting of code blocks -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/languages/go.min.js"></script>
+    <script charset="UTF-8"
+        src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/languages/go.min.js"></script>
     <script>
         hljs.initHighlightingOnLoad();
     </script>
@@ -31,8 +32,8 @@
     </script>
     <script type="text/javascript" src="http://cs.brown.edu/courses/cs1470/create-sidebar.js">
     </script>
-     <script type="text/javascript" src="http://cs.brown.edu/courses/cs1470/common.js">
-     </script>
+    <script type="text/javascript" src="http://cs.brown.edu/courses/cs1470/common.js">
+    </script>
 
 </head>
 
@@ -52,37 +53,54 @@
     </header>
     <main>
         <section class="has-sidebar">
-          <h1 id="hw7dcgan">HW7: DCGAN</h1>
+            <h1 id="hw7dcgan">HW7: DCGAN</h1>
 
-          <p>Due <strong>Friday, 12/06/19 at 11:59pm</strong></p>
+            <p>Due <strong>Friday, 12/06/19 at 11:59pm</strong></p>
 
-          <p><img src="http://cs.brown.edu/courses/cs1470/img/hw7/deep_convolutional_generative_adversarial_network.png" alt="Deep Convolutional Generative Adversarial Network" /></p>
+            <p><img src="http://cs.brown.edu/courses/cs1470/img/hw7/deep_convolutional_generative_adversarial_network.png"
+                    alt="Deep Convolutional Generative Adversarial Network" /></p>
 
-          <p><strong>IMPORTANT: Note that, as we reach the end of the semester, we are giving you less information about the model architecture than we have in previous assignments. This information is contained within the paper, which we ask that you read in its entirety. As you may be experiencing in your final projects, the ability to read academic papers and reproduce their results is an essential skill for those working in this field.</strong></p>
+            <p><strong>IMPORTANT: Note that, as we reach the end of the semester, we are giving you less information
+                    about the model architecture than we have in previous assignments. This information is contained
+                    within the paper, which we ask that you read in its entirety. As you may be experiencing in your
+                    final projects, the ability to read academic papers and reproduce their results is an essential
+                    skill for those working in this field.</strong></p>
 
-          <p>In this assignment, you will implement a Generative Adversarial Network which generates images of human faces.
-          This assignment builds upon skills and knowledge you’ve acquired by doing both the GAN lab and the convolutional autoencoder lab.
-          As in the GAN lab, your model will use a basic generator + discriminator setup, where training alternates between updating the generator and the discriminator.
-          Like the convolutional autoencoder lab, your networks will be convolutional: the generator will be an up-convolutional network which maps a random latent code to an image, and the discriminator will be a down-convolutional network which maps an image to a real/fake probability.
-          The model you will implement will be based on the ‘DCGAN’ architecture described in <a href="https://arxiv.org/abs/1511.06434">this paper</a>.
-          DCGANs are a standard baseline for generative image-based modeling. They replace max pooling with convolutional stride, eliminate fully connected layers, and use transposed convolution for upsampling.</p>
+            <p>In this assignment, you will implement a Generative Adversarial Network which generates images of human
+                faces.
+                This assignment builds upon skills and knowledge you’ve acquired by doing both the GAN lab and the
+                convolutional autoencoder lab.
+                As in the GAN lab, your model will use a basic generator + discriminator setup, where training
+                alternates between updating the generator and the discriminator.
+                Like the convolutional autoencoder lab, your networks will be convolutional: the generator will be an
+                up-convolutional network which maps a random latent code to an image, and the discriminator will be a
+                down-convolutional network which maps an image to a real/fake probability.
+                The model you will implement will be based on the ‘DCGAN’ architecture described in <a
+                    href="https://arxiv.org/abs/1511.06434">this paper</a>.
+                DCGANs are a standard baseline for generative image-based modeling. They replace max pooling with
+                convolutional stride, eliminate fully connected layers, and use transposed convolution for upsampling.
+            </p>
 
-          <h2 id="data">Data</h2>
+            <h2 id="data">Data</h2>
 
-          <p>We'll be using images from the CelebA dataset (short for “Celebrity Faces with Attributes”) for this assignment.
-          We’re not using the attributes for this project, so the data just includes images of faces.
-          You can find the data in the following location:</p>
+            <p>We'll be using images from the CelebA dataset (short for “Celebrity Faces with Attributes”) for this
+                assignment.
+                We’re not using the attributes for this project, so the data just includes images of faces.
+                You can find the data in the following location:</p>
 
-          <ul>
-          <li>64*64 pixels - Real Image Data: <code>/course/cs1470/asgn/dcgan/celebA.tar.gz</code></li>
-          </ul>
+            <ul>
+                <li>64*64 pixels - Real Image Data: <code>/course/cs1470/asgn/dcgan/celebA.tar.gz</code></li>
+            </ul>
 
-          <p>You'll need to extract this archive.
-          You can use the <code>--img-dir</code> command-line argument in the stencil to specify the location of the extracted image data (see the argparse section below for more information).</p>
+            <p>You'll need to extract this archive.
+                You can use the <code>--img-dir</code> command-line argument in the stencil to specify the location of
+                the extracted image data (see the argparse section below for more information).</p>
 
-          <p>There are some new packages that you will need to run this assignment. Make sure to install them with pip before moving on. You will also need to do this in the virtual environment over GCP, but our course directory virtual environment already has these built in:</p>
+            <p>There are some new packages that you will need to run this assignment. Make sure to install them with pip
+                before moving on. You will also need to do this in the virtual environment over GCP, but our course
+                directory virtual environment already has these built in:</p>
 
-          <code>
+            <code>
           tqdm <br>
           requests <br>
           tensorflow_gan <br>
@@ -90,133 +108,195 @@
           tensorflow_hub <br>
           </code>
 
-          <p><strong>If running on your own Linux machine / a Google Cloud machine:</strong> We have a copy of the data stored on Google Drive, which you can download with the following one-line command:</p>
+            <p><strong>If running on your own Linux machine / a Google Cloud machine:</strong> We have a copy of the
+                data stored on Google Drive, which you can download with the following one-line command:</p>
 
-          <code>
+            <code>
             python3 download.py
           </code>
 
-          <p>After this, cd into the newly created data folder, which should contain the celebA.tar.gz, and run the following command:</p>
+            <p>After this, cd into the newly created data folder, which should contain the celebA.tar.gz, and run the
+                following command:</p>
 
-          <code>tar -xvzf celebA.tar.gz
+            <code>tar -xvzf celebA.tar.gz
           </code>
 
-          <p>This should create a data/celebA folder.</p>
+            <p>This should create a data/celebA folder.</p>
 
-          <p>Here are some examples of the faces that are in the CelebA dataset:</p>
+            <p>Here are some examples of the faces that are in the CelebA dataset:</p>
 
-          <p><img src="http://cs.brown.edu/courses/cs1470/img/hw7/000001.jpg" alt="CelebA_1" />
-          <img src="http://cs.brown.edu/courses/cs1470/img/hw7/000002.jpg" alt="CelebA_2" />
-          <img src="http://cs.brown.edu/courses/cs1470/img/hw7/000003.jpg" alt="CelebA_3" />
-          <img src="http://cs.brown.edu/courses/cs1470/img/hw7/000004.jpg" alt="CelebA_4" />
-          <img src="http://cs.brown.edu/courses/cs1470/img/hw7/000005.jpg" alt="CelebA_5" />
-          <img src="http://cs.brown.edu/courses/cs1470/img/hw7/000006.jpg" alt="CelebA_6" />
-          <img src="http://cs.brown.edu/courses/cs1470/img/hw7/000007.jpg" alt="CelebA_7" />
-          <img src="http://cs.brown.edu/courses/cs1470/img/hw7/000008.jpg" alt="CelebA_8" /></p>
+            <p><img src="http://cs.brown.edu/courses/cs1470/img/hw7/000001.jpg" alt="CelebA_1" />
+                <img src="http://cs.brown.edu/courses/cs1470/img/hw7/000002.jpg" alt="CelebA_2" />
+                <img src="http://cs.brown.edu/courses/cs1470/img/hw7/000003.jpg" alt="CelebA_3" />
+                <img src="http://cs.brown.edu/courses/cs1470/img/hw7/000004.jpg" alt="CelebA_4" />
+                <img src="http://cs.brown.edu/courses/cs1470/img/hw7/000005.jpg" alt="CelebA_5" />
+                <img src="http://cs.brown.edu/courses/cs1470/img/hw7/000006.jpg" alt="CelebA_6" />
+                <img src="http://cs.brown.edu/courses/cs1470/img/hw7/000007.jpg" alt="CelebA_7" />
+                <img src="http://cs.brown.edu/courses/cs1470/img/hw7/000008.jpg" alt="CelebA_8" /></p>
 
-          <p>And here are some examples of what the outputs of your model might look like:</p>
+            <p>And here are some examples of what the outputs of your model might look like:</p>
 
-          <p><img src="http://cs.brown.edu/courses/cs1470/img/hw7/1.png" alt="dcgan_1" />
-          <img src="http://cs.brown.edu/courses/cs1470/img/hw7/2.png" alt="dcgan_2" />
-          <img src="http://cs.brown.edu/courses/cs1470/img/hw7/3.png" alt="dcgan_3" />
-          <img src="http://cs.brown.edu/courses/cs1470/img/hw7/4.png" alt="dcgan_4" />
-          <img src="http://cs.brown.edu/courses/cs1470/img/hw7/5.png" alt="dcgan_5" />
-          <img src="http://cs.brown.edu/courses/cs1470/img/hw7/6.png" alt="dcgan_6" />
-          <img src="http://cs.brown.edu/courses/cs1470/img/hw7/7.png" alt="dcgan_7" />
-          <img src="http://cs.brown.edu/courses/cs1470/img/hw7/8.png" alt="dcgan_8" /> </p>
+            <p><img src="http://cs.brown.edu/courses/cs1470/img/hw7/1.png" alt="dcgan_1" />
+                <img src="http://cs.brown.edu/courses/cs1470/img/hw7/2.png" alt="dcgan_2" />
+                <img src="http://cs.brown.edu/courses/cs1470/img/hw7/3.png" alt="dcgan_3" />
+                <img src="http://cs.brown.edu/courses/cs1470/img/hw7/4.png" alt="dcgan_4" />
+                <img src="http://cs.brown.edu/courses/cs1470/img/hw7/5.png" alt="dcgan_5" />
+                <img src="http://cs.brown.edu/courses/cs1470/img/hw7/6.png" alt="dcgan_6" />
+                <img src="http://cs.brown.edu/courses/cs1470/img/hw7/7.png" alt="dcgan_7" />
+                <img src="http://cs.brown.edu/courses/cs1470/img/hw7/8.png" alt="dcgan_8" /> </p>
 
-          <h2 id="evaluation">Evaluation</h2>
+            <h2 id="evaluation">Evaluation</h2>
 
-          <p>Evaluating generative models such as GANs is much more difficult than classifiers--there's no obvious 'accuracy compared to ground truth' measure that we can use.
-          One method that has emerged is the <a href="https://nealjean.com/ml/frechet-inception-distance/">Frechet Inception Distance</a> (FID), which runs real and  generated images through an image classification network (specifically, an Inception network) and compares the activations produced by both.
-          Ideally, the generated images should produce similar activations as the real ones.
-          The stencil code for this assignment includes code to compute the FID after each epoch of training.</p>
+            <p>Evaluating generative models such as GANs is much more difficult than classifiers--there's no obvious
+                'accuracy compared to ground truth' measure that we can use.
+                One method that has emerged is the <a href="https://nealjean.com/ml/frechet-inception-distance/">Frechet
+                    Inception Distance</a> (FID), which runs real and generated images through an image classification
+                network (specifically, an Inception network) and compares the activations produced by both.
+                Ideally, the generated images should produce similar activations as the real ones.
+                The stencil code for this assignment includes code to compute the FID after each epoch of training.</p>
 
-          <h2 id="dcganassignmentdetails">DCGAN Assignment Details</h2>
+            <h2 id="dcganassignmentdetails">DCGAN Assignment Details</h2>
 
-          <ol>
-          <li>Load and preproccess the image data (The stencil code already does this for you).</li>
+            <ol>
+                <li>Load and preproccess the image data (The stencil code already does this for you).</li>
 
-          <li>Build the DCGAN generator network. Refer to the DCGAN paper for details. If need be, you can reduce the size of your output channels by half in order to train in the appropriate time (see the tips section for more details)</li>
+                <li>Build the DCGAN generator network. Refer to the DCGAN paper for details. If need be, you can reduce
+                    the size of your output channels by half in order to train in the appropriate time (see the tips
+                    section for more details)</li>
 
-          <li>Build the DCGAN discriminator network. Refer to the DCGAN paper for details. Remember that your discriminator loss will be the sum of two different losses: one for the real images and one for the fake images. Like the generator, you can reduce the number of output channels by half in order to meet the time requirements.</li>
+                <li>Build the DCGAN discriminator network. Refer to the DCGAN paper for details. Remember that your
+                    discriminator loss will be the sum of two different losses: one for the real images and one for the
+                    fake images. Like the generator, you can reduce the number of output channels by half in order to
+                    meet the time requirements.</li>
 
-          <li>Set up training losses (remember that you should be using binary cross entropy, which is its own unique loss function).</li>
+                <li>Set up training losses (remember that you should be using binary cross entropy, which is its own
+                    unique loss function).</li>
 
-          <li>Train and save the model. Remember that you will need to use two gradient tapes in order to track only the necessary operations for your discriminator and generator. Also, we recommend using the same batch size and optimization settings as in the DCGAN paper, since it can be difficult to get GANs to train stably. Finally, you should average the FID scores across an entire epoch and return it from your train method.</li>
+                <li>Train and save the model. Remember that you will need to use two gradient tapes in order to track
+                    only the necessary operations for your discriminator and generator. Also, we recommend using the
+                    same batch size and optimization settings as in the DCGAN paper, since it can be difficult to get
+                    GANs to train stably. Finally, you should average the FID scores across an entire epoch and return
+                    it from your train method.</li>
 
-          <li>Test the model by generating some image samples from random vectors.</li>
-          </ol>
+                <li>Test the model by generating some image samples from random vectors.</li>
+            </ol>
 
-          <h2 id="runningyourcode">Running Your Code</h2>
+            <h2 id="runningyourcode">Running Your Code</h2>
 
-          <p>The model you’ll implement for this assignment is much more computationally intensive than models in previous assignments, so you'll need to run the code on a GPU-equipped machine. We recommend using a Google Compute Engine instance for this, though you're more than welcome to use another GPU-capable machine if you have access to one, but make sure that your program runs on the course's GCP environment before handing in. Not doing so may cause you to fail the autograder unnecessarily. Google Colab is another option, though you may need to make alterations to your file such that it will run in </p>
+            <p>The model you’ll implement for this assignment is much more computationally intensive than models in
+                previous assignments, so you'll need to run the code on a GPU-equipped machine. We recommend using a
+                Google Compute Engine instance for this, though you're more than welcome to use another GPU-capable
+                machine if you have access to one, but make sure that your program runs on the course's GCP environment
+                before handing in. Not doing so may cause you to fail the autograder unnecessarily. Google Colab is
+                another option, though you may need to make alterations to your file such that it will run in </p>
 
-          <p>Refer to the lab on GCP if you've forgotten how to run or generate an instance. You will need to use the virtual environment as specified in that lab, and pip3 install the requirements listed above.</p>
+            <p>Refer to the lab on GCP if you've forgotten how to run or generate an instance. You will need to use the
+                virtual environment as specified in that lab, and pip3 install the requirements listed above.</p>
 
-          <p>In our experiments, this model needs to train for ~5-6 epochs before it starts producing nice-looking images. This takes roughly 2 hours on a GCP machine with a Tesla K80 GPU.</p>
+            <p>In our experiments, this model needs to train for ~5-6 epochs before it starts producing nice-looking
+                images. This takes roughly 2 hours on a GCP machine with a Tesla K80 GPU.</p>
 
-          <p>However, you should start to see some vaguely face-like structures emerging after only a couple of epochs. Furthermore, if your model is not going to train stably, this will become evident very early on (after just a couple dozen iterations, usually). Training instability looks like one of the generator or discriminator losses (usually the discriminator) going to zero. Once one network’s loss goes to zero, the other one no longer receives any training signal and can’t make training progress.</p>
+            <p>However, you should start to see some vaguely face-like structures emerging after only a couple of
+                epochs. Furthermore, if your model is not going to train stably, this will become evident very early on
+                (after just a couple dozen iterations, usually). Training instability looks like one of the generator or
+                discriminator losses (usually the discriminator) going to zero. Once one network’s loss goes to zero,
+                the other one no longer receives any training signal and can’t make training progress.</p>
 
-          <h2 id="layers">Layers</h2>
+            <h2 id="layers">Layers</h2>
 
-          <p>Once again, you can use keras layers to construct your model. If you wish, you may use the <a href="https://www.tensorflow.org/versions/r2.0/api_docs/python/tf/keras/Sequential">keras sequential API</a> as an easier and quicker way to create your model.</p>
+            <p>Once again, you can use keras layers to construct your model. If you wish, you may use the <a
+                    href="https://www.tensorflow.org/versions/r2.0/api_docs/python/tf/keras/Sequential">keras sequential
+                    API</a> as an easier and quicker way to create your model.</p>
 
-          <h2 id="argparse">Argparse</h2>
+            <h2 id="argparse">Argparse</h2>
 
-          <p>For this assignment, we've written the stencil with the <a href="https://docs.python.org/3/library/argparse.html">argparse</a> library. argparse allows us to adjust hyperparameters using the command line so that you can tune hyperparmeters without having to keep modifying your file once you've transferred it to GCP.</p>
+            <p>For this assignment, we've written the stencil with the <a
+                    href="https://docs.python.org/3/library/argparse.html">argparse</a> library. argparse allows us to
+                adjust hyperparameters using the command line so that you can tune hyperparmeters without having to keep
+                modifying your file once you've transferred it to GCP.</p>
 
-          <p>We've defined several hyperparameters for you, which you can access using <code>args.VARIABLE_NAME</code>. For instance, if you wanted to access the batch size variable, you would use <code>args.batch_size</code>.</p>
+            <p>We've defined several hyperparameters for you, which you can access using
+                <code>args.VARIABLE_NAME</code>. For instance, if you wanted to access the batch size variable, you
+                would use <code>args.batch_size</code>.</p>
 
-          <p>These parameters have default values, and you can adjust the values of these parameters via the command line. In order to test your model after training, for example, run <code>python assignment.py --mode test</code>.</p>
+            <p>These parameters have default values, and you can adjust the values of these parameters via the command
+                line. In order to test your model after training, for example, run
+                <code>python assignment.py --mode test</code>.</p>
 
-          <h2 id="savingyourtrainedmodel">Saving Your Trained Model</h2>
+            <h2 id="savingyourtrainedmodel">Saving Your Trained Model</h2>
 
-          <p>Because your model can take a long time to train, we've provided you with code that automatically saves your code after every 500 batches (see <code>save-every</code> the argument parser). When you test your code, you don't need to retrain your model. See the Argparse section of the handout for more information on how to test.</p>
+            <p>Because your model can take a long time to train, we've provided you with code that automatically saves
+                your code after every 500 batches (see <code>save-every</code> the argument parser). When you test your
+                code, you don't need to retrain your model. See the Argparse section of the handout for more information
+                on how to test.</p>
 
-          <p>If you're working on a department machine or personal computer, keep in mind that your saved models can be extremely large, on the order of hundreds of megabytes--even gigabytes--large.</p>
+            <p>If you're working on a department machine or personal computer, keep in mind that your saved models can
+                be extremely large, on the order of hundreds of megabytes--even gigabytes--large.</p>
 
-          <h2 id="tipsothernotes">Tips &amp; Other Notes</h2>
+            <h2 id="tipsothernotes">Tips &amp; Other Notes</h2>
 
-          <ul>
-          <li>It's possible that you may find it difficult to meet the time requirements with the architecture in the paper. In this case, you can reduce the number of your output channels by half at each stage of the generator/discriminator. For example, the output channels of the generator can be [512, 256, 128, 64, 3] instead of [1024, 512, 256, 128 3]. </li>
-          <li>You will find default arguments (such as the number of epochs) in the stencil python script. Spend some time reading them to familiarize yourself with them.</li>
+            <ul>
+                <li>It's possible that you may find it difficult to meet the time requirements with the architecture in
+                    the paper. In this case, you can reduce the number of your output channels by half at each stage of
+                    the generator/discriminator. For example, the output channels of the generator can be [512, 256,
+                    128, 64, 3] instead of [1024, 512, 256, 128 3]. </li>
+                <li>You will find default arguments (such as the number of epochs) in the stencil python script. Spend
+                    some time reading them to familiarize yourself with them.</li>
 
-          <li>Use keras's conv2d and conv2d_transpose for convolution and transposed convolution.</li>
+                <li>Use keras's conv2d and conv2d_transpose for convolution and transposed convolution.</li>
 
-          <li>Use batch normalization after every layer of the generator except for the output layer. For the discriminator, use batch normalization after every layer except for the input (first) layer. This improves training convergence. The DCGAN paper describes this, but it's worth mentioning again here.</li>
+                <li>Use batch normalization after every layer of the generator except for the output layer. For the
+                    discriminator, use batch normalization after every layer except for the input (first) layer. This
+                    improves training convergence. The DCGAN paper describes this, but it's worth mentioning again here.
+                </li>
 
-          <li>Use ReLU in between every layer of the generator and tanh on the output. Use LeakyReLU with a slope (alpha) of 0.2 between every layer of the discriminator. Like above, the DCGAN paper describes this, but it's worth still mentioning.</li>
+                <li>Use ReLU in between every layer of the generator and tanh on the output. Use LeakyReLU with a slope
+                    (alpha) of 0.2 between every layer of the discriminator. Like above, the DCGAN paper describes this,
+                    but it's worth still mentioning.</li>
 
-          <li>We’ve found that training is more stable if you update the generator parameters twice for every update to the discriminator parameters. If you’d like to play around with the number of updates to the generator, the stencil code script accepts a command line argument <code>--num-gen-updates</code> that you can use for this purpose.</li>
-          </ul>
+                <li>We’ve found that training is more stable if you update the generator parameters twice for every
+                    update to the discriminator parameters. If you’d like to play around with the number of updates to
+                    the generator, the stencil code script accepts a command line argument
+                    <code>--num-gen-updates</code> that you can use for this purpose.</li>
+            </ul>
 
-          <h2 id="conceptualquestions">Conceptual Questions</h2>
+            <h2 id="conceptualquestions">Conceptual Questions</h2>
 
-          <p>Answer either the 147 or both the 147/247 questions according to your enrollment. <strong>We will not accept any other file than a PDF.</strong></p>
+            <p>Answer either the 147 or both the 147/247 questions according to your enrollment. <strong>We will not
+                    accept any other file than a PDF.</strong></p>
 
-          <h2 id="grading">Grading</h2>
+            <h2 id="grading">Grading</h2>
 
-          <p>To receive full credit for this auto-graded portion of this assignment, your model must achieve an FID (mentioned in the Evaluation section) of less than 500 after no more than 7 epochs or 3.5 hours of training on a GCP environment with the setup specified in the GCP lab.</p>
+            <p>To receive full credit for this auto-graded portion of this assignment, your model must achieve an FID
+                (mentioned in the Evaluation section) of less than 500 after no more than 7 epochs or 3.5 hours of
+                training on a GCP environment with the setup specified in the GCP lab.</p>
 
-          <p>Per our course missive, you may not use late days on this assignment, and you'll receive a 10% penalty for every day that you hand in late.</p>
+            <p>Per our course missive, you may not use late days on this assignment, and you'll receive a 10% penalty
+                for every day that you hand in late.</p>
 
-          <p>Our autograder will instantiate your dataset iterator and call your train function up to 7 times or 3.5 hours, whichever comes first. After each epoch, we will test your fid to see if it matches our specification.</p>
+            <p>Our autograder will instantiate your dataset iterator and call your train function up to 7 times or 3.5
+                hours, whichever comes first. After each epoch, we will test your fid to see if it matches our
+                specification.</p>
 
-          <p><strong>IMPORTANT: We will NOT manually run your code if it fails the autograder, meaning that you will receive a 0/30 if your handin fails. Please run your model on GCP before handing in to make sure that you don't run into any errors. We will also release a check for the autograder some time during Thanksgiving break to help you in ensuring that it doesn't break the autograder.</strong></p>
+            <p><strong>IMPORTANT: We will NOT manually run your code if it fails the autograder, meaning that you will
+                    receive a 0/30 if your handin fails. Please run your model on GCP before handing in to make sure
+                    that you don't run into any errors. We will also release a check for the autograder some time during
+                    Thanksgiving break to help you in ensuring that it doesn't break the autograder.</strong></p>
 
-          <h2 id="handingin">Handing In</h2>
+            <h2 id="handingin">Handing In</h2>
 
-          <p>In your README, document any known bugs.
-          Download your assignment.py, your preprocess.py, and your README from your GCP instance. 
-          You can hand in these files <a href="https://docs.google.com/forms/d/e/1FAIpQLSe8oRO1a1g6iEW3ixpjmtzL9-da4No-ZrOmduZyv7P904LvUw/viewform">here.</a>.</p>
+            <p>In your README, document any known bugs.
+                Download your assignment.py, your preprocess.py, and your README from your GCP instance.
+                You can hand in these files <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSe8oRO1a1g6iEW3ixpjmtzL9-da4No-ZrOmduZyv7P904LvUw/viewform">here.</a>.
+            </p>
         </section>
         <aside style="top:50px">
         </aside>
     </main>
 
     <footer class="dark-footer">
-        <img id="footer-earmuffs" class="random-earmuffs" src="http://cs.brown.edu/courses/cs1470/img/earmuffs_1.png">
+        <img id="footer-earmuffs" class="random-earmuffs" src="http://cs.brown.edu/courses/cs1470/img/sparkle.png">
         <ul class="menu">
             <li>&copy; 2019 CS1470/2470 TA Staff | Computer Science Department | Brown University</li>
         </ul>

@@ -3,7 +3,7 @@
 
 <head>
     <title>CS147 - Deep Learning | Brown University</title>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" type="text/css" href="../../../style.css">
@@ -12,7 +12,8 @@
     <!-- for syntax highlighting of code blocks -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/languages/go.min.js"></script>
+    <script charset="UTF-8"
+        src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/languages/go.min.js"></script>
     <script>
         hljs.initHighlightingOnLoad();
     </script>
@@ -31,8 +32,8 @@
     </script>
     <script type="text/javascript" src="../../../create-sidebar.js">
     </script>
-     <script type="text/javascript" src="../../../common.js">
-     </script>
+    <script type="text/javascript" src="../../../common.js">
+    </script>
 
 </head>
 
@@ -44,7 +45,7 @@
                 Assignment 6
             </div>
 
-            
+
             <!-- kept for spacing-->
             <div class="page__header__quote">
             </div>
@@ -67,243 +68,368 @@
     </header>
     <main>
         <section class="has-sidebar">
-          <h1 id="hw6reinforceandreinforcewithbaseline">HW6: REINFORCE and REINFORCE with Baseline</h1>
+            <h1 id="hw6reinforceandreinforcewithbaseline">HW6: REINFORCE and REINFORCE with Baseline</h1>
 
-          <p>Due <strong>Friday, 11/22/19 at 11:59pm</strong></p>
-          
-          <p>What is learning? According to the dictionary, it is "the modification of behavior through practice, training, or experience." </p>
-          
-          <p>But, how do we learn?</p>
-          
-          <p>In previous assignments, we have had labeled data. We could feed in an input, and tell our model to predict our labels.</p>
-          
-          <p>However, what if we do not know what those labels are? What if we do not know much about our task either? How do we learn if we only have something that tells us how good or bad we are doing?</p>
-          
-          <p>Introduce...reinforcement learning! Here in this assignment, we will be tackling this <i>deep question</i> by learning how to play <a href="https://gym.openai.com/envs/CartPole-v1/">Cartpole</a>, the world's most thrilling and entertaining game, using two RL algorithms: 1) REINFORCE and 2) REINFORCE with Baseline.</p>
-          
-          <h2 id="gettingthestencil">Getting the stencil</h2>
-          
-          <p>You can find the files located on the "Files" column under the Assignments page. The files are compressed into a ZIP file, and to unzip the ZIP file, you can just double click on the ZIP file. There should be the files: assignment.py, reinforce.py, reinforce_with_baseline.py, and README.
-          You can find the conceptual questions located on the "Conceptual Questions" column in the Assignments page.</p>
-          
-          <h2 id="data">Data</h2>
-          
-          <p>All data for this assignment will be collected interactively, via the CartPole-v1 environment of OpenAI Gym (woohoo!).</p>
-          
-          <p>OpenAI Gym provides an easy to use interface for AIs to play games. </p>
-          
-          <p>You can give the gym environment an action, and it will 1) update the state of the game, and 2) return you the next state, the reward of taking the action, and whether you arrived at a terminal state.</p>
-          
-          <p>In CartPole you are training a simple agent (a cart) to balance a pole. Hence, CartPole.</p>
-          
-          <h2 id="logistics">Logistics</h2>
-          
-          <p>Work on this assignment off of the stencil code provided, but <strong>do not change the stencil except where specified.</strong> Changing the stencil will result in incompatiblity with the autograder and result in a low grade. You shouldn't change any method signatures.</p>
-          
-          <p>For this assignment, you will need to install the OpenAI Gym library using <code>pip install gym</code> and matplotlib with <code>pip install matplotlib</code> (only if you're working locally---it's already installed in the course virtual environment).</p>
-          
-          <p>To run the virtual environment on a department machine, you can run:</p>
-          
-          <code class="bash language-bash">source /course/cs1470/tf-2.0/bin/activate
+            <p>Due <strong>Friday, 11/22/19 at 11:59pm</strong></p>
+
+            <p>What is learning? According to the dictionary, it is "the modification of behavior through practice,
+                training, or experience." </p>
+
+            <p>But, how do we learn?</p>
+
+            <p>In previous assignments, we have had labeled data. We could feed in an input, and tell our model to
+                predict our labels.</p>
+
+            <p>However, what if we do not know what those labels are? What if we do not know much about our task either?
+                How do we learn if we only have something that tells us how good or bad we are doing?</p>
+
+            <p>Introduce...reinforcement learning! Here in this assignment, we will be tackling this <i>deep
+                    question</i> by learning how to play <a
+                    href="https://gym.openai.com/envs/CartPole-v1/">Cartpole</a>, the world's most thrilling and
+                entertaining game, using two RL algorithms: 1) REINFORCE and 2) REINFORCE with Baseline.</p>
+
+            <h2 id="gettingthestencil">Getting the stencil</h2>
+
+            <p>You can find the files located on the "Files" column under the Assignments page. The files are compressed
+                into a ZIP file, and to unzip the ZIP file, you can just double click on the ZIP file. There should be
+                the files: assignment.py, reinforce.py, reinforce_with_baseline.py, and README.
+                You can find the conceptual questions located on the "Conceptual Questions" column in the Assignments
+                page.</p>
+
+            <h2 id="data">Data</h2>
+
+            <p>All data for this assignment will be collected interactively, via the CartPole-v1 environment of OpenAI
+                Gym (woohoo!).</p>
+
+            <p>OpenAI Gym provides an easy to use interface for AIs to play games. </p>
+
+            <p>You can give the gym environment an action, and it will 1) update the state of the game, and 2) return
+                you the next state, the reward of taking the action, and whether you arrived at a terminal state.</p>
+
+            <p>In CartPole you are training a simple agent (a cart) to balance a pole. Hence, CartPole.</p>
+
+            <h2 id="logistics">Logistics</h2>
+
+            <p>Work on this assignment off of the stencil code provided, but <strong>do not change the stencil except
+                    where specified.</strong> Changing the stencil will result in incompatiblity with the autograder and
+                result in a low grade. You shouldn't change any method signatures.</p>
+
+            <p>For this assignment, you will need to install the OpenAI Gym library using <code>pip install gym</code>
+                and matplotlib with <code>pip install matplotlib</code> (only if you're working locally---it's already
+                installed in the course virtual environment).</p>
+
+            <p>To run the virtual environment on a department machine, you can run:</p>
+
+            <code class="bash language-bash">source /course/cs1470/tf-2.0/bin/activate
           </code>
-          
-          <p>You can also check out the Python virtual environment guide to set up TensorFlow 2.0 on your local machine.</p>
-          
-          <h2 id="part1reinforce">Part 1: REINFORCE</h2>
-          
-          <p>This is the first RL algorithm you will implement for this assignment. This part of the assignment will be done in <code>reinforce.py</code>.</p>
-          
-          <p>The REINFORCE algorithm is a Policy Gradient method. In other words, it directly learns a function for mapping states to probability distributions over possible actions. It then samples from this distribution to pick its next move.</p>
-          
-          <p>Going forward, "model" refers to the neural net that generates a policy and trains the policy for the agent, and the "agent" uses the policy and gathers data. </p>
-          
-          <h3 id="init">init</h3>
-          
-          <p>In the <code>__init__</code> function you will be taking in two parameters: <code>state_size</code> and <code>num_actions</code>. <code>state_size</code> represents the number of parameters that define the state and <code>num_actions</code> represents the number of actions in the environment. Here you will create a feed forward network that will take an input of size <code>[-1, state_size]</code> and produce a probability distribution of size <code>[-1, num_actions]</code> (note: the <code>[-1, num_states]</code> shape means any 2D array where the number of columns is <code>state_size</code>. The -1 says the number of rows can be anything!). </p>
-          
-          <p>Recommended Layout of the REINFORCE Feed Forward Network:
-          1) 1 Dense layer with outputs size <code>hidden_size</code> (where <code>hidden_size</code> is up to you)
-          2) 1 Dense layer with outputs size <code>num_actions</code> and with softmax activation</p>
-          
-          <p>Note: The last layer must be one with outputs size <code>num_actions</code> and with softmax.</p>
-          
-          <h3 id="call">call</h3>
-          
-          <p>In the call function your model will take your state(s) and return your "policy" for how it should behave in those state(s). The call method will take in a batch of states with shape <code>[episode_length, state_size]</code> and return a policy of shape <code>[episode_length, num_actions].</code> Notice here that <code>episode_length</code> represents the number of steps taken in the one whole episode of a game (and may vary across different episodes). The policy represents, at every time step, a probability distribution over the action space.</p>
-          
-          <h3 id="loss">loss</h3>
-          
-          <p>In the loss function you will take in <code>states</code>, <code>actions</code>, and <code>discounted_rewards</code>. 
-          <code>states</code> is the history of states encountered throughout the episode, and will be of shape <code>[episode_length, state_size]</code>.
-          <code>actions</code> is the history of actions taken in the episode, and is a list of integer indices of shape <code>[episode_length]</code>.
-          <code>discounted_rewards</code> represents the discounted sum of future rewards for each timestep in the episode, and has shape <code>[episode_length]</code>. </p>
-          
-          <p>To calculate the loss you want to look at the actions you took and weight the negative log probability that you took that action by its discounted reward. </p>
-          
-          <p>The formula for the loss our model minimizes is:</p>
-          
-          <p><img style="width:500px"src="http://cs.brown.edu/courses/cs1470/img/reinforce_loss.png" alt="reinforce loss"></p>
-          
-          <p>Here, $P_{a_i}$ is the probability that our agent gave the action it actually took at time $i$, which is $a_i$. $D_i$ is the discounted reward from time $i$.</p>
-          
-          <p><strong>To compute model.loss, we encourage you to follow these steps:</strong></p>
-          
-          <p>
-              <ol>
-                  <li>
-                        First, use the states in the trajectory and your model's forward pass to recompute the probability distribution over actions in the trajectory. This will be a matrix with shape <code>[episode_length, num_actions]</code>. You can recompute it by calling your model on the states again. This may be a bit unconventional compared with previous assignments where we passed our probabilites directly into our loss function, but this was a conscious design choice to ensure modularity. When implementing part 3, it'll become clear why we need our loss function to take in our states directly.
-                  </li>
-                  <li>
-                        Use the action indices to gather the probabilities for actions that were selected when acting in the environment. These are our $P_{a_i}$. This will be a <code>[episode_length]</code> array.
-                  </li>
-                  <li>
-                        Then take the negative log of these selected action probabilities to get an array of size <code>[episode_length]</code>.
-                  </li>
-                  <li>
-                        Then element-wise multiply this with <code>discounted_rewards</code>. If an action has a low probability and a high reward or it has a high probability and a low reward then its loss will be high.
-                  </li>
 
-                  <li>
-                        Lastly return the sum of these losses.
-                  </li>
-              </ol>
+            <p>You can also check out the Python virtual environment guide to set up TensorFlow 2.0 on your local
+                machine.</p>
+
+            <h2 id="part1reinforce">Part 1: REINFORCE</h2>
+
+            <p>This is the first RL algorithm you will implement for this assignment. This part of the assignment will
+                be done in <code>reinforce.py</code>.</p>
+
+            <p>The REINFORCE algorithm is a Policy Gradient method. In other words, it directly learns a function for
+                mapping states to probability distributions over possible actions. It then samples from this
+                distribution to pick its next move.</p>
+
+            <p>Going forward, "model" refers to the neural net that generates a policy and trains the policy for the
+                agent, and the "agent" uses the policy and gathers data. </p>
+
+            <h3 id="init">init</h3>
+
+            <p>In the <code>__init__</code> function you will be taking in two parameters: <code>state_size</code> and
+                <code>num_actions</code>. <code>state_size</code> represents the number of parameters that define the
+                state and <code>num_actions</code> represents the number of actions in the environment. Here you will
+                create a feed forward network that will take an input of size <code>[-1, state_size]</code> and produce
+                a probability distribution of size <code>[-1, num_actions]</code> (note: the
+                <code>[-1, num_states]</code> shape means any 2D array where the number of columns is
+                <code>state_size</code>. The -1 says the number of rows can be anything!). </p>
+
+            <p>Recommended Layout of the REINFORCE Feed Forward Network:
+                1) 1 Dense layer with outputs size <code>hidden_size</code> (where <code>hidden_size</code> is up to
+                you)
+                2) 1 Dense layer with outputs size <code>num_actions</code> and with softmax activation</p>
+
+            <p>Note: The last layer must be one with outputs size <code>num_actions</code> and with softmax.</p>
+
+            <h3 id="call">call</h3>
+
+            <p>In the call function your model will take your state(s) and return your "policy" for how it should behave
+                in those state(s). The call method will take in a batch of states with shape
+                <code>[episode_length, state_size]</code> and return a policy of shape
+                <code>[episode_length, num_actions].</code> Notice here that <code>episode_length</code> represents the
+                number of steps taken in the one whole episode of a game (and may vary across different episodes). The
+                policy represents, at every time step, a probability distribution over the action space.</p>
+
+            <h3 id="loss">loss</h3>
+
+            <p>In the loss function you will take in <code>states</code>, <code>actions</code>, and
+                <code>discounted_rewards</code>.
+                <code>states</code> is the history of states encountered throughout the episode, and will be of shape
+                <code>[episode_length, state_size]</code>.
+                <code>actions</code> is the history of actions taken in the episode, and is a list of integer indices of
+                shape <code>[episode_length]</code>.
+                <code>discounted_rewards</code> represents the discounted sum of future rewards for each timestep in the
+                episode, and has shape <code>[episode_length]</code>. </p>
+
+            <p>To calculate the loss you want to look at the actions you took and weight the negative log probability
+                that you took that action by its discounted reward. </p>
+
+            <p>The formula for the loss our model minimizes is:</p>
+
+            <p><img style="width:500px" src="http://cs.brown.edu/courses/cs1470/img/reinforce_loss.png"
+                    alt="reinforce loss"></p>
+
+            <p>Here, $P_{a_i}$ is the probability that our agent gave the action it actually took at time $i$, which is
+                $a_i$. $D_i$ is the discounted reward from time $i$.</p>
+
+            <p><strong>To compute model.loss, we encourage you to follow these steps:</strong></p>
+
+            <p>
+            <ol>
+                <li>
+                    First, use the states in the trajectory and your model's forward pass to recompute the probability
+                    distribution over actions in the trajectory. This will be a matrix with shape
+                    <code>[episode_length, num_actions]</code>. You can recompute it by calling your model on the states
+                    again. This may be a bit unconventional compared with previous assignments where we passed our
+                    probabilites directly into our loss function, but this was a conscious design choice to ensure
+                    modularity. When implementing part 3, it'll become clear why we need our loss function to take in
+                    our states directly.
+                </li>
+                <li>
+                    Use the action indices to gather the probabilities for actions that were selected when acting in the
+                    environment. These are our $P_{a_i}$. This will be a <code>[episode_length]</code> array.
+                </li>
+                <li>
+                    Then take the negative log of these selected action probabilities to get an array of size
+                    <code>[episode_length]</code>.
+                </li>
+                <li>
+                    Then element-wise multiply this with <code>discounted_rewards</code>. If an action has a low
+                    probability and a high reward or it has a high probability and a low reward then its loss will be
+                    high.
+                </li>
+
+                <li>
+                    Lastly return the sum of these losses.
+                </li>
+            </ol>
             </p>
-          
-          <h2 id="part2training">Part 2: Training</h2>
-          
-          <p>This part will be implemented in <code>assignment.py</code>. </p>
-          
-          <h3 id="discountedrewards">Discounted Rewards</h3>
-          
-          <p>The value of taking a given action should not just be the single reward resulting from that action. This is because the benefits of taking a "good" action could be seen later on in the episode. Instead, your estimate for the reward resulting from an action should also take account future rewards in timesteps after the agent (controlled by the model) took that action. However, sooner rewards are probably more related to our action, while rewards farther into the future are probably less dependent on that action.</p>
-          
-          <p>Please fill out the <code>discount</code> function that will map our <code>[episode_length]</code> size <code>rewards</code> list containing the reward received at each time step to the <strong>discounted sum of future rewards</strong> from that time step, using the discount factor.</p>
-          
-          <p>The formula for discounted reward is as follows:</p>
-          
-          <p><img style="width:500px" src="http://cs.brown.edu/courses/cs1470/img/discounted_reward.png" alt="discounted reward"></p>
-          
-          <p>Where $D_i$ represents the discounted summed reward at time step $i$. $n$ is the number of time steps in the episode. $R_t$ is the reward at time step $t$.</p>
-          
-          <p>One way to implement this is to iterate backwards through your rewards array $R$. At each step, you can multiply $D_{i+1}$ by $\gamma$ and add $R_i$. Recall also that $\gamma$ represents the discount factor and is usually set to 0.99.</p>
-          
-          <h3 id="train">train</h3>
-          
-          <p>Your <code>train</code> function will take in the environment and the model and you will train on one episode. Using <code>tf.GradientTape</code>, call <code>generate_trajectory</code> on the environment and model to get <code>states</code>, <code>actions</code>, and <code>rewards</code>. Convert <code>states</code> to a numpy array and pass them into your model's loss function, where you'll use the model's call function to get your action probabilities. Calculating your loss will require a history of the discounted rewards throughout the episode;  with the discounted rewards, calculate the loss on this episode and use the tape to apply the gradients. Lastly, return the total reward of the game, which is the sum of the rewards across the episode (not discounted). If both part 1 and 2 work correctly, the model should successfully be trained on Cartpole!</p>
 
-          <h3 id="runningthemodel">Running the Model</h3>
-          
-          <p>Your assignment.py should be able to run both your RNN and Transformer model. You can run it with:<br><br><strong><code>python assignment.py [MODEL TYPE]</code></strong><br><br>Where MODEL TYPE is "REINFORCE" or "REINFORCE_BASELINE."</p>
-          
-          <h2 id="part3reinforcewithbaseline">Part 3: REINFORCE with Baseline</h2>
-          
-          <p><strong>Do not attempt part 3 without first completing and testing part 1!!</strong> Otherwise, welcome to part 3! This part of the assignment will be done in <code>reinforce_with_baseline.py</code> and will build directly off of part 1 (that's why it's important that part 1 works before moving on to this part).</p>
-          
-          <h3 id="init-1"><code>init</code></h3>
-          
-          <p>In the <code>__init__</code> function you will be taking in two parameters: <code>state_size</code> and <code>num_actions</code>. Again, <code>state_size</code> represents the number of parameters that define the state and <code>num_actions</code> represents the number of actions in the environment. Since REINFORCE with Baseline builds off of REINFORCE, feel free to just copy paste your network defined in part 1's <code>__init__</code>! Note that this is now our <strong>actor</strong> network, as it returns the "policy" which defines how the agent will act. </p>
-          
-          <p>What spices up this algorithm, though, is that you will also need your "baseline", or <strong>"critic"</strong>. This is a new separate feed forward network that will take an input of size <code>[-1, state_size]</code> and produce an array of <strong>values</strong> of size <code>[-1, 1]</code> (1 value per inputted state) that estimates how "good" that state is. Hence, we'll call this other network the <strong>critic</strong> network. Note that since the output of the critic network is values, the softmax function should <strong>not</strong> be applied.</p>
-          
-          <p>Recommended Layout of Critic Feed Forward Network:
-          1) 1 Dense layer with outputs size <code>hidden_size</code> (where <code>hidden_size</code> is up to you)
-          2) 1 Dense layer with outputs size 1</p>
-          
-          <p>Note: The last layer must be one with outputs size 1 and cannot use softmax.</p>
-          
-          <h3 id="call-1"><code>call</code></h3>
-          
-          <p>In the <code>call</code> function you will want to call your actor network on your states which will yield your "policy" distribution across actions for each state. You again can reuse this from part 1! </p>
-          
-          <h3 id="value_function"><code>value_function</code></h3>
-          
-          <p>In <code>value_function</code>, you will want to call your critic network on the batch of states, which will yield the estimated value for each state in the batch.</p>
-          
-          <h3 id="loss-1"><code>loss</code></h3>
-          
-          <p>This loss function will also be a bit more different from part 1's.
-          As before, the loss function you will take in <code>states</code>, <code>actions</code> and <code>discounted_rewards</code>, which all represent the same things as in part 1.</p>
-          
-          <p>Here we need to calculate the loss over our actor network and our critic network, which are two separate networks.</p>
-          
-          <p><img style="width:500px" src="http://cs.brown.edu/courses/cs1470/img/reinforce_actor_loss.png" alt="actor loss"></p>
-          
-          <p>The actor loss here is almost the same as in the Reinforce Algorithm. However, there is one critical difference: We now also feed our state, $s_i$ into our critic to get $V(s_i)$, the value our critic gives the state.</p>
-          
-          <p>$D_i - V(s_i)$ is our <strong>Advantage</strong>. It represents the difference between the discounted reward our agent earned, and how good our critic expected that state to be. </p>
-          
-          <p><img style="width:500px" src="http://cs.brown.edu/courses/cs1470/img/reinforce_critic_loss.png" alt="critic loss"></p>
-          
-          <p>We also want to make sure our critic learns as well. Our critic loss is the squared difference between its prediction of the states value, and the discounted rewards the agent recieved from a state.</p>
-          
-          <p>To compute this, we recommend the following:</p>
-          
-          <p>1) To calculate the loss for your actor network you'll want to do the same thing as in part 1, with one specific change. For Step 4, instead of element-wise multiplying with discounted_rewards, you want to element-wise multiply with your advantage. Here, advantage is defined as <code>discounted_rewards - state_values</code>, where <code>state_values</code> is calculated by the critic network.</p>
-          
-          <p>2) <strong>PLEASE TAKE NOTE OF THIS CRUCIAL STEP!</strong> In your actor loss, you must set advantage to be <code>tf.stop_gradient(discounted_rewards - state_values)</code>. You may need to cast your <code>(discounted_rewards - state_values)</code> to <code>tf.float32</code>. <code>tf.stop_gradient</code> is used here to stop the loss calculated on the actor network from propagating back to the critic network.</p>
-          
-          <p>3) Calculate the loss for your critic network by calling the value_function on the states and then taking the sum of the squared advantage.</p>
-          
-          <p>The total loss should be equal to a weighted sum of the actor network loss and the critic network loss (we recommend the critic's loss to be weighted by 0.5).</p>
-          
-          <h2 id="requirements">Requirements</h2>
-          
-          <p>Our autograder will call your <code>train</code> function for 650 episodes to train it. After your model is trained, we will
-          test by collecting rewards over the last 50 episodes, using your actor function to make decisions. For REINFORCE, you must receive an average reward > 200 over the last 50 episodes. For REINFORCE with baseline, you must receive an average reward > 300 over the last 50 episodes. Each model must not take over 7 minutes to train on a department machine. As a reference, our REINFORCE trains within 5 minutes and can get up to average reward of 400+, and our REINFORCE with baseline trains within 5 minutes and can get up to average reward of 450+.</p>
-          
-          <h2 id="visualizingperformance">Visualizing performance</h2>
-          
-          <p>We have provided the function, <code>visualize_data</code>, which plots the reward through episodes.</p>
-          
-          <p>In addition, if you would like to see your agent perform, call <code>env.render()</code> every time you perform an action. It is useful to see how your model is learning to perform a given task. <strong>When you turn your assignment in however, turn rendering off.</strong></p>
-          
-          <h2 id="readme">README</h2>
-          
-          <p>Please submit a README were you record the performance of both architectures, and note any bugs.</p>
-          
-          <h1 id="conceptualquestions">Conceptual Questions</h1>
-          
-          <p>Fill out conceptual questions and submit in PDF format. Submitting a scan of written work is also fine as long as it is readable. Please copy over the questions and write well thought out answers to the questions.</p>
-          
-          <strong id="pleasecheckyoursubmissionfromtheconfirmationemailandensurethatyouhavecorrectlysubmittedapdfifyourfileisemptyalinkoradifferentformatwewillnotbeabletogradeyourassignmentwewillnotacceptanythingotherthanapdf">Please check your submission from the confirmation email and ensure that you have correctly submitted a PDF. We will not accept anything other than a PDF.</strong>
-          
-          <h2 id="cs2470students">CS2470 Students</h2>
-          
-          <p>Please complete the CS2470-only conceptual questions <strong>in addition</strong> to the coding assignment and the CS1470 conceptual questions.
-           <strong>Note: Questions about 2470 will only be answered on Piazza, or by TAs marked with an asterisk (*) on the calendar.</strong></p>
-          
-          <h2 id="handingin">Handing In</h2>
-          
-          <p>You should submit the assignment using <a href="https://docs.google.com/forms/d/e/1FAIpQLSe8oRO1a1g6iEW3ixpjmtzL9-da4No-ZrOmduZyv7P904LvUw/viewform">this Google Form</a>. You must be logged in with your Brown account. Your assignment.py, reinforce.py, and reinforce<em>with</em>baseline.py should be Python files, while the written up conceptual questions have to be PDFs. The README can be any format.</p>
-          
-          <h2 id="acknowledgements">Acknowledgements:</h2>
-          
-          <p>This assignment is based on the REINFORCE assignemnt written by previous TAs, with edits/conversion to TF 2.0 done by:</p>
-          
-          <ul>
-          <li>Kevin Du</li>
-          
-          <li>Daniel Ritter</li>
-          
-          <li>Bryce Blinn</li>
-          
-          <li>Naveen Srinivasan</li>
-          
-          <li>Brendan Le</li>
-          
-          <li>Zachary Horvitz</li>
-          
-          <li>Brian Oppenheim</li>
-          
-          <li>Amy Pu</li>
-          </ul>
+            <h2 id="part2training">Part 2: Training</h2>
+
+            <p>This part will be implemented in <code>assignment.py</code>. </p>
+
+            <h3 id="discountedrewards">Discounted Rewards</h3>
+
+            <p>The value of taking a given action should not just be the single reward resulting from that action. This
+                is because the benefits of taking a "good" action could be seen later on in the episode. Instead, your
+                estimate for the reward resulting from an action should also take account future rewards in timesteps
+                after the agent (controlled by the model) took that action. However, sooner rewards are probably more
+                related to our action, while rewards farther into the future are probably less dependent on that action.
+            </p>
+
+            <p>Please fill out the <code>discount</code> function that will map our <code>[episode_length]</code> size
+                <code>rewards</code> list containing the reward received at each time step to the <strong>discounted sum
+                    of future rewards</strong> from that time step, using the discount factor.</p>
+
+            <p>The formula for discounted reward is as follows:</p>
+
+            <p><img style="width:500px" src="http://cs.brown.edu/courses/cs1470/img/discounted_reward.png"
+                    alt="discounted reward"></p>
+
+            <p>Where $D_i$ represents the discounted summed reward at time step $i$. $n$ is the number of time steps in
+                the episode. $R_t$ is the reward at time step $t$.</p>
+
+            <p>One way to implement this is to iterate backwards through your rewards array $R$. At each step, you can
+                multiply $D_{i+1}$ by $\gamma$ and add $R_i$. Recall also that $\gamma$ represents the discount factor
+                and is usually set to 0.99.</p>
+
+            <h3 id="train">train</h3>
+
+            <p>Your <code>train</code> function will take in the environment and the model and you will train on one
+                episode. Using <code>tf.GradientTape</code>, call <code>generate_trajectory</code> on the environment
+                and model to get <code>states</code>, <code>actions</code>, and <code>rewards</code>. Convert
+                <code>states</code> to a numpy array and pass them into your model's loss function, where you'll use the
+                model's call function to get your action probabilities. Calculating your loss will require a history of
+                the discounted rewards throughout the episode; with the discounted rewards, calculate the loss on this
+                episode and use the tape to apply the gradients. Lastly, return the total reward of the game, which is
+                the sum of the rewards across the episode (not discounted). If both part 1 and 2 work correctly, the
+                model should successfully be trained on Cartpole!</p>
+
+            <h3 id="runningthemodel">Running the Model</h3>
+
+            <p>Your assignment.py should be able to run both your RNN and Transformer model. You can run it
+                with:<br><br><strong><code>python assignment.py [MODEL TYPE]</code></strong><br><br>Where MODEL TYPE is
+                "REINFORCE" or "REINFORCE_BASELINE."</p>
+
+            <h2 id="part3reinforcewithbaseline">Part 3: REINFORCE with Baseline</h2>
+
+            <p><strong>Do not attempt part 3 without first completing and testing part 1!!</strong> Otherwise, welcome
+                to part 3! This part of the assignment will be done in <code>reinforce_with_baseline.py</code> and will
+                build directly off of part 1 (that's why it's important that part 1 works before moving on to this
+                part).</p>
+
+            <h3 id="init-1"><code>init</code></h3>
+
+            <p>In the <code>__init__</code> function you will be taking in two parameters: <code>state_size</code> and
+                <code>num_actions</code>. Again, <code>state_size</code> represents the number of parameters that define
+                the state and <code>num_actions</code> represents the number of actions in the environment. Since
+                REINFORCE with Baseline builds off of REINFORCE, feel free to just copy paste your network defined in
+                part 1's <code>__init__</code>! Note that this is now our <strong>actor</strong> network, as it returns
+                the "policy" which defines how the agent will act. </p>
+
+            <p>What spices up this algorithm, though, is that you will also need your "baseline", or
+                <strong>"critic"</strong>. This is a new separate feed forward network that will take an input of size
+                <code>[-1, state_size]</code> and produce an array of <strong>values</strong> of size
+                <code>[-1, 1]</code> (1 value per inputted state) that estimates how "good" that state is. Hence, we'll
+                call this other network the <strong>critic</strong> network. Note that since the output of the critic
+                network is values, the softmax function should <strong>not</strong> be applied.</p>
+
+            <p>Recommended Layout of Critic Feed Forward Network:
+                1) 1 Dense layer with outputs size <code>hidden_size</code> (where <code>hidden_size</code> is up to
+                you)
+                2) 1 Dense layer with outputs size 1</p>
+
+            <p>Note: The last layer must be one with outputs size 1 and cannot use softmax.</p>
+
+            <h3 id="call-1"><code>call</code></h3>
+
+            <p>In the <code>call</code> function you will want to call your actor network on your states which will
+                yield your "policy" distribution across actions for each state. You again can reuse this from part 1!
+            </p>
+
+            <h3 id="value_function"><code>value_function</code></h3>
+
+            <p>In <code>value_function</code>, you will want to call your critic network on the batch of states, which
+                will yield the estimated value for each state in the batch.</p>
+
+            <h3 id="loss-1"><code>loss</code></h3>
+
+            <p>This loss function will also be a bit more different from part 1's.
+                As before, the loss function you will take in <code>states</code>, <code>actions</code> and
+                <code>discounted_rewards</code>, which all represent the same things as in part 1.</p>
+
+            <p>Here we need to calculate the loss over our actor network and our critic network, which are two separate
+                networks.</p>
+
+            <p><img style="width:500px" src="http://cs.brown.edu/courses/cs1470/img/reinforce_actor_loss.png"
+                    alt="actor loss"></p>
+
+            <p>The actor loss here is almost the same as in the Reinforce Algorithm. However, there is one critical
+                difference: We now also feed our state, $s_i$ into our critic to get $V(s_i)$, the value our critic
+                gives the state.</p>
+
+            <p>$D_i - V(s_i)$ is our <strong>Advantage</strong>. It represents the difference between the discounted
+                reward our agent earned, and how good our critic expected that state to be. </p>
+
+            <p><img style="width:500px" src="http://cs.brown.edu/courses/cs1470/img/reinforce_critic_loss.png"
+                    alt="critic loss"></p>
+
+            <p>We also want to make sure our critic learns as well. Our critic loss is the squared difference between
+                its prediction of the states value, and the discounted rewards the agent recieved from a state.</p>
+
+            <p>To compute this, we recommend the following:</p>
+
+            <p>1) To calculate the loss for your actor network you'll want to do the same thing as in part 1, with one
+                specific change. For Step 4, instead of element-wise multiplying with discounted_rewards, you want to
+                element-wise multiply with your advantage. Here, advantage is defined as
+                <code>discounted_rewards - state_values</code>, where <code>state_values</code> is calculated by the
+                critic network.</p>
+
+            <p>2) <strong>PLEASE TAKE NOTE OF THIS CRUCIAL STEP!</strong> In your actor loss, you must set advantage to
+                be <code>tf.stop_gradient(discounted_rewards - state_values)</code>. You may need to cast your
+                <code>(discounted_rewards - state_values)</code> to <code>tf.float32</code>.
+                <code>tf.stop_gradient</code> is used here to stop the loss calculated on the actor network from
+                propagating back to the critic network.</p>
+
+            <p>3) Calculate the loss for your critic network by calling the value_function on the states and then taking
+                the sum of the squared advantage.</p>
+
+            <p>The total loss should be equal to a weighted sum of the actor network loss and the critic network loss
+                (we recommend the critic's loss to be weighted by 0.5).</p>
+
+            <h2 id="requirements">Requirements</h2>
+
+            <p>Our autograder will call your <code>train</code> function for 650 episodes to train it. After your model
+                is trained, we will
+                test by collecting rewards over the last 50 episodes, using your actor function to make decisions. For
+                REINFORCE, you must receive an average reward > 200 over the last 50 episodes. For REINFORCE with
+                baseline, you must receive an average reward > 300 over the last 50 episodes. Each model must not take
+                over 7 minutes to train on a department machine. As a reference, our REINFORCE trains within 5 minutes
+                and can get up to average reward of 400+, and our REINFORCE with baseline trains within 5 minutes and
+                can get up to average reward of 450+.</p>
+
+            <h2 id="visualizingperformance">Visualizing performance</h2>
+
+            <p>We have provided the function, <code>visualize_data</code>, which plots the reward through episodes.</p>
+
+            <p>In addition, if you would like to see your agent perform, call <code>env.render()</code> every time you
+                perform an action. It is useful to see how your model is learning to perform a given task. <strong>When
+                    you turn your assignment in however, turn rendering off.</strong></p>
+
+            <h2 id="readme">README</h2>
+
+            <p>Please submit a README were you record the performance of both architectures, and note any bugs.</p>
+
+            <h1 id="conceptualquestions">Conceptual Questions</h1>
+
+            <p>Fill out conceptual questions and submit in PDF format. Submitting a scan of written work is also fine as
+                long as it is readable. Please copy over the questions and write well thought out answers to the
+                questions.</p>
+
+            <strong
+                id="pleasecheckyoursubmissionfromtheconfirmationemailandensurethatyouhavecorrectlysubmittedapdfifyourfileisemptyalinkoradifferentformatwewillnotbeabletogradeyourassignmentwewillnotacceptanythingotherthanapdf">Please
+                check your submission from the confirmation email and ensure that you have correctly submitted a PDF. We
+                will not accept anything other than a PDF.</strong>
+
+            <h2 id="cs2470students">CS2470 Students</h2>
+
+            <p>Please complete the CS2470-only conceptual questions <strong>in addition</strong> to the coding
+                assignment and the CS1470 conceptual questions.
+                <strong>Note: Questions about 2470 will only be answered on Piazza, or by TAs marked with an asterisk
+                    (*) on the calendar.</strong></p>
+
+            <h2 id="handingin">Handing In</h2>
+
+            <p>You should submit the assignment using <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSe8oRO1a1g6iEW3ixpjmtzL9-da4No-ZrOmduZyv7P904LvUw/viewform">this
+                    Google Form</a>. You must be logged in with your Brown account. Your assignment.py, reinforce.py,
+                and reinforce<em>with</em>baseline.py should be Python files, while the written up conceptual questions
+                have to be PDFs. The README can be any format.</p>
+
+            <h2 id="acknowledgements">Acknowledgements:</h2>
+
+            <p>This assignment is based on the REINFORCE assignemnt written by previous TAs, with edits/conversion to TF
+                2.0 done by:</p>
+
+            <ul>
+                <li>Kevin Du</li>
+
+                <li>Daniel Ritter</li>
+
+                <li>Bryce Blinn</li>
+
+                <li>Naveen Srinivasan</li>
+
+                <li>Brendan Le</li>
+
+                <li>Zachary Horvitz</li>
+
+                <li>Brian Oppenheim</li>
+
+                <li>Amy Pu</li>
+            </ul>
         </section>
         <aside style="top:50px">
         </aside>
     </main>
 
     <footer class="dark-footer">
-        <img id="footer-earmuffs" class="random-earmuffs" src="http://cs.brown.edu/courses/cs1470/img/earmuffs_1.png">
+        <img id="footer-earmuffs" class="random-earmuffs" src="http://cs.brown.edu/courses/cs1470/img/sparkle.png">
         <ul class="menu">
             <li>&copy; 2019 CS1470/2470 TA Staff | Computer Science Department | Brown University</li>
         </ul>

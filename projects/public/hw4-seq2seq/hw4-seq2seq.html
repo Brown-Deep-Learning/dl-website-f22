@@ -3,7 +3,7 @@
 
 <head>
     <title>CS147 - Deep Learning | Brown University</title>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" type="text/css" href="../../../style.css">
@@ -12,7 +12,8 @@
     <!-- for syntax highlighting of code blocks -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/languages/go.min.js"></script>
+    <script charset="UTF-8"
+        src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/languages/go.min.js"></script>
     <script>
         hljs.initHighlightingOnLoad();
     </script>
@@ -31,8 +32,8 @@
     </script>
     <script type="text/javascript" src="../../../create-sidebar.js">
     </script>
-     <script type="text/javascript" src="../../../common.js">
-     </script>
+    <script type="text/javascript" src="../../../common.js">
+    </script>
 
 </head>
 
@@ -44,7 +45,7 @@
                 Assignment 4
             </div>
 
-            
+
             <!-- kept for spacing-->
             <div class="page__header__quote">
             </div>
@@ -67,226 +68,322 @@
     </header>
     <main>
         <section class="has-sidebar">
-          <h1 id="hw4machinetranslation">HW4: Machine Translation</h1>
+            <h1 id="hw4machinetranslation">HW4: Machine Translation</h1>
 
-          <p>Due <strong>Tuesday, 11/5/19 at 11:59pm</strong></p>
-          
-          <p>French philosopher <a href="https://en.wikipedia.org/wiki/Jean-Paul_Sartre">Jean-Paul Sartre</a> had many profound things to say about the universe. However, many of his greatest musings are in French!</p>
-          
-          <p>Therefore, to get at the meaning of existence (or lack thereof), we will need to train a model that can translate from French to English!</p>
-          
-          <h2 id="gettingthestencil">Getting the stencil</h2>
-          
-          <p>You can find the files located <a href="http://cs.brown.edu/courses/cs1470/projects/public/hw4-seq2seq/stencil_and_data.zip" download>here</a> or on the "Files" column under the Assignments page. The files are compressed into a ZIP file, and to unzip the ZIP file, you can just double click on the ZIP file. There, you should find the files: preprocess.py, assignment.py, rnn_model.py, transformer_model.py, transformer_funcs.py, README, and data folder.
-          You can find the conceptual questions located <a href="http://cs.brown.edu/courses/cs1470/projects/public/hw4-seq2seq/hw4-conceptual-q.pdf">here</a> or the "Conceptual Questions" column in the Assignments page.</p>
-          
-          <h2 id="logistics">Logistics</h2>
-          
-          <p>Work on this assignment off of the stencil code provided, but <strong>do not change the stencil except where specified.</strong> Changing the stencil will result in incompatiblity with the autograder and result in a low grade. For this assignment, a significant amount of code is provided. You shouldn't change any method signatures.</p>
-          
-          <p>This assignment has <strong>2 main parts.</strong></p>
-          
-          <p>You will implement two different types of sequence to sequence model. One is based on Recurrent Neural Networks, the other one Transformers. However, since both of these models are trying to solve the same problems, they share the same preprocessing, training, and testing. In addition, we provide you with Transformer helper functions. However, you will implement self attention.</p>
-          
-          <h2 id="virtualenvironment">Virtual Environment</h2>
-          
-          <p>For this assignment, you might also need the <a href="https://pypi.org/project/gast/">gast</a> library. This may be necessary if you want to speed up your code (to run things in graph execution). If you are doing this locally, you will have to activate your existing virtual environment and install gast by running the following command in your terminal/command line:</p>
+            <p>Due <strong>Tuesday, 11/5/19 at 11:59pm</strong></p>
 
-          <p><code>pip install gast</code></p>
+            <p>French philosopher <a href="https://en.wikipedia.org/wiki/Jean-Paul_Sartre">Jean-Paul Sartre</a> had many
+                profound things to say about the universe. However, many of his greatest musings are in French!</p>
 
-          <p>You are also welcome to set up the virtual environment from scratch using the updated requirements.txt file.</p>
-          
-          <h2 id="thecorpus">The Corpus</h2>
-          
-          <p>By law, the official records, (Hansards) of the Canadian Parliament must be transcribed in both English and French. Therefore, they provide a fantastic set of mappings for a machine translation model. We are providing you with a modified version of the corpus that only includes sentences shorter than 12 words.</p>
-          
-          <p>Here's what you should find in the data folder:<br>
-          <br><code>fls.txt</code> - french_training_file
-          <br><code>els.txt</code> - english_training_file
-          <br><code>flt.txt</code> - french_test_file
-          <br><code>elt.txt</code> - english_test_file</p>
-          
-          <h1 id="part0preprocessing">Part 0: Preprocessing</h1>
-          
-          <p>We have provided you with several helper functions to help with preprocessing.</p>
-          
-          <ul>
-          <li><code>pad_corpus</code> : pads the corpus to make all inputs the same length. It does this by adding <code>*PAD*</code> tokens to the end of the french and english sentences. It also adds a <code>*START*</code> token to the beginning of the english sentence. </li>
-          
-          <li><code>build_vocab</code> : returns a dictionary from words to IDs, and also the ID associated with padding. You can build your vocab only using the training data.</li>
-          
-          <li><code>convert_to_id</code> : converts sentences to their ID form</li>
-          
-          <li><code>ead_data</code>r : load text data from file</li>
-          </ul>
-          
-          <p>You must implement the <code>get_data</code> function. This function takes training file and testing files, and uses the helper functions provided to return the processed data, vocab dictionaries, and the english padding ID.</p>
-          
-          <p>In this function you should:</p>
-          
-          <p>Step 1. Read the French training data and the English training data</p>
-          
-          <p>Step 2. Read the French testing data and the English testing data</p>
-          
-          <p>Step 3. Call pad_corpus on the training and testing data</p>
-          
-          <p>Step 4. Build the French and English vocabularies from the training data, then use the vocabularies to convert the sentences to ID form</p>
-          
-          <p>Step 5. Return the processed data, dictionaries and the English padding ID</p>
-          
-          <h1 id="part1rnnmachinetranslation">Part 1: RNN Machine Translation</h1>
-          
-          <h2 id="roadmap">Roadmap</h2>
-          
-          <p>For this homework, you will build two neural network that encodes the French sentence and then decodes out the English translation. In this part you will build an RNN based encoder-decoder architecture.</p>
-          
-          <p>You should use at least one RNN to encode the French embeddings into a single vector, which is then passed to the decoder. This decoder RNN is initialized with the output of the encoder. </p>
-          
-          <p>The decoder performs similiarly to the language model in the last assignment. The decoder should take the english inputs shifted over one timestep, and use the combined hidden state and shifted input to predict the next english word. This procedure is called Teacher Forcing.</p>
-          
-          <p>In other words, we initialize the decoder with the "encoded" French sentence, then give it the previous correct English word and have it guess the next, as if we were language modeling. Teacher forcing helps stabilize training.</p>
-          
-          <p>Step 1. Create your RNN model</p>
-          
-          <ul>
-          <li>Fill out the init function, and define your trainable variables and hyperparameters. </li>
-          
-          <li>Fill out the call function using the trainable variables you've created.</li>
-          
-          <li>Calculate the softmax cross-entropy loss on the probabilities compared to the labels (These should NOT be one hot vectors). We again recommend using <code>tf.keras.losses.sparse_categorical_crossentropy</code>. In addition, you must now give loss a mask. This is because many of the output labels will be padding, and we do not want to include padding in our loss calculation. </li>
-          
-          <li>Your mask should be a tensor of 1s and 0s or booleans, and the same dimension as your labels. There should be a 0/False value corresponding to each <em>PAD</em> token.</li>
-          
-          <li>You are welcome to use both <code>reduce_mean</code> and <code>reduce_sum</code>. If your stencil says "sum over batch," you can ignore that. Just make sure you calculate everything properly.</li>
-          </ul>
-          
-          <p>Step 2. Fill out training and testing in assignment.py</p>
-          
-          <ul>
-          <li>In assignment.py, you will want to get your train and test data, initialize your model, and train it.  We have provided you with a train and test method to fill out. The train method will take in the model and do the forward and backward pass.</li>
-          
-          <li>Note that you will initialize both the RNN and the Transformer in assignment.py this time.</li>
-          
-          <li>In training and testing  steps, you should batch your data. The french version of a sentence will serve as your encoder input.
-          To construct your decoder labels for each sentence, you should remove the <code>*START*</code>token. Similarly, you will want to remove the last padding token for your decoder input. By removing these two elements, you ensure your decoder input is the same dimension as your decoder labels, and that you are predicting the NEXT English word at each place in your window.</li>
-          </ul>
-          
-          <h2 id="runningthemodel">Running the Model</h2>
-          
-          <p>Your assignment.py should be able to run both your RNN and Transformer model. You can run it with:</p>
-          
-          <p><code>python assignment.py [MODEL TYPE]</code></p>
-          
-          <p>Where <code>MODEL_TYPE</code> is "RNN" or "TRANSFORMER".</p>
-          
-          <h2 id="mandatoryhyperparameters">Mandatory Hyperparameters</h2>
-          
-          <p>You must use separate embedding matrices for your French and English inputs. In addition, you must use at least two RNNS: one for your encoder, the other for your decoder.</p>
-          
-          <p>While not required, a learning rate of 0.01 and a batch size of 100 is recommended. Additionally we recomend choosing embeddings/hidden layer sizes between 32-256. We also suggest using a standard deviation of 0.01 for your embedding matrices (if you do not use Keras).</p>
-          
-          <p><strong>While the specifications for your architecture are flexible, your RNN seq2seq model must train in under 30 minutes on a department machine!</strong></p>
-          
-          <p><strong>Your target perplexity should be <=20, and your target per symbol accuracy > 58.</strong> As a reference point, our RNN model trains within 22 minutes and receives a perplexity of around 10.</p>
-          
-          <h1 id="part2transformersmachinetranslation">Part 2: Transformers Machine Translation</h1>
-          
-          <p>RNNs are neat. However, since 2017, there has been a new cool kid on the Natural Language Processing block: Transformers. Transformer based models have produced state-of-the-art performance on a variety of NLP tasks, including language modeling and translation.</p>
-          
-          <p>These architectures rely on stacked self-attention modules, rather than recurrence. We will be implementing a simplified version of the <a href="https://arxiv.org/pdf/1706.03762.pdf">Attention Is All You Need architecture.</a> </p>
-          
-          <p>These attention modules turn a sequence of embeddings into Queries, Keys, and Values. Just like how each timestep has a word embedding, in self-attention, each timestep has a query, key, and value embedding. The queries are compared to every key to produce an attention matrix. This attention matrix is then used to create new embeddings for each timestep.</p>
-          
-          <p>Self-attention can be fairly confusing. Thus, we encourage students to refer back to the lecture slides. 
-          Another great resource that explains the intuition/implementation of Transformers can be found <a href="http://jalammar.github.io/illustrated-transformer/">here</a>.</p>
-          
-          <p>For this part of the assignment, we give you code for Transformer blocks, which you can use like RNN layers. This code can be found in transformer_funcs.py However, it is not complete: <strong>you must implement the single attention head functionality. Do this by filling in the Single <code>Self_Attention</code> function and the <code>Atten_Head</code> class.</strong></p>
-          
-          <p>If you are in 2470, you should also implement multi-headed attention (with three heads) as well, and use it in your model.</p>
-          
-          <h2 id="roadmap-1">Roadmap</h2>
-          
-          <p>Step 1. Create your Transformer model</p>
-          
-          <ul>
-          <li>Fill out the init function, and define your trainable variables.</li>
-          </ul>
-          
-          <p>Instead of RNNs, you should use at least one <code>transformer.Transformer_Block</code> for your encoder and at least one <code>transformer.Transformer_Block</code> for your decoder.</p>
-          
-          <p><strong>The transformer block takes the following arguments: <code>(embedding_size,is_decoder=False/True,multi_headed=False/True)</code>.</strong> You can find this in transformer_funcs.py.</p>
-          
-          <p>You also must define and use two <code>transformer.Position_Encoding_Layers</code> to add positional embeddings to your French and English embeddings.</p>
-          
-          <p>Additionally, please note that, for this architecture, your embedding/hidden_state size must be the same for your word embeddings and transformer blocks.</p>
-          
-          <ul>
-          <li>Fill out the call function using the trainable variables you've created.</li>
-          
-          <li>You can reuse your loss function from the rnn_model.py.</li>
-          </ul>
-          
-          <p>Step 2. Fill out the <code>Self_Attention</code> Function and <code>Atten_Head</code> class in transformer_funcs.py</p>
+            <p>Therefore, to get at the meaning of existence (or lack thereof), we will need to train a model that can
+                translate from French to English!</p>
 
-          <ul>
-            <li>
-          Note that when you fill out <code>Atten_Head</code>, you will be using <code><a href="https://www.tensorflow.org/api_docs/python/tf/tensordot">tf.tensordot</a></code>. This is necessary because you are trying to perform matrix multiplication on matrices of different orders/dimensions.</li></ul>
-          
-          <ul>
-          <li>Please refer to the lecture slides, and/or the <a href="http://jalammar.github.io/illustrated-transformer/">illustrated transformer</a>.</li>
-          </ul>
-          
-          <h2 id="mandatoryhyperparameters-1">Mandatory Hyperparameters</h2>
-          
-          <p>You must use separate embedding matrices for your French and English inputs.
-          Don't forget to add positional embeddings to your French and English embeddings using different Position_Encoding_Layers.</p>
-          
-          <p>In addition, you must use at least two transformer blocks: one for your encoder, the other for you decoder.
-          While not required, a learning rate of 0.001 and a batch size of 100 is recommended. Also we recommend drawing embedding/hidden layer sizes from the range 32-256.</p>
-          
-          <p><strong>While the specifications for your architecture are flexible, your Transformer seq2seq model must train in under 30 minutes on a department machine!</strong></p>
-          
-          <p><strong>Your target perplexity should also be <=15, and your target per symbol accuracy should be >= 65.</strong></p>
-          
-          <h1 id="part3conceptualquestions">Part 3: Conceptual Questions</h1>
-          
-          <p>Fill out conceptual questions and submit in PDF. Submitting a scan of written work is also fine as long as it is readable. Please copy over the questions and write well thought out answers to the questions.</p>
-          
-          <h1 id="wewillnotacceptanythingotherthanapdf">We will not accept anything other than a PDF.</h1>
-          
-          <p>Your README should can contain your perplexity and any bugs you have.</p>
-          
-          <h2 id="cs2470students">CS2470 Students</h2>
-          
-          <p>You will have to also implement the Multi_Headed attention class. This class should create <strong>3</strong> self attention heads, and combine their result.</p>
+            <h2 id="gettingthestencil">Getting the stencil</h2>
 
-          <h1 id="mistakesweremade">NOTE: if you have Three_Headed_Attention in your stencil, please change that to Multi_Headed. Do the same if you see Multi_Headed_Attention.</h1>
-          
-          <p>Also please complete the CS2470-only conceptual questions <strong>in addition</strong> to the coding assignment and the CS1470 conceptual questions.
-           <strong>Note: Questions about 2470 will only be answered on Piazza, or by TAs marked with an asterisk (*) on the calendar.</strong></p>
-          
-          <h1 id="grading">Grading</h1>
-          
-          <p><strong>Code:</strong> You will be primarily graded on functionality. <strong>Your RNN model should have a perplexity should be &lt;=20, and your target per symbol accuracy > 58, and your Transformer model should have a perplexity that is &lt;=15, and your target per symbol accuracy should be >= 65.</strong></p>
-          
-          <p><strong>Conceptual:</strong> You will be primarily graded on correctness (when applicable), thoughtfulness, and clarity. </p>
-          
-          <h2 id="autograder">Autograder</h2>
-          
-          <p>Your RNN model must complete training in under 30 minutes, and your Transformer model should complete training in under 30 minutes on a department machine.</p>
-          
-          <p>Our autograder will import your model and your preprocessing functions. We will feed the result of your <code>get_data</code> function called on a path to our data and pass the result to your train method in order to return a fully trained model. We will test using our testing function.</p>
-          
-          <h1 id="handingin">Handing In</h1>
-          
-          <p>You should submit the assignment using <a href="https://docs.google.com/forms/d/e/1FAIpQLSe8oRO1a1g6iEW3ixpjmtzL9-da4No-ZrOmduZyv7P904LvUw/viewform">this Google Form</a>. You must be logged in with your Brown account. Your assignment.py, preprocess.py, rnn<em>model.py, transformer</em>funcs.py, and transformer_model.py files should be Python files, while the written up conceptual questions should be PDF format. The README can be any format.</p>
+            <p>You can find the files located <a
+                    href="http://cs.brown.edu/courses/cs1470/projects/public/hw4-seq2seq/stencil_and_data.zip"
+                    download>here</a> or on the "Files" column under the Assignments page. The files are compressed into
+                a ZIP file, and to unzip the ZIP file, you can just double click on the ZIP file. There, you should find
+                the files: preprocess.py, assignment.py, rnn_model.py, transformer_model.py, transformer_funcs.py,
+                README, and data folder.
+                You can find the conceptual questions located <a
+                    href="http://cs.brown.edu/courses/cs1470/projects/public/hw4-seq2seq/hw4-conceptual-q.pdf">here</a>
+                or the "Conceptual Questions" column in the Assignments page.</p>
+
+            <h2 id="logistics">Logistics</h2>
+
+            <p>Work on this assignment off of the stencil code provided, but <strong>do not change the stencil except
+                    where specified.</strong> Changing the stencil will result in incompatiblity with the autograder and
+                result in a low grade. For this assignment, a significant amount of code is provided. You shouldn't
+                change any method signatures.</p>
+
+            <p>This assignment has <strong>2 main parts.</strong></p>
+
+            <p>You will implement two different types of sequence to sequence model. One is based on Recurrent Neural
+                Networks, the other one Transformers. However, since both of these models are trying to solve the same
+                problems, they share the same preprocessing, training, and testing. In addition, we provide you with
+                Transformer helper functions. However, you will implement self attention.</p>
+
+            <h2 id="virtualenvironment">Virtual Environment</h2>
+
+            <p>For this assignment, you might also need the <a href="https://pypi.org/project/gast/">gast</a> library.
+                This may be necessary if you want to speed up your code (to run things in graph execution). If you are
+                doing this locally, you will have to activate your existing virtual environment and install gast by
+                running the following command in your terminal/command line:</p>
+
+            <p><code>pip install gast</code></p>
+
+            <p>You are also welcome to set up the virtual environment from scratch using the updated requirements.txt
+                file.</p>
+
+            <h2 id="thecorpus">The Corpus</h2>
+
+            <p>By law, the official records, (Hansards) of the Canadian Parliament must be transcribed in both English
+                and French. Therefore, they provide a fantastic set of mappings for a machine translation model. We are
+                providing you with a modified version of the corpus that only includes sentences shorter than 12 words.
+            </p>
+
+            <p>Here's what you should find in the data folder:<br>
+                <br><code>fls.txt</code> - french_training_file
+                <br><code>els.txt</code> - english_training_file
+                <br><code>flt.txt</code> - french_test_file
+                <br><code>elt.txt</code> - english_test_file</p>
+
+            <h1 id="part0preprocessing">Part 0: Preprocessing</h1>
+
+            <p>We have provided you with several helper functions to help with preprocessing.</p>
+
+            <ul>
+                <li><code>pad_corpus</code> : pads the corpus to make all inputs the same length. It does this by adding
+                    <code>*PAD*</code> tokens to the end of the french and english sentences. It also adds a
+                    <code>*START*</code> token to the beginning of the english sentence. </li>
+
+                <li><code>build_vocab</code> : returns a dictionary from words to IDs, and also the ID associated with
+                    padding. You can build your vocab only using the training data.</li>
+
+                <li><code>convert_to_id</code> : converts sentences to their ID form</li>
+
+                <li><code>ead_data</code>r : load text data from file</li>
+            </ul>
+
+            <p>You must implement the <code>get_data</code> function. This function takes training file and testing
+                files, and uses the helper functions provided to return the processed data, vocab dictionaries, and the
+                english padding ID.</p>
+
+            <p>In this function you should:</p>
+
+            <p>Step 1. Read the French training data and the English training data</p>
+
+            <p>Step 2. Read the French testing data and the English testing data</p>
+
+            <p>Step 3. Call pad_corpus on the training and testing data</p>
+
+            <p>Step 4. Build the French and English vocabularies from the training data, then use the vocabularies to
+                convert the sentences to ID form</p>
+
+            <p>Step 5. Return the processed data, dictionaries and the English padding ID</p>
+
+            <h1 id="part1rnnmachinetranslation">Part 1: RNN Machine Translation</h1>
+
+            <h2 id="roadmap">Roadmap</h2>
+
+            <p>For this homework, you will build two neural network that encodes the French sentence and then decodes
+                out the English translation. In this part you will build an RNN based encoder-decoder architecture.</p>
+
+            <p>You should use at least one RNN to encode the French embeddings into a single vector, which is then
+                passed to the decoder. This decoder RNN is initialized with the output of the encoder. </p>
+
+            <p>The decoder performs similiarly to the language model in the last assignment. The decoder should take the
+                english inputs shifted over one timestep, and use the combined hidden state and shifted input to predict
+                the next english word. This procedure is called Teacher Forcing.</p>
+
+            <p>In other words, we initialize the decoder with the "encoded" French sentence, then give it the previous
+                correct English word and have it guess the next, as if we were language modeling. Teacher forcing helps
+                stabilize training.</p>
+
+            <p>Step 1. Create your RNN model</p>
+
+            <ul>
+                <li>Fill out the init function, and define your trainable variables and hyperparameters. </li>
+
+                <li>Fill out the call function using the trainable variables you've created.</li>
+
+                <li>Calculate the softmax cross-entropy loss on the probabilities compared to the labels (These should
+                    NOT be one hot vectors). We again recommend using
+                    <code>tf.keras.losses.sparse_categorical_crossentropy</code>. In addition, you must now give loss a
+                    mask. This is because many of the output labels will be padding, and we do not want to include
+                    padding in our loss calculation. </li>
+
+                <li>Your mask should be a tensor of 1s and 0s or booleans, and the same dimension as your labels. There
+                    should be a 0/False value corresponding to each <em>PAD</em> token.</li>
+
+                <li>You are welcome to use both <code>reduce_mean</code> and <code>reduce_sum</code>. If your stencil
+                    says "sum over batch," you can ignore that. Just make sure you calculate everything properly.</li>
+            </ul>
+
+            <p>Step 2. Fill out training and testing in assignment.py</p>
+
+            <ul>
+                <li>In assignment.py, you will want to get your train and test data, initialize your model, and train
+                    it. We have provided you with a train and test method to fill out. The train method will take in the
+                    model and do the forward and backward pass.</li>
+
+                <li>Note that you will initialize both the RNN and the Transformer in assignment.py this time.</li>
+
+                <li>In training and testing steps, you should batch your data. The french version of a sentence will
+                    serve as your encoder input.
+                    To construct your decoder labels for each sentence, you should remove the <code>*START*</code>token.
+                    Similarly, you will want to remove the last padding token for your decoder input. By removing these
+                    two elements, you ensure your decoder input is the same dimension as your decoder labels, and that
+                    you are predicting the NEXT English word at each place in your window.</li>
+            </ul>
+
+            <h2 id="runningthemodel">Running the Model</h2>
+
+            <p>Your assignment.py should be able to run both your RNN and Transformer model. You can run it with:</p>
+
+            <p><code>python assignment.py [MODEL TYPE]</code></p>
+
+            <p>Where <code>MODEL_TYPE</code> is "RNN" or "TRANSFORMER".</p>
+
+            <h2 id="mandatoryhyperparameters">Mandatory Hyperparameters</h2>
+
+            <p>You must use separate embedding matrices for your French and English inputs. In addition, you must use at
+                least two RNNS: one for your encoder, the other for your decoder.</p>
+
+            <p>While not required, a learning rate of 0.01 and a batch size of 100 is recommended. Additionally we
+                recomend choosing embeddings/hidden layer sizes between 32-256. We also suggest using a standard
+                deviation of 0.01 for your embedding matrices (if you do not use Keras).</p>
+
+            <p><strong>While the specifications for your architecture are flexible, your RNN seq2seq model must train in
+                    under 30 minutes on a department machine!</strong></p>
+
+            <p><strong>Your target perplexity should be <=20, and your target per symbol accuracy> 58.</strong> As a
+                reference point, our RNN model trains within 22 minutes and receives a perplexity of around 10.</p>
+
+            <h1 id="part2transformersmachinetranslation">Part 2: Transformers Machine Translation</h1>
+
+            <p>RNNs are neat. However, since 2017, there has been a new cool kid on the Natural Language Processing
+                block: Transformers. Transformer based models have produced state-of-the-art performance on a variety of
+                NLP tasks, including language modeling and translation.</p>
+
+            <p>These architectures rely on stacked self-attention modules, rather than recurrence. We will be
+                implementing a simplified version of the <a href="https://arxiv.org/pdf/1706.03762.pdf">Attention Is All
+                    You Need architecture.</a> </p>
+
+            <p>These attention modules turn a sequence of embeddings into Queries, Keys, and Values. Just like how each
+                timestep has a word embedding, in self-attention, each timestep has a query, key, and value embedding.
+                The queries are compared to every key to produce an attention matrix. This attention matrix is then used
+                to create new embeddings for each timestep.</p>
+
+            <p>Self-attention can be fairly confusing. Thus, we encourage students to refer back to the lecture slides.
+                Another great resource that explains the intuition/implementation of Transformers can be found <a
+                    href="http://jalammar.github.io/illustrated-transformer/">here</a>.</p>
+
+            <p>For this part of the assignment, we give you code for Transformer blocks, which you can use like RNN
+                layers. This code can be found in transformer_funcs.py However, it is not complete: <strong>you must
+                    implement the single attention head functionality. Do this by filling in the Single
+                    <code>Self_Attention</code> function and the <code>Atten_Head</code> class.</strong></p>
+
+            <p>If you are in 2470, you should also implement multi-headed attention (with three heads) as well, and use
+                it in your model.</p>
+
+            <h2 id="roadmap-1">Roadmap</h2>
+
+            <p>Step 1. Create your Transformer model</p>
+
+            <ul>
+                <li>Fill out the init function, and define your trainable variables.</li>
+            </ul>
+
+            <p>Instead of RNNs, you should use at least one <code>transformer.Transformer_Block</code> for your encoder
+                and at least one <code>transformer.Transformer_Block</code> for your decoder.</p>
+
+            <p><strong>The transformer block takes the following arguments:
+                    <code>(embedding_size,is_decoder=False/True,multi_headed=False/True)</code>.</strong> You can find
+                this in transformer_funcs.py.</p>
+
+            <p>You also must define and use two <code>transformer.Position_Encoding_Layers</code> to add positional
+                embeddings to your French and English embeddings.</p>
+
+            <p>Additionally, please note that, for this architecture, your embedding/hidden_state size must be the same
+                for your word embeddings and transformer blocks.</p>
+
+            <ul>
+                <li>Fill out the call function using the trainable variables you've created.</li>
+
+                <li>You can reuse your loss function from the rnn_model.py.</li>
+            </ul>
+
+            <p>Step 2. Fill out the <code>Self_Attention</code> Function and <code>Atten_Head</code> class in
+                transformer_funcs.py</p>
+
+            <ul>
+                <li>
+                    Note that when you fill out <code>Atten_Head</code>, you will be using
+                    <code><a href="https://www.tensorflow.org/api_docs/python/tf/tensordot">tf.tensordot</a></code>.
+                    This is necessary because you are trying to perform matrix multiplication on matrices of different
+                    orders/dimensions.</li>
+            </ul>
+
+            <ul>
+                <li>Please refer to the lecture slides, and/or the <a
+                        href="http://jalammar.github.io/illustrated-transformer/">illustrated transformer</a>.</li>
+            </ul>
+
+            <h2 id="mandatoryhyperparameters-1">Mandatory Hyperparameters</h2>
+
+            <p>You must use separate embedding matrices for your French and English inputs.
+                Don't forget to add positional embeddings to your French and English embeddings using different
+                Position_Encoding_Layers.</p>
+
+            <p>In addition, you must use at least two transformer blocks: one for your encoder, the other for you
+                decoder.
+                While not required, a learning rate of 0.001 and a batch size of 100 is recommended. Also we recommend
+                drawing embedding/hidden layer sizes from the range 32-256.</p>
+
+            <p><strong>While the specifications for your architecture are flexible, your Transformer seq2seq model must
+                    train in under 30 minutes on a department machine!</strong></p>
+
+            <p><strong>Your target perplexity should also be <=15, and your target per symbol accuracy should be>=
+                        65.</strong></p>
+
+            <h1 id="part3conceptualquestions">Part 3: Conceptual Questions</h1>
+
+            <p>Fill out conceptual questions and submit in PDF. Submitting a scan of written work is also fine as long
+                as it is readable. Please copy over the questions and write well thought out answers to the questions.
+            </p>
+
+            <h1 id="wewillnotacceptanythingotherthanapdf">We will not accept anything other than a PDF.</h1>
+
+            <p>Your README should can contain your perplexity and any bugs you have.</p>
+
+            <h2 id="cs2470students">CS2470 Students</h2>
+
+            <p>You will have to also implement the Multi_Headed attention class. This class should create
+                <strong>3</strong> self attention heads, and combine their result.</p>
+
+            <h1 id="mistakesweremade">NOTE: if you have Three_Headed_Attention in your stencil, please change that to
+                Multi_Headed. Do the same if you see Multi_Headed_Attention.</h1>
+
+            <p>Also please complete the CS2470-only conceptual questions <strong>in addition</strong> to the coding
+                assignment and the CS1470 conceptual questions.
+                <strong>Note: Questions about 2470 will only be answered on Piazza, or by TAs marked with an asterisk
+                    (*) on the calendar.</strong></p>
+
+            <h1 id="grading">Grading</h1>
+
+            <p><strong>Code:</strong> You will be primarily graded on functionality. <strong>Your RNN model should have
+                    a perplexity should be &lt;=20, and your target per symbol accuracy > 58, and your Transformer model
+                    should have a perplexity that is &lt;=15, and your target per symbol accuracy should be >=
+                    65.</strong></p>
+
+            <p><strong>Conceptual:</strong> You will be primarily graded on correctness (when applicable),
+                thoughtfulness, and clarity. </p>
+
+            <h2 id="autograder">Autograder</h2>
+
+            <p>Your RNN model must complete training in under 30 minutes, and your Transformer model should complete
+                training in under 30 minutes on a department machine.</p>
+
+            <p>Our autograder will import your model and your preprocessing functions. We will feed the result of your
+                <code>get_data</code> function called on a path to our data and pass the result to your train method in
+                order to return a fully trained model. We will test using our testing function.</p>
+
+            <h1 id="handingin">Handing In</h1>
+
+            <p>You should submit the assignment using <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSe8oRO1a1g6iEW3ixpjmtzL9-da4No-ZrOmduZyv7P904LvUw/viewform">this
+                    Google Form</a>. You must be logged in with your Brown account. Your assignment.py, preprocess.py,
+                rnn<em>model.py, transformer</em>funcs.py, and transformer_model.py files should be Python files, while
+                the written up conceptual questions should be PDF format. The README can be any format.</p>
         </section>
         <aside style="top:50px">
         </aside>
     </main>
 
     <footer class="dark-footer">
-        <img id="footer-earmuffs" class="random-earmuffs" src="http://cs.brown.edu/courses/cs1470/img/earmuffs_1.png">
+        <img id="footer-earmuffs" class="random-earmuffs" src="http://cs.brown.edu/courses/cs1470/img/sparkle.png">
         <ul class="menu">
             <li>&copy; 2019 CS1470/2470 TA Staff | Computer Science Department | Brown University</li>
         </ul>
