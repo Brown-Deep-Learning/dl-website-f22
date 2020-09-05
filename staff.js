@@ -62,8 +62,8 @@ $(document).ready(function () {
     success: function (response) {
       const table = $.csv.toArrays(response).splice(1);
       table.forEach(row => {
-        const [name, login, email, number, pronouns, hometown, year, blurb, quote] = row;
-        const staffObject = { name, login, email, number, pronouns, hometown, year, blurb, quote };
+        const [name, login, email, pronouns, hometown, year, blurb, quote] = row;
+        const staffObject = { name, login, email, pronouns, hometown, year, blurb, quote };
         if (instructors.includes(login)) {
           $('#instructors').append(createStaffCard(staffObject));
         } else if (htas.includes(login)) {
