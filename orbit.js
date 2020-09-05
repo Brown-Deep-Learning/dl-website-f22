@@ -1,6 +1,8 @@
 
 // credit for orbiting equations to https://nbodyphysics.com/blog/2016/05/29/planetary-orbits-in-javascript/
 const NUM_PLANETS = 7;
+const ORBIT_PADDING = 20;
+const LARGEST_BODY_LENGTH = 50;
 const LOOP_LIMIT = 100000;
 const m = 0.5;
 const e = 0.00001;
@@ -23,7 +25,7 @@ window.onload = () => {
     const timestepOffset = random(3800, 4000);
 
     for (let i = 0; i < NUM_PLANETS; i++) {
-        const bodyLength = 50 * ((i + 1) / (NUM_PLANETS)) + 30;
+        const bodyLength = LARGEST_BODY_LENGTH * ((i + 1) / (NUM_PLANETS)) + 30;
         const planet = document.createElement("img");
         planet.id = `orbit${i + 1}`;
         planet.src = `assets/planets/${i + 1}.png`;
@@ -41,8 +43,8 @@ window.onload = () => {
 
 function orbitBody(id, time = 0, bodyLength) {
     const a = container_dims.height / 2 - bodyLength / 2;
-    const horizontalStretch = (container_dims.width / 2 - bodyLength / 2) / a;
-    const verticalStretch = (container_dims.height / 2 - bodyLength / 2) / a;
+    const horizontalStretch = (container_dims.width / 2 - bodyLength / 2 - ORBIT_PADDING) / a;
+    const verticalStretch = (container_dims.height / 2 - bodyLength / 2 - ORBIT_PADDING) / a;
     const focus_x = 0;
     const focus_y = -bodyLength / 2;
     const orbitPeriod = 2.0 * Math.PI * Math.sqrt(Math.pow(a, 3) / (Math.pow(m, 2))); // G=1
