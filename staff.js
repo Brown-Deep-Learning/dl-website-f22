@@ -37,8 +37,8 @@ function createStaffCard(staffObject) {
           style="background-image:url(${imagePath}), url(assets/blueno_staff.png)"
           alt="${name} is doing something fun!"
           onmouseover="changeImage(this)"
-          onmouseout="restoreImage(this)"
-        />
+          onmouseout="restoreImage(this)" >
+        </div>
       </div>
       <div class="staff-text">
         <p><strong>${name}</strong> (${login}) </p>
