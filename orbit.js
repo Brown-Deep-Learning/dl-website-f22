@@ -1,22 +1,29 @@
 
 // credit for orbiting equations to https://nbodyphysics.com/blog/2016/05/29/planetary-orbits-in-javascript/
+const NUM_PLANETS = 7;
 const LOOP_LIMIT = 100000;
 const m = 0.5;
 const e = 0.00001;
+let container_dims = {}
 
 const random = (min, max) => {
     return min + Math.random() * (max - min);
 };
 
-window.onload = () => {
-    const container_dims = document.getElementById('orbit-container').getBoundingClientRect();
+window.onresize = () => {
+    container_dims = document.getElementById('orbit-container').getBoundingClientRect();
+    for (let i = 0; i < NUM_PLANETS; i++) {
+        document.getElementById(`orbit${i + 1}`).style.top = `${container_dims.height / 2}px`
+    }
+}
 
-    const numPlanets = 7;
+window.onload = () => {
+    container_dims = document.getElementById('orbit-container').getBoundingClientRect();
+
     const timestepOffset = random(3800, 4000);
 
-    for (let i = 0; i < numPlanets; i++) {
-        const bodyLength = 50 * ((i + 1) / (numPlanets)) + 30;
-        const pathRadius = container_dims.height / 2 - bodyLength / 2;
+    for (let i = 0; i < NUM_PLANETS; i++) {
+        const bodyLength = 50 * ((i + 1) / (NUM_PLANETS)) + 30;
         const planet = document.createElement("img");
         planet.id = `orbit${i + 1}`;
         planet.src = `assets/planets/${i + 1}.png`;
@@ -27,18 +34,17 @@ window.onload = () => {
         orbitBody(
             `orbit${i + 1}`,
             timestepOffset * i,
-            pathRadius,
-            {
-                horizontalStretch: (container_dims.width / 2) / pathRadius,
-                verticalStretch: 1 / ((i / 20) + 1),
-                focus_y: -bodyLength / 2
-            }
+            bodyLength,
         );
     }
 }
 
-function orbitBody(id, time = 0, a, options) {
-    const { horizontalStretch = 1, verticalStretch = 1, focus_x = 0, focus_y = 0 } = options;
+function orbitBody(id, time = 0, bodyLength) {
+    const a = container_dims.height / 2 - bodyLength / 2;
+    const horizontalStretch = (container_dims.width / 2 - bodyLength / 2) / a;
+    const verticalStretch = (container_dims.height / 2 - bodyLength / 2) / a;
+    const focus_x = 0;
+    const focus_y = -bodyLength / 2;
     const orbitPeriod = 2.0 * Math.PI * Math.sqrt(Math.pow(a, 3) / (Math.pow(m, 2))); // G=1
 
     // 1) find the relative time in the orbit and convert to Radians
@@ -67,5 +73,5 @@ function orbitBody(id, time = 0, a, options) {
     document.getElementById(id).style.transform = `translate(${position_x}px, ${position_y}px)`;
 
     time = time + 1;
-    requestAnimationFrame(() => orbitBody(id, time, a, options));
+    requestAnimationFrame(() => orbitBody(id, time, bodyLength));
 }
