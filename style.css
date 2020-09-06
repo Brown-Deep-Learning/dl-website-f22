@@ -1,5 +1,14 @@
-/* Fonts: Inter regular, medium, bold, Krona One */
+/* -------------------- CSS VARIABLES -------------------- */
+:root {
+    --dark-blue: #1B2367;
+    --accent-yellow: #F7BF5C;
+    --bright-yellow: #E4E841;
+}
 
+
+/* -------------------- FONTS -------------------- */
+
+/* Fonts: Inter regular, medium, bold, Krona One */
 @font-face {
     font-family: 'Inter';
     font-style: normal;
@@ -34,15 +43,10 @@
 }
 
 
-:root {
-    --dark-blue: #1B2367;
-    --accent-yellow: #F7BF5C;
-    --bright-yellow: #E4E841;
-}
+/* -------------------- GLOBAL STYLES -------------------- */
 
 html {
     height: 100%;
-    /* background-color: var(--dark-blue); */
 }
 
 body {
@@ -63,6 +67,9 @@ body {
     margin: -70px 0 0; /* negative fixed header height */
 }
 
+
+/* -------------------- TEXT ELEMENT STYLES -------------------- */
+
 a {
     color: var(--dark-blue);
     border-bottom: 1px solid transparent;
@@ -79,24 +86,9 @@ a:hover {
     color: #ffffff;
 }
 
-/* HEADER STYLES FOR THE OTHER PAGES */
 
-.page__title img {
-    height: 50px;
-}
-.page__title {
-    font-size: 3em;
-}
+/* -------------------- FRONT PAGE HEADER -------------------- */
 
-.page__header__quote {
-    margin: 20px auto;
-    padding: 0 1em;
-    font-size: 1.2rem;
-    line-height: 1.2rem;
-    font-family: 'Inter', sans-serif;
-}
-
-/* HEADER STYLES FOR FRONT PAGE */
 body>header {
     overflow-x: hidden;
     display: block;
@@ -109,7 +101,6 @@ body>header {
     color: var(--bright-yellow);
     font-family: 'Krona One', sans-serif;
 }
-
 
 .home__header, .page__header {
     max-width: 1000px;
@@ -149,11 +140,25 @@ body>header {
 }
 
 
-.announcement a:hover {
-    color: var(--dark-blue);
-    border-bottom: 1px solid var(--dark-blue);
+/* -------------------- NON-FRONT PAGE HEADERS -------------------- */
+
+.page__title img {
+    height: 50px;
 }
-/* STYLING FOR ANY PAGE THAT HAS DARK CONTENT */
+.page__title {
+    font-size: 3em;
+}
+
+.page__header__quote {
+    margin: 20px auto;
+    padding: 0 1em;
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    font-family: 'Inter', sans-serif;
+}
+
+
+/* -------------------- DARK CONTENT STYLING -------------------- */
 
 .dark {
     background: var(--dark-blue);
@@ -180,14 +185,12 @@ body>header {
 
 .dark__welcome {
     flex: 2;
-    /* max-width: 700px; */
     padding: 10px;
 }
 
 .dark__sidebar {
     flex: 1;
     padding: 10px;
-    /* max-width: 300px; */
 }
 
 .dark a {
@@ -208,33 +211,22 @@ body>header {
     padding: 15px;
     margin-bottom: 20px;
 }
-
 .announcement a {
     color:  var(--dark-blue);
     border-bottom: 1px solid var(--dark-blue);
 }
-
 .announcement a:hover{
     color:  var(--dark-blue);
     border-bottom: 1px solid var(--dark-blue);
-}
-
-
-/* for reference if we want banner images in header */
-.live-laugh-logit-bg {
-    background-color: #1152bd;
-    background-image: url("img/live_laugh_logit.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 350px;
-    color: #FFFFFF;
 }
 
 .dark-footer {
     background-color: var(--dark-blue);
     color: #FFFFFF;
 }
+
+
+/* -------------------- NAVBAR/MENU -------------------- */
 
 #navbar {
     width: 100%;
@@ -243,7 +235,19 @@ body>header {
     line-height: 1.2rem;
     padding-bottom: 10px;
 }
+#navbar a{
+    color: var(--bright-yellow);
+    display: inline-block;
+    margin: 10px 15px 10px 0px;
+    text-decoration: none;
+    line-height: 1.2em;
+}
+#navbar a:hover {
+    color: var(--accent-yellow);
+    border-bottom: 1px solid transparent;
+}
 
+/* Applied when page is scrolled down far enough; look at common.js */
 #navbar.fixed {
     left: 0px;
     top: 0px;
@@ -259,25 +263,12 @@ body>header {
 @media screen and (max-width: 992px) {
     #navbar.fixed {
         display: block;
-        /* justify-content: center; */
         padding: 2% 0;
         margin: 0;
     }
 }
 
-#navbar a{
-    color: var(--bright-yellow);
-    display: inline-block;
-    margin: 10px 15px 10px 0px;
-    text-decoration: none;
-    line-height: 1.2em;
-}
-
-#navbar a:hover {
-    color: var(--accent-yellow);
-    border-bottom: 1px solid transparent;
-}
-
+/* Mobile menu */
 button#hamburger {
     margin-left: 1em;
     display: none;
@@ -513,7 +504,6 @@ code.cslogin {
     padding: 0px;
     margin: 0px;
 }
-
 
 footer {
     background-position: bottom;
