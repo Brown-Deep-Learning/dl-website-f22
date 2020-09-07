@@ -66,15 +66,15 @@ $(document).ready(function() {
         if (currentDate < (new Date('2020-11-20'))) { hideAssignmentContent(7); }
         
         // labs
-        if (currentDate < (new Date('2020-09-09'))) { hideLabContent(0); }
-        if (currentDate < (new Date('2020-09-16'))) { hideLabContent(1); }
-        if (currentDate < (new Date('2020-09-23'))) { hideLabContent(2); }
-        if (currentDate < (new Date('2020-09-30'))) { hideLabContent(3); }
-        if (currentDate < (new Date('2020-10-07'))) { hideLabContent(4); }
-        if (currentDate < (new Date('2020-10-14'))) { hideLabContent(5); }
-        if (currentDate < (new Date('2020-10-21'))) { hideLabContent(6); }
-        if (currentDate < (new Date('2020-10-28'))) { hideLabContent(7); }
-        if (currentDate < (new Date('2020-11-18'))) { hideLabContent(8); }
-        if (currentDate < (new Date('2020-12-02'))) { hideLabContent(9); }
+        if (currentDate < (new Date('2020-09-14'))) { hideLabContent(0); }
+        if (currentDate < (new Date('2020-09-21'))) { hideLabContent(1); }
+        if (currentDate < (new Date('2020-09-28'))) { hideLabContent(2); }
+        if (currentDate < (new Date('2020-10-05'))) { hideLabContent(3); }
+        if (currentDate < (new Date('2020-10-12'))) { hideLabContent(4); }
+        if (currentDate < (new Date('2020-10-19'))) { hideLabContent(5); }
+        if (currentDate < (new Date('2020-10-26'))) { hideLabContent(6); }
+        if (currentDate < (new Date('2020-11-02'))) { hideLabContent(7); }
+        if (currentDate < (new Date('2020-11-16'))) { hideLabContent(8); }
+        if (currentDate < (new Date('2020-11-23'))) { hideLabContent(9); }
     }
 });
