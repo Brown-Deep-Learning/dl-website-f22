@@ -595,3 +595,9 @@ footer ul {
         font-size: 3rem;
     }
 }
+
+
+/* Obfuscated email address */
+.cryptedmail:after {
+    content: attr(data-name) "@" attr(data-domain) "." attr(data-tld); 
+}
