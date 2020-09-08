@@ -55,7 +55,7 @@ function hideLabContent(labNumber) {
 $(document).ready(function() {
     // disable assignment hiding until after the website launch date
     const currentDate = new Date();
-    if (currentDate > (new Date('2020-09-09'))) {
+    if (currentDate > (new Date('2020-09-08'))) {
         // assignments
         if (currentDate < (new Date('2020-09-14'))) { hideAssignmentContent(1); }
         if (currentDate < (new Date('2020-09-28'))) { hideAssignmentContent(2); }
