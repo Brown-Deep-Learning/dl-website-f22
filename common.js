@@ -56,7 +56,7 @@ $(document).ready(function() {
     // disable assignment hiding until after the website launch date or if
     // debug search param in url is set
     const currentDate = new Date();
-    const searchParams = new URLSearchParams(window.location.search)
+    const searchParams = new URLSearchParams(window.location.search);
     if (currentDate > (new Date('2020-09-08')) && !searchParams.has('debug')) {
         // assignments
         if (currentDate < (new Date('2020-09-14'))) { hideAssignmentContent(1); }
@@ -68,7 +68,7 @@ $(document).ready(function() {
         if (currentDate < (new Date('2020-11-20'))) { hideAssignmentContent(7); }
         
         // labs
-        if (currentDate < (new Date('2020-09-14'))) { hideLabContent(0); }
+        if (currentDate < (new Date('2020-09-09'))) { hideLabContent(0); }
         if (currentDate < (new Date('2020-09-21'))) { hideLabContent(1); }
         if (currentDate < (new Date('2020-09-28'))) { hideLabContent(2); }
         if (currentDate < (new Date('2020-10-05'))) { hideLabContent(3); }
