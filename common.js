@@ -53,6 +53,7 @@ function hideLabContent(labNumber) {
     });
 }
 $(document).ready(function() {
+    return;
     // disable assignment hiding until after the website launch date
     const currentDate = new Date();
     if (currentDate > (new Date('2020-09-08'))) {
