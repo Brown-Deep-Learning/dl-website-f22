@@ -53,10 +53,11 @@ function hideLabContent(labNumber) {
     });
 }
 $(document).ready(function() {
-    return;
-    // disable assignment hiding until after the website launch date
+    // disable assignment hiding until after the website launch date or if
+    // debug search param in url is set
     const currentDate = new Date();
-    if (currentDate > (new Date('2020-09-08'))) {
+    const searchParams = new URLSearchParams(window.location.search)
+    if (currentDate > (new Date('2020-09-08')) && !searchParams.has('debug')) {
         // assignments
         if (currentDate < (new Date('2020-09-14'))) { hideAssignmentContent(1); }
         if (currentDate < (new Date('2020-09-28'))) { hideAssignmentContent(2); }
