@@ -59,24 +59,24 @@ $(document).ready(function() {
     const searchParams = new URLSearchParams(window.location.search);
     if (currentDate > (new Date('2020-09-08')) && !searchParams.has('debug')) {
         // assignments
-        if (currentDate < (new Date('2020-09-15'))) { hideAssignmentContent(1); }
-        if (currentDate < (new Date('2020-09-28'))) { hideAssignmentContent(2); }
-        if (currentDate < (new Date('2020-10-14'))) { hideAssignmentContent(3); }
-        if (currentDate < (new Date('2020-10-26'))) { hideAssignmentContent(4); }
-        if (currentDate < (new Date('2020-11-02'))) { hideAssignmentContent(5); }
-        if (currentDate < (new Date('2020-11-13'))) { hideAssignmentContent(6); }
-        if (currentDate < (new Date('2020-11-20'))) { hideAssignmentContent(7); }
+        if (currentDate < (new Date('Sep 14 2020 00:00:00 EDT'))) { hideAssignmentContent(1); }
+        if (currentDate < (new Date('Sep 28 2020 00:00:00 EDT'))) { hideAssignmentContent(2); }
+        if (currentDate < (new Date('Oct 14 2020 00:00:00 EDT'))) { hideAssignmentContent(3); }
+        if (currentDate < (new Date('Oct 26 2020 00:00:00 EDT'))) { hideAssignmentContent(4); }
+        if (currentDate < (new Date('Nov 02 2020 00:00:00 EST'))) { hideAssignmentContent(5); }
+        if (currentDate < (new Date('Nov 13 2020 00:00:00 EST'))) { hideAssignmentContent(6); }
+        if (currentDate < (new Date('Nov 20 2020 00:00:00 EST'))) { hideAssignmentContent(7); }
         
         // labs
-        if (currentDate < (new Date('2020-09-09'))) { hideLabContent(0); }
-        if (currentDate < (new Date('2020-09-21'))) { hideLabContent(1); }
-        if (currentDate < (new Date('2020-09-28'))) { hideLabContent(2); }
-        if (currentDate < (new Date('2020-10-05'))) { hideLabContent(3); }
-        if (currentDate < (new Date('2020-10-12'))) { hideLabContent(4); }
-        if (currentDate < (new Date('2020-10-19'))) { hideLabContent(5); }
-        if (currentDate < (new Date('2020-10-26'))) { hideLabContent(6); }
-        if (currentDate < (new Date('2020-11-02'))) { hideLabContent(7); }
-        if (currentDate < (new Date('2020-11-16'))) { hideLabContent(8); }
-        if (currentDate < (new Date('2020-11-23'))) { hideLabContent(9); }
+        if (currentDate < (new Date('Sep 09 2020 00:00:00 EDT'))) { hideLabContent(0); }
+        if (currentDate < (new Date('Sep 21 2020 00:00:00 EDT'))) { hideLabContent(1); }
+        if (currentDate < (new Date('Sep 28 2020 00:00:00 EDT'))) { hideLabContent(2); }
+        if (currentDate < (new Date('Oct 05 2020 00:00:00 EDT'))) { hideLabContent(3); }
+        if (currentDate < (new Date('Oct 12 2020 00:00:00 EDT'))) { hideLabContent(4); }
+        if (currentDate < (new Date('Oct 19 2020 00:00:00 EDT'))) { hideLabContent(5); }
+        if (currentDate < (new Date('Oct 26 2020 00:00:00 EDT'))) { hideLabContent(6); }
+        if (currentDate < (new Date('Nov 02 2020 00:00:00 EST'))) { hideLabContent(7); }
+        if (currentDate < (new Date('Nov 16 2020 00:00:00 EST'))) { hideLabContent(8); }
+        if (currentDate < (new Date('Nov 23 2020 00:00:00 EST'))) { hideLabContent(9); }
     }
 });
