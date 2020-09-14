@@ -59,7 +59,7 @@ $(document).ready(function() {
     const searchParams = new URLSearchParams(window.location.search);
     if (currentDate > (new Date('2020-09-08')) && !searchParams.has('debug')) {
         // assignments
-        if (currentDate < (new Date('2020-09-14'))) { hideAssignmentContent(1); }
+        if (currentDate < (new Date('2020-09-15'))) { hideAssignmentContent(1); }
         if (currentDate < (new Date('2020-09-28'))) { hideAssignmentContent(2); }
         if (currentDate < (new Date('2020-10-14'))) { hideAssignmentContent(3); }
         if (currentDate < (new Date('2020-10-26'))) { hideAssignmentContent(4); }
