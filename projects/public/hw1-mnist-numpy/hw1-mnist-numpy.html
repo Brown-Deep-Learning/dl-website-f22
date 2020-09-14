@@ -352,13 +352,13 @@
                     </li>
                 </ul>
                 <p>
-                    You will also need fill in the function for batching,
-                    get_next_batch(idx, data, labels, batch_size). You will want
-                    to return a slice of data and a slice of labels. The slice
-                    of data should start at index <code>idx</code> in data and
-                    be of length <code>batch_size</code>. The same goes for the
-                    slice of labels. These two slices represent a batch of data
-                    and a batch of labels.
+                    You may also find it helpful in preprocessing to create a helper 
+                    function for batching, which returns a slice of data and a slice 
+                    of labels, given a starting index for the slice and the batch size. 
+                    These two slices represent a batch of data and a batch of labels. 
+                    Note: this function isn't required for you to create/implement. 
+                    If you can think of another place or way to batch the data, 
+                    feel free to do it as you like it! 
                 </p>
                 <h3 id="step-2-fill-in-the-model">Step 2. Fill in the Model</h3>
                 <ul>
