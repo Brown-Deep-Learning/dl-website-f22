@@ -6,7 +6,7 @@ const LARGEST_BODY_LENGTH = 50;
 const LOOP_LIMIT = 100000;
 const m = 0.5;
 const e = 0.00001;
-let container_dims = {}
+let container_dims = {};
 
 const random = (min, max) => {
     return min + Math.random() * (max - min);
