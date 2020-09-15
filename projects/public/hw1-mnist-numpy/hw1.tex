@@ -6,7 +6,7 @@
 
 
 \title{Homework 1: MNIST with NumPy}
-\date{Due September 25, 2019 at 11:59pm}
+\date{Due September 21, 2020 at 11:59pm AoE}
 \author{CS 1470/2470}
 \begin{document}
 
@@ -20,9 +20,6 @@
     \textit{Hint: Consider how and when we update weights.}
 
     \item In lecture, the update rule for weights in a single layer, multi-class neural network with cross entropy loss was defined as follows:
-    
-   
-   
    
    Let $w_{ji}$ be the weight that corresponds to the $j$th class and the $i$th input feature, $x_i$. Let $c$ equal the correct class for a given input. Our loss is then:
   
@@ -63,18 +60,17 @@
 
 \section{Ethical Implications}
 \begin{enumerate}
-\item What are some qualities of MNIST that make it a ``good'' dataset for a classification problem? (2-3 sentences) 
-\item \textbf{Algorithms in the real world:} Suppose you are an administrator of the US Postal Service in the 1990s.
-    \begin{enumerate}
-        \item What positive effects (if any) would result from deploying an MNIST-trained neural network to recognize handwritten zip codes on mail? (1-4 sentences) 
-        \item What negative effects (if any) might result from deploying such an architecture? (1-4 sentences)
-        
-    \end{enumerate}
-    
+\item Create a scenario where MNIST is used to create a model to solve a social problem in the real world (e.g read and sort area codes on mail for postal services). (4-10 sentences)
+
+\item How can you collect datasets of handwriting samples from people in a privacy-preserving way? (4 sentences minimum)
+
+\item What are 2-3 potential biases the model in your scenario may have? What are possible consequences for each bias you identified? (4 sentences minimum)
+
+\item How can you modify the model, dataset, and/or use of the model to mitigate the potential social issues or biases from part (b)? (4 sentences minimum)
     
 \end{enumerate}
 
-\section{CS2470-only Questions}
+\section{CS2470-only Questions: Part 1}
 
 \begin{enumerate}
 
@@ -97,4 +93,20 @@
     
 \end{enumerate}
 
+\section{CS2470-only Questions: Part 2}
+
+    In the assignment, you will see that our single-layer neural network can classify the digit with pretty good accuracy. Still, there are several ways in which one could improve the accuracy of the model. The paper in the link below suggests an easy way to increase the performance without changing the architecture of our network: training several identical models! Please read the following paper and answer the following questions.
+    \newline \newline
+    Link:\href{https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6065510} 
+    (you might need Brown authentication for accessing this paper)
+
+\begin{enumerate}
+
+    \item What is the committee? Why would it help increase the performance of the model?
+    
+    \item What is the preprocessing they implement in this paper? How does preprocessing prevent the models' errors from being strongly correlated to each other?
+    
+\end{enumerate}
+
 \end{document}
+
