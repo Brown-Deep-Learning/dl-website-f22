@@ -72,13 +72,10 @@ body {
 
 a {
     color: var(--dark-blue);
-    border-bottom: 1px solid transparent;
-    text-decoration: none;
 }
 
 a:hover {
     color: var(--accent-yellow);
-    border-bottom: 1px solid var(--accent-yellow);
 }
 
 ::selection {
@@ -195,12 +192,10 @@ body>header {
 
 .dark a {
     color: var(--accent-yellow);
-    border-bottom: 1px solid transparent;
 }
 
 .dark a:hover {
     color: var(--accent-yellow);
-    border-bottom: 1px solid var(--accent-yellow);
 }
 
 /* announcement for home page */
@@ -213,11 +208,9 @@ body>header {
 }
 .announcement a {
     color:  var(--dark-blue);
-    border-bottom: 1px solid var(--dark-blue);
 }
 .announcement a:hover{
     color:  var(--dark-blue);
-    border-bottom: 1px solid var(--dark-blue);
 }
 
 .dark-footer {
@@ -244,7 +237,6 @@ body>header {
 }
 #navbar a:hover {
     color: var(--accent-yellow);
-    border-bottom: 1px solid transparent;
 }
 
 /* Applied when page is scrolled down far enough; look at common.js */
