@@ -130,17 +130,18 @@
                     From homework 2 onward, we will no longer use
                     Gradescope&#39;s online assignment feature for conceptual
                     questions (which was used in hw1); instead we will do pdf
-                    submissions to Gradescope. Please submit your pdf with
-                    answers to conceptual questions as a pdf on Gradescope under
-                    HW2 Conceptual Questions: CIFAR2: Convolutional Neural
-                    Networks. LaTex is recommended but not required.
+                    submissions to Gradescope. Please submit your pdf with answers
+                    to all conceptual questions as one pdf on Gradescope under 
+                    HW2 Conceptual Questions: CIFAR2: Convolutional Neural Networks. 
+                    When submitting the pdf to Gradescope, be sure to select in Gradescope 
+                    which pages match with which questions. LaTex is recommended but not required.
                 </p>
                 <p>
                     2470 students only: If you are in 2470, all conceptual
                     questions (including non-2470 ones) should be written as one
                     pdf and submitted to the &quot;[CS2470] Hw2 Conceptual
-                    Questions: Convolution Neural Networks&quot; assignment. Do
-                    not submit also to the CS1470 conceptual assignment.
+                    Questions: Convolution Neural Networks&quot; assignment. <strong>Do
+                    not submit also to the CS1470 conceptual assignment.</strong>
                 </p>
                 <p>
                     You can find the conceptual questions on
@@ -201,7 +202,7 @@
                     <strong
                         >This assignment should take longer to run than the
                         previous assignment. If completed correctly, the model
-                        should train and test within 10 minutes on a department
+                        should train and test within 15 minutes on a department
                         machine.</strong
                     >
                     While you will mainly be using TensorFlow functions, the
@@ -243,9 +244,9 @@
                 </p>
                 <h2 id="assignment-overview">Assignment Overview</h2>
                 <p>
-                    Your task is a binary classification rather multi-class
+                    Your task is a binary classification rather than multi-class
                     classification problem. We are doing
-                    <strong>CIFAR2, not CIFAR10</strong> While the CIFAR10
+                    <strong>CIFAR2, not CIFAR10</strong>. While the CIFAR10
                     dataset has 10 possible classes (airplane, automobile, bird,
                     cat, deer, frog, horse, ship, and truck), you will build a
                     CNN to take in an image and correctly predict its class to
@@ -339,9 +340,9 @@
                     <li>
                         You now have inputs and labels of only two classes, but
                         the label numbers do not represent the binary inputs.
-                        You&#39;ll want to re-number the labels such that one
-                        label class is 0 and the other is 1 (it does not matter
-                        which is which). You might find
+                        You will want to re-number the labels such that the cat label class is 0 
+                        and the dog label is 1 (for your own training purposes, it doesn't matter which is which; 
+                        however, we require this specificity for our autograder). You might find
                         <code>numpy.where</code> [<a
                             href="https://numpy.org/doc/stable/reference/generated/numpy.where.html"
                             >https://numpy.org/doc/stable/reference/generated/numpy.where.html</a
@@ -602,7 +603,7 @@
                         and test data, initialize your model, and train it for
                         many epochs. We suggest training for 10 epochs. For the
                         autograder, we will train it for at most 25 epochs (hard
-                        limit of 10 minutes). We have provided for you a train
+                        limit of 15 minutes). We have provided for you a train
                         and test method to fill out. The train method will take
                         in the model and do the forward and backward pass for
                         <strong>a SINGLE epoch</strong>. Yes, this means that,
@@ -1002,7 +1003,7 @@
                 </p>
                 <p>&quot;Definitely dogs.&quot; - Kevin Du</p>
                 <p>
-                    &quot;introvertly a cat, extrovertly a dog&quot; - Koyena
+                    &quot;Introvertly a cat, extrovertly a dog&quot; - Koyena
                     Pal
                 </p>
                 <p>
