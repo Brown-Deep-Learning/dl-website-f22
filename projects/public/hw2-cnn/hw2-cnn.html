@@ -508,6 +508,9 @@
                                             >[<code>tf.nn.moments</code>]</a
                                         >.
                                         Pass in [0,1,2] as the axes as we want to do "global normalization".
+                                        You'll also need to pass in a "variance_epsilon," this is for the purpose of
+                                        not dividng by 0 if the variance is 0. We recommend you pass in 1e-5 or a
+                                        smaller number.
                                     </li>
                                 </ul>
                             </li>
