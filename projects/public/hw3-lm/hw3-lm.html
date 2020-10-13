@@ -80,16 +80,20 @@
             <!-- Oct. 19th/Oct. 23rd -->
             <p><strong>Conceptual Questions</strong> due <strong>Monday, 10/19/20 at 11:59pm AoE</strong></p>
             <p><strong>Code</strong> due <strong>Friday, 10/23/20 at 11:59pm AoE</strong></p>
-            <p>This sentence is words. These words have meaning. How can we make a computer make words with meaning?</p>
-            <p>We will be building a model that can generate language just as coherent as this as coherent as this as
-                coherent as
-                this is!</p>
+            <p>Is that Matthew McCounaughey right outside of Blueno's spaceship? Is this the plot of Interstellar?</p>
+            <p>Legally, no, as we do not want to get in trouble for copyright infringement. 
+                But those words made you think so huh? If Blueno encountered extraterrestrial or even terrestrial (The Martian?) 
+                life out in the cosmos, he may want to use such words and share important knowledge about his home and native language 
+                and love of the Neil deGrasse Tyson show "Cosmos"! We will be building a model that can generate language almost as 
+                coherent as this as coherent as this as coherent as this is!</p>
             <h2 id="conceptual-questions">Conceptual Questions</h2>
             <p>Please fill out the conceptual questions on Gradescope under Hw3 Conceptual Questions: Language Models.
                 You should be
                 able to type in the questions and use latex with $$[LaTeX]$$ or upload photos of written work. The
                 conceptual
-                questions are due <strong>Monday, 10/19/20 at 11:59pm</strong>.</p>
+                questions are due <strong>Monday, 10/19/20 at 11:59pm AoE</strong>.</p>
+            <p>If you are a 1470 student, submit your assignment through the "[CS1470]" version. If you are a 2470 student,
+                submit your assignment through the "[CS2470]" version.
             <p>Your README should just contain your accuracy and any bugs you have.</p>
             <h2 id="getting-the-stencil">Getting the stencil</h2>
             <p>Please click on <a href="https://classroom.github.com/a/peKSf1fK">link to GitHub Classroom link</a> to
@@ -104,32 +108,43 @@
                 (if it exists
                 for that homework). Students need to run download.sh to get the data, but they might not need to run
                 create_venv.sh
-                as we would also provide our course’s public virtual environment that they can use (to be created when
-                the
-                requirements.txt is finalized)</p>
-            <p>*Note, you may choose to develop your project in REPL.it, an online IDE linked to your GitHub Repo, but
-                make sure you
-                still git commit and push!</p>
+                as we would also provide our course’s public virtual environment that they can use. </p>
             <h2 id="setup">Setup</h2>
             <p>Work on this assignment off of the stencil code provided, but <strong>do not change the stencil except
                     where
                     specified.</strong> Changing the stencil will result in incompatiblity with the autograder and
                 result in a low
-                grade. You shouldn&#39;t change any method signatures.</p>
+                grade. You shouldn't change any method signatures.</p>
+            <p> To run the virtual environment on a department machine, you can run:</p>
+            <code>source /course/cs1470/tf-2.3/bin/activate</code>
+            <p>You can also check out the Python virtual environment guide to set up TensorFlow 2.0 on your local machine.</p>
+            
             <h2 id="assignment-overview">Assignment Overview</h2>
-            <p>Your task is a language modeling problem. This assignment has <strong>2 main parts</strong> and the usual
-                conceptual
-                questions. You will implement two different types of language models and train them on the modified Wall
-                Street
-                Journal corpus we have provided. They will share a preprocessing file. You must also answer language
-                model
-                conceptual questions.</p>
+            
+            <p>Your task is a language modeling problem. This assignment has <strong>2 main parts</strong>. 
+                You will implement two different types of language models and train them on the modified Simple
+                English Wikipedia corpus we have provided. We will share a preprocessing file.</p>
+            
             <h2 id="roadmap">Roadmap</h2>
+            
             <h3 id="step-1-preprocessing">Step 1: Preprocessing</h3>
-            <p>Your preprocessing file should contain a get_data() function. This function takes a training file and
-                testing file.
+            
+            <p> <strong>The Corpus:</strong> When it comes to language modeling, there is a LOT of data out there! 
+                In language modeling, we take some set of words, and train our model to predict the next, so almost any large text corpus will do.
             </p>
-            <p>In this function you should:</p>
+            <p>Our data comes from the Simple English Wikipedia corpus, and comprises articles about various earthly topics. 
+                English, and all natural languages, are tricky! 
+                To make things easier, we have simplified the already-simple Simple Wiki! 
+                You will notice a few strange things in the corpus: 
+                inflectional morphology, numbers, and pronouns have been "lemmatized" (e.g. "I am teleporting" --> " be teleport"). 
+                Lemmatization is based on the principle that "teleport", "teleports", "teleported", and "teleporting" all contribute similar 
+                content to the sentence; rather than learn 4 words, the model only needs to learn one! 
+                Additionally, you will find things that look like this: <_UNK>.
+            </p>
+            <p>Uncommon words have been <i>UNKed</i>. This is a common preprocessing technique to remove rare words 
+                while preserving basic information about their role in the sentence; this will help the model 
+                focus more on learning patterns in general, common language. Because of this 'UNKing' there are no words 
+                in the testing corpus that are not in the training corpus!</p>
             <ul>
                 <li>
                     <p>Load the train words and split the words on whitespace.</p>
