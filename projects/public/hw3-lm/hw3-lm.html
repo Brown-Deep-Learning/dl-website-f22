@@ -121,9 +121,9 @@
             
             <h2 id="assignment-overview">Assignment Overview</h2>
             
-            <p>Your task is a language modeling problem. This assignment has <strong>2 main parts</strong>. 
+            <p>Your task is a language modeling problem. This assignment has 1 preprocessing part and <strong>2 main parts</strong>. 
                 You will implement two different types of language models and train them on the modified Simple
-                English Wikipedia corpus we have provided. We will share a preprocessing file.</p>
+                English Wikipedia corpus we have provided. Both language model implementations will share a preprocessing file.</p>
             
             <h2 id="roadmap">Roadmap</h2>
             
@@ -148,25 +148,25 @@ Your preprocessing file should contain a get_data() function. This function take
 </li>
 </ol>
 <h3 id="mandatory-hyperparameters">Mandatory Hyperparameters</h3>
-<p>When creating your each of your Trigram/RNN models, you must use a single embedding matrix. Remember that there should be a nonlinear function (in our case RelU), applied between the feed-forward layers.</p>
+<p>When creating your each of your Trigram/RNN models, you must use a single embedding matrix (meaning one embedding matrix for each model). Remember that there should be a nonlinear function (in our case RelU), applied between the feed-forward layers, but never applied after the last feed-forward layer.</p>
 <p>For your Trigram, you must use two words to predict a third.
 For your RNN, you must use a window size of 20.
 You can have any batch size for either of these models.</p>
 <p><strong>However, your models must train in under 10 minutes on a department machine!</strong></p>
 <h3 id="step-2-trigram-language-model">Step 2: Trigram Language Model</h3>
-<p>In the Trigam Language Model Part of the assignment, you will build a neural network that takes two words and predicts the third. It should do this by looking up the input words in the embedding matrix, and feeding the result into a set of feed-forward layers. You can look up words in an embedding matrix with their ids using the function <a href="https://www.tensorflow.org/api_docs/python/tf/nn/embedding_lookup">tf.nn.embedding_lookup</a>.</p>
+<p>In the Trigam Language Model part of the assignment, you will build a neural network that takes two words and predicts the third. It should do this by looking up the input words in the embedding matrix, and feeding the result into a set of feed-forward layers. You can look up words in an embedding matrix with their ids using the function <a href="https://www.tensorflow.org/api_docs/python/tf/nn/embedding_lookup">tf.nn.embedding_lookup</a>.</p>
 <p>Create your model</p>
 <ul>
 <li>Fill out the init function, and define your trainable variables. This will include an embedding matrix.</li>
 <li>Fill out the call function using the trainable variables you&#39;ve created.</li>
-<li>Calculate the softmax cross-entropy loss on the probabilities compared to the labels (These should NOT be one hot vectors). We recommend using <code>tf.keras.losses.sparse_categorical_crossentropy</code>. <em>Note that this function can take in logits or probabilities depending on the arguments you pass in, but we want you to use probabilities.</em></li>
+<li>Calculate the cross-entropy loss on the <strong>probabilities</strong> compared to the labels (These should NOT be one hot vectors). We recommend using <code>tf.keras.losses.sparse_categorical_crossentropy</code>. <em>Note that this function can take in logits or probabilities depending on the arguments you pass in, but we want you to use probabilities.</em></li>
 </ul>
 <p>Train and test</p>
 <ul>
 <li>In the main function, you will want to get your train and test data, initialize your model, and train it for <strong>1 epoch</strong>. We have provided you with a train and test method to fill out. The train method will take in the model and do the forward and backward pass.</li>
 </ul>
 <h3 id="step-3-rnn-language-model-with-keras-layers-">Step 3: RNN Language Model...with Keras Layers!</h3>
-<p>What is Keras, you ask? An open-source neural-network library primarily authored and maintained by Google engineer François Chollet. This library allows us to add in a little more abstraction when implementing more complex architectures, like LSTMs and GRUs. Going forward, unless otherwise specified, you can use <a href="https://www.tensorflow.org/api_docs/python/tf/keras/layers">keras layers</a> in your model.</p>
+<p>What is Keras, you ask? An open-source neural-network library primarily authored and maintained by Google engineer François Chollet. This library allows us to add in a little more abstraction when implementing more complex architectures, like LSTMs and GRUs. Going forward, unless otherwise specified, you can use <a href="https://www.tensorflow.org/api_docs/python/tf/keras/layers">keras layers</a> in your model. Isn't that tres bien?!</p>
 <p>For these assignment, the relevant layers are:</p>
 <ul>
 <li><p><a href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/GRU">tf.keras.layers.GRU</a> OR <a href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/LSTM">tf.keras.layers.LSTM</a> for your RNN</p>
@@ -175,10 +175,10 @@ You can have any batch size for either of these models.</p>
 </li>
 </ul>
 <p>You can define these layers in your init, then call them on your inputs in your model.call function.</p>
-<p>Note: <strong>Do not use the sequential API.</strong></p>
+<p>Note: <strong>Do not use the sequential API or you will be heavily penalized.</strong></p>
 <p>Create your model</p>
 <ul>
-<li>Fill out the init function, and define your trainable variables. As for trigrams, this will include an embedding matrix. However, for this part assignment, you will now want to define an rnn keras layer, along with dense layers.</li>
+<li>Fill out the init function, and define your trainable variables. As for trigrams, this will include an embedding matrix. However, for this part assignment, you will now want to define an RNN Keras layer, along with dense layers. How many dense layers you use is up to you, but remember to use activation functions between layers, but not after the last layer.</li>
 </ul>
 <p><strong>When you define your keras layer, make sure that you initialize it with return_sequences=True, return_state=True.</strong></p>
 <ul>
@@ -187,6 +187,7 @@ You can have any batch size for either of these models.</p>
 <p><strong>Note that the final state from an LSTM has two components, the last output and cell state. These are the second and third outputs of calling the RNN. If you use a GRU, the final state is the second output returned by the RNN layer.</strong></p>
 <p>Additionally, you may want to include logic for handling when the initial state is None.</p>
 <ul>
+<li><strong> We require that you return the probabilities and the cell state. This is a standardization thing, we do not test the actual state, but if some students returned it for using the generate_sentences function and some did not, our autograder would break. So you must return both.</strong>
 <li>Calculate the average softmax cross-entropy loss on the probabilities compared to the labels. Again, we suggest using <code>tf.keras.losses.sparse_categorical_crossentropy</code>.</li>
 </ul>
 <p>Train and test</p>
