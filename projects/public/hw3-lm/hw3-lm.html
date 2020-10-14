@@ -185,7 +185,8 @@ You can have any batch size for either of these models.</p>
 <li>Fill out the call function using the trainable variables you&#39;ve created.</li>
 </ul>
 <p><strong>Note that the final state from an LSTM has two components, the last output and cell state. These are the second and third outputs of calling the RNN. If you use a GRU, the final state is the second output returned by the RNN layer. 
-We require that you return the probabilities and the cell state. This is a standardization thing, we do not test the actual state, but if some students returned it for using the generate_sentences function and some did not, our autograder would break. So you must return both.</strong></p>
+We require that you return the probabilities and the cell state. This is a standardization thing, we do not actually test the cell state, it is there for you to use for the generate_sentences function. 
+But if some students returned it and some did not, our autograder would break. So you must return both.</strong></p>
 <p>Additionally, you may want to include logic for handling when the initial state is None.</p>
 <ul>
 <li>Calculate the average softmax cross-entropy loss on the probabilities compared to the labels. Again, we suggest using <code>tf.keras.losses.sparse_categorical_crossentropy</code>.</li>
