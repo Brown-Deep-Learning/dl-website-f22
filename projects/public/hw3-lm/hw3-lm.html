@@ -159,7 +159,7 @@ You can have any batch size for either of these models.</p>
 <ul>
 <li>Fill out the init function, and define your trainable variables. This will include an embedding matrix.</li>
 <li>Fill out the call function using the trainable variables you&#39;ve created.</li>
-<li>Calculate the softmax cross-entropy loss on the logits compared to the labels (These should NOT be one hot vectors). We recommend using <code>tf.keras.losses.sparse_categorical_crossentropy</code>. <em>Note that this function can take in logits or probabilities depending on the arguments you pass in.</em></li>
+<li>Calculate the softmax cross-entropy loss on the probabilities compared to the labels (These should NOT be one hot vectors). We recommend using <code>tf.keras.losses.sparse_categorical_crossentropy</code>. <em>Note that this function can take in logits or probabilities depending on the arguments you pass in, but we want you to use probabilities.</em></li>
 </ul>
 <p>Train and test</p>
 <ul>
@@ -187,7 +187,7 @@ You can have any batch size for either of these models.</p>
 <p><strong>Note that the final state from an LSTM has two components, the last output and cell state. These are the second and third outputs of calling the RNN. If you use a GRU, the final state is the second output returned by the RNN layer.</strong></p>
 <p>Additionally, you may want to include logic for handling when the initial state is None.</p>
 <ul>
-<li>Calculate the average softmax cross-entropy loss on the logits compared to the labels. Again, we suggest using <code>tf.keras.losses.sparse_categorical_crossentropy</code>.</li>
+<li>Calculate the average softmax cross-entropy loss on the probabilities compared to the labels. Again, we suggest using <code>tf.keras.losses.sparse_categorical_crossentropy</code>.</li>
 </ul>
 <p>Train and test</p>
 <ul>
@@ -208,7 +208,7 @@ You can have any batch size for either of these models.</p>
 <p><strong>Conceptual:</strong> You will be primarily graded on correctness (when applicable), thoughtfulness, and clarity.</p>
 <h2 id="autograder">Autograder</h2>
 <p><strong>Your model must complete training within 10 minutes for your Trigram Model, and 10 minutes for the RNN.</strong></p>
-<p>Our autograder will import your model and your preprocessing functions. We will feed the result of your <code>get_data</code> function called on a path to our data and pass the result to your train method in order to return a fully trained model. This will just batch the testing data using YOUR batch size and run it through your model&#39;s <code>call</code> function. The <strong>logits</strong> which are returned will then be fed through an accuracy function. In order to ensure you don&#39;t lose points, you need to make sure that you... A) correctly return training inputs and labels from <code>get_data</code>, B ) ensure that your model&#39;s <code>call</code> function returns probabilities from the inputs specified, and C) it does not rely on any packages outside of tensorflow, numpy, matplotlib, or the python standard library.</p>
+<p>Our autograder will import your model and your preprocessing functions. We will feed the result of your <code>get_data</code> function called on a path to our data and pass the result to your train method in order to return a fully trained model. This will just batch the testing data using YOUR batch size and run it through your model&#39;s <code>call</code> function. The <strong>probabilities</strong> which are returned will then be fed through an accuracy function. In order to ensure you don&#39;t lose points, you need to make sure that you... A) correctly return training inputs and labels from <code>get_data</code>, B ) ensure that your model&#39;s <code>call</code> function returns probabilities from the inputs specified, and C) it does not rely on any packages outside of tensorflow, numpy, matplotlib, or the python standard library.</p>
 <h2 id="handing-in">Handing In</h2>
 <p>You should submit the assignment via Gradescope under the corresponding project assignment by zipping up your hw3 folder.</p>
 <p>IMPORTANT!
