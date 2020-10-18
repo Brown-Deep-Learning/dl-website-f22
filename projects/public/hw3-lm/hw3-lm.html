@@ -195,7 +195,8 @@ But if some students returned it and some did not, our autograder would break. S
 </ul>
 <p>Train and test</p>
 <ul>
-<li><p>In the main function, you will want to get your train and test data, initialize your model, and train it for <strong>1 epoch</strong>. We have provided for you a train and test method to fill out. The train method will take in the model and do the forward and backward pass.</p>
+<li><p>In the main function, you will want to get your train and test data, initialize your model, and train it for <strong>1 epoch</strong>. We have provided for you a train and test method to fill out. The train method will take in the model and do the forward and backward pass.
+The train function and the test function take in (num_inputs) shaped inputs and (num_labels) shaped labels, do not reshape them to be of (-1,window_size) until you're in the train/test function.</p>
 </li>
 <li><p><strong>You do not need to pass your hidden state between batches!</strong></p>
 </li>
