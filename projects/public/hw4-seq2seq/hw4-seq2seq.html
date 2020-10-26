@@ -1,8 +1,82 @@
 <!DOCTYPE html>
-<html><head><style>body {
-   color: black;
-}
-</style></head><body><h1 id="hw4-machine-translation">HW4: Machine Translation</h1>
+<html>
+
+<head>
+    <title>CS147 - Deep Learning | Brown University</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" type="text/css" href="../../../normalize.css">
+
+    <!-- for syntax highlighting of code blocks -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script charset="UTF-8"
+        src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/languages/go.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    <!-- MathJax -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+        </script>
+
+    <!-- NOTE: Script closing tags need to be on separate line for markdown-to-html script to process them properly :-(  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="../../../random-bowties.js">
+    </script>
+    <script type="text/javascript" src="../../../create-sidebar.js">
+    </script>
+    <script type="text/javascript" src="../../../common.js">
+    </script>
+
+</head>
+
+<body>
+    <header>
+        <div class="page__header">
+            <div class="page__title">
+                <img src="../../../assets/planets/4.png" />
+                Assignment 4
+            </div>
+
+
+            <!-- kept for spacing-->
+            <div class="page__header__quote">
+            </div>
+
+            <nav id="navbar">
+                <button id="hamburger" onclick="toggleMobileMenu(this)">
+                    <div id="hamburger-bar-1"></div>
+                    <div id="hamburger-bar-2"></div>
+                    <div id="hamburger-bar-3"></div>
+                </button>
+                <a class="nav-link" href="../../../index.html">Home</a>
+                <a class="nav-link" href="../../../resources.html">Resources</a>
+                <a class="nav-link" href="../../../lectures.html">Lectures</a>
+                <a class="nav-link" href="../../../assignments.html">Assignments</a>
+                <a class="nav-link" href="../../../labs.html">Labs</a>
+                <a class="nav-link" href="../../../calendar.html">Calendar &amp; Hours</a>
+                <a class="nav-link" href="../../../staff.html">Staff</a>
+            </nav>
+        </div>
+    </header>
+    <main class="hw4-content">
+        <section class="has-sidebar">
+            <h1 id="hw4-machine-translation">HW4: Machine Translation</h1>
 <p><strong>Conceptual Questions</strong> due <strong>Friday, 10/30/20 at 11:59pm AoE</strong>
 <strong>Code</strong> due <strong>Wednesday, 11/4/20 at 11:59pm AoE</strong></p>
 <p>Buenos días. اهلا وسهلا. 你好. Bonjour. Hello.
@@ -136,4 +210,19 @@ While not required, a learning rate of 0.001 and a batch size of 100 is recommen
 Please make sure all *.py are in “hw4/code” this is very important for our autograder to work!
 DELETE the data folder before you zip up your code, it might be too big to upload to Gradescope</p>
 <p>IF YOU ARE IN 2470: PLEASE REMEMBER TO ADD A BLANK FILE CALLED “2470student” IN THE hw4/code DIRECTORY, WE ARE USING THIS AS A FLAG TO GRADE 2470 SPECIFIC REQUIREMENTS, FAILURE TO DO SO MEANS LOSING POINTS ON THIS ASSIGNMENT.</p>
-</body></html>
+        </section>
+        <aside class="not-mobile">
+        </aside>
+    </main>
+
+    <footer class="dark-footer">
+        <img id="footer-earmuffs" class="random-earmuffs" src="http://cs.brown.edu/courses/cs1470/img/sparkle.png">
+        <ul class="menu">
+            <li>&copy; 2019 CS1470/2470 TA Staff | Computer Science Department | Brown University</li>
+        </ul>
+        <br>
+    </footer>
+
+</body>
+
+</html>
