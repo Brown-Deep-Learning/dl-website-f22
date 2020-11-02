@@ -63,7 +63,7 @@ $(document).ready(function() {
         if (currentDate < (new Date('Sep 28 2020 00:00:00 EDT'))) { hideAssignmentContent(2); }
         if (currentDate < (new Date('Oct 14 2020 00:00:00 EDT'))) { hideAssignmentContent(3); }
         if (currentDate < (new Date('Oct 26 2020 00:00:00 EDT'))) { hideAssignmentContent(4); }
-        if (currentDate < (new Date('Nov 02 2020 00:00:00 EST'))) { hideAssignmentContent(5); }
+        if (currentDate < (new Date('Nov 04 2020 00:00:00 EST'))) { hideAssignmentContent(5); }
         if (currentDate < (new Date('Nov 13 2020 00:00:00 EST'))) { hideAssignmentContent(6); }
         if (currentDate < (new Date('Nov 20 2020 00:00:00 EST'))) { hideAssignmentContent(7); }
         
