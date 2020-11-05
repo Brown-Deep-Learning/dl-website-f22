@@ -113,15 +113,13 @@
             <ul>
                 <li>Nodes are represented as indices (e.g if you have ten nodes in your graph g , <code>g.nodes()</code>
                     will return <code>[0, 1, 2, ..., 9]</code>)</li>
-                <li>
-                    <p>Edges are represented as a tuple of <code>(src, dst)</code>. That is,
-                        <code>([0, 1, 2], [2, 2, 1])</code> represents a graph with an edge from node 0 to node 2, 1 to
-                        2, and 2 to 1.</p>
-                    <p> We recommend you take a look at the DGL documentation for <a
-                            href="https://docs.dgl.ai/en/latest/guide/graph-graphs-nodes-edges.html#guide-graph-graphs-nodes-edges">1.2
-                            Graphs, Nodes, and Edges</a> for more information.</p>
-                </li>
+                <li>Edges are represented as a tuple of <code>(src, dst)</code>. That is,
+                    <code>([0, 1, 2], [2, 2, 1])</code> represents a graph with an edge from node 0 to node 2, 1 to 2,
+                    and 2 to 1.</li>
             </ul>
+            <p>We recommend you take a look at the DGL documentation for <a
+                    href="https://docs.dgl.ai/en/latest/guide/graph-graphs-nodes-edges.html#guide-graph-graphs-nodes-edges">1.2
+                    Graphs, Nodes, and Edges</a> for more information.</p>
             <p>2) Each node has features, which it carries via some attribute. This data will be the node vector that
                 represents the current state of each node during message passing. You&#39;ll need to set data for each
                 node before you do this message passing.</p>
@@ -162,6 +160,7 @@
             <h2 id="roadmap">Roadmap</h2>
             <h3 id="step-1-preprocessing">Step 1: Preprocessing</h3>
             <h4 id="preprocess-the-data">Preprocess the data</h4>
+            <p>We will be using <code>1-balance.sdf</code> for training and testing.</p>
             <p>Reading sdf files is a major pain, so we&#39;ve written a parser for you.</p>
             <ul>
                 <li>Call <code>read_file(file_name)</code> on the file name passed to <code>get_data</code>, and it will
@@ -268,11 +267,11 @@
             </ul>
             <p>Feel free to experiment with this.</p>
             <h3 id="step-4-train-test">Step 4: Train / Test</h3>
-            <p>After reading in your data, you should form a graph out of each of your molecules. You can then batch
-                these into a graph, and run this through your model, which will return logits. Feed these logits and a
-                batch of labels through the given loss function. Follow the steps in the stencil to update your weights
-                correctly from this point. After training has completed for one epoch, print the testing accuracy on the
-                test set.</p>
+            <p>After reading in your data (<code>1-balance.sdf</code>), you should form a graph out of each of your
+                molecules. You can then batch these into a graph, and run this through your model, which will return
+                logits. Feed these logits and a batch of labels through the given loss function. Follow the steps in the
+                stencil to update your weights correctly from this point. After training has completed for one epoch,
+                print the testing accuracy on the test set.</p>
             <h2 id="visualizing-results">Visualizing Results</h2>
             <h3 id="visualizing-message-passing">Visualizing Message Passing</h3>
             <p>After testing your implementation of message passing, you can visualize it being performed on an
@@ -282,6 +281,8 @@
                 another helper function that animates your message passing function for a certain number of rounds. It
                 takes in a number of optional parameters which affect the animation, the graph that&#39;s displayed, and
                 the number of rounds of message passing.</p>
+            <p>We recommend calling <code>run_visualize_message_passing</code> in the <code>main</code> function of
+                <code>custom_snr.py</code>.</p>
             <p>Once you have the visualization working, feel free to play around with the <code>simple_message</code>
                 function and the parameters of <code>visualize_message_passing</code> to get interesting results!</p>
             <p>The visualization is powered by <a href="https://matplotlib.org/">matplotlib</a> and <a
