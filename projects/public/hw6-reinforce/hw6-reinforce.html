@@ -105,7 +105,9 @@
             <p>In the call function, your model will take your state(s) and return your policy, a probability distribution over the action space based on the state(s). The call function will take in a batch of states with shape <code>[episode_length, state_size]</code> and return a policy of shape <code>[episode_length, num_actions].</code> <code>episode_length</code> represents the number of steps taken in the one whole episode of a game and may vary across different episodes.</p>
             <p><strong>loss</strong></p>
             <p>In the loss function, you will take in <code>states</code>, <code>actions</code>, and <code>discounted_rewards</code>. <code>states</code> is the history of states encountered throughout the episode and will be of shape <code>[episode_length, state_size]</code>. <code>actions</code> is the history of actions taken in the episode and is a list of integer indices of shape <code>[episode_length]</code>. <code>discounted_rewards</code> represents the discounted sum of future rewards for each timestep in the episode and has shape <code>[episode_length]</code>.</p>
-            <p>You can find the loss function in the Reinforce lecture.</p>
+            <p>The formula for the loss our model minimizes is:</p>
+            <p><img src="http://cs.brown.edu/courses/cs1470/img/reinforce_loss.png" alt="reinforce loss"></p>
+            <p><em>i</em> represents your current step, <em>a_i</em> represents the action you took at that step, and <em>D_i</em> is the discounted reward at that step.</p>
             <h3 id="step-2-training">Step 2: Training</h3>
             <p>This part will be implemented in <code>assignment.py</code>.</p>
             <p><strong>Discounted Rewards</strong></p>
@@ -151,7 +153,6 @@
             <p>You should submit the assignment via Gradescope under the corresponding project assignment by zipping up your hw6 folder. </p>
             <p><strong>IMPORTANT<br>Please make sure your assignment.py, reinforce.py, and reinforce_with_baseline.py files are in “hw6/code.” This is very important for our autograder to work!</strong></p>
             <p><strong>If you are in CS2470, please remember to add a blank file called “2470student” in the hw6/code directory. We are using this as a flag to grade CS2470 specific requirements, and failure to do so means losing points on this assignment.</strong></p>
-
         </section>
         <aside class="not-mobile">
         </aside>
