@@ -65,7 +65,7 @@ $(document).ready(function() {
         if (currentDate < (new Date('Oct 26 2020 00:00:00 EDT'))) { hideAssignmentContent(4); }
         if (currentDate < (new Date('Nov 04 2020 00:00:00 EST'))) { hideAssignmentContent(5); }
         if (currentDate < (new Date('Nov 13 2020 00:00:00 EST'))) { hideAssignmentContent(6); }
-        if (currentDate < (new Date('Nov 23 2020 00:00:00 EST'))) { hideAssignmentContent(7); }
+        if (currentDate < (new Date('Nov 24 2020 00:00:00 EST'))) { hideAssignmentContent(7); }
         
         // labs
         if (currentDate < (new Date('Sep 09 2020 00:00:00 EDT'))) { hideLabContent(0); }
