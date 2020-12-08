@@ -424,7 +424,7 @@
       "devpost": "https://devpost.com/software/deepwiff"
    },
    {
-      "title": "Generating Poetic Text (TBD name)",
+      "title": "Deep Thoughts: Generating Poetry from Non-poetic Text",
       "members": "Erika Bussmann, Abby Goldberg",
       "mentor": "Kei Nawa",
       "area": "Natural Language Processing",
@@ -846,5 +846,21 @@
       "area": "Graphics",
       "is_oral": false,
       "devpost": "https://devpost.com/software/team-ankylosaurus"
+   },
+   {
+      "title": "Classifying Cardiac Arrhythmias using Spectral Imaging",
+      "members": "William Rudman, John Merullo",
+      "mentor": "George Lee",
+      "area": NaN,
+      "is_oral": false,
+      "devpost": "https://devpost.com/software/classifying-cardiac-arrhythmias-using-spectral-imaging"
+   },
+   {
+      "title": "Speaker Consistency in Neural Response Generation",
+      "members": "Mindy Li, Sally Chen, Yuxiao Cui",
+      "mentor": "Harman Suri",
+      "area": "Natural Language Processing",
+      "is_oral": false,
+      "devpost": NaN
    }
 ]
