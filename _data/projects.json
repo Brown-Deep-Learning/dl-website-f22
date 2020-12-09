@@ -856,11 +856,11 @@
       "devpost": "https://devpost.com/software/classifying-cardiac-arrhythmias-using-spectral-imaging"
    },
    {
-      "title": "Speaker Consistency in Neural Response Generation",
-      "members": "Mindy Li, Sally Chen, Yuxiao Cui",
+      "title": "A Persona-Based Neural Conversation Model",
+      "members": "Yuxiao Cui, Sally Chen, Mindy Li",
       "mentor": "Harman Suri",
-      "area": "Natural Language Processing",
+      "area": NaN,
       "is_oral": false,
-      "devpost": NaN
+      "devpost": "https://devpost.com/software/a-persona-based-neural-conversation-model?ref_content=user-portfolio&ref_feature=in_progress"
    }
 ]
