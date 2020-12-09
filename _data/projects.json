@@ -176,7 +176,7 @@
       "devpost": "https://devpost.com/software/image-coloring"
    },
    {
-      "title": "Reimplementing RecycleNet: a deep learning neural network for classifying trashes",
+      "title": "WasteNet: a deep learning neural network for waste classification",
       "members": "Yiran Wang, Yuanhao Wang, Yutang Liu",
       "mentor": "Top Piriyakulkij",
       "area": "Vision",
