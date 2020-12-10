@@ -184,7 +184,7 @@
       "devpost": "https://devpost.com/software/vastum-photographers"
    },
    {
-      "title": "woba boba baby yodas: Predicting Weighted On-Base Average from Baseball Data",
+      "title": "Predicting Effectiveness of Outfield Shifts for MLB At-Bats Scenarios",
       "members": "Rishi Jain, Phil Yang, Prashanth Ramireddy, John Graves",
       "mentor": "Andrew Canino",
       "area": "Data Science",
@@ -456,7 +456,7 @@
       "devpost": "https://devpost.com/software/godeep"
    },
    {
-      "title": "Learning Professor Ratings with Text Input",
+      "title": "Learning Average Course Load Hours from Student Responses",
       "members": "Kitty Moy, Rujul Singh, Nicholas Romig, Noelle Jung",
       "mentor": "Greyson Gerhard-Young",
       "area": "Natural Language Processing",
@@ -781,7 +781,7 @@
       "mentor": "Griffin Kupsaw",
       "area": "Vision",
       "is_oral": false,
-      "devpost": "https://devpost.com/software/network-geometry"
+      "devpost": "https://devpost.com/software/network-geometry?ref_content=user-portfolio&ref_feature=in_progress"
    },
    {
       "title": "Inverse Cooking: Recipe Generation from Food Images",
