@@ -184,7 +184,7 @@
       "devpost": "https://devpost.com/software/vastum-photographers"
    },
    {
-      "title": "Predicting Effectiveness of Outfield Shifts for MLB At-Bats Scenarios",
+      "title": "Predicting Effectiveness of Outfield Shifts for MLB At-Bat Scenarios",
       "members": "Rishi Jain, Phil Yang, Prashanth Ramireddy, John Graves",
       "mentor": "Andrew Canino",
       "area": "Data Science",
@@ -385,7 +385,7 @@
    },
    {
       "title": "NLP Oncology",
-      "members": "Sunny Deng, Spencer Cheleden, Yutong Liang, Jasrine Dham",
+      "members": "Sunny Deng, Spencer Cheleden, Yutong Liang, Jasrine Kaur Dham",
       "mentor": "Qian Zhang",
       "area": "Science & Medicine",
       "is_oral": true,
@@ -468,7 +468,7 @@
       "members": "Zihan Hu, Huiyuan Wu",
       "mentor": "Raymond Cao",
       "area": "Music & Audio",
-      "is_oral": false,
+      "is_oral": true,
       "devpost": "https://devpost.com/software/123-n7okrh"
    },
    {
