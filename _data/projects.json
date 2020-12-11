@@ -560,7 +560,7 @@
       "devpost": "https://devpost.com/software/video-clip-generation-from-a-still-image"
    },
    {
-      "title": "VJAM MeshTexture: Learning to Texture 3D Shapes from 2D Images",
+      "title": "Learning continuous texture representation for conditional and unconditional texture synthesis of 3d meshes",
       "members": "Angelina Grosso, Joshua Pierce, Vikas Thamizharasan, Moyi Tian",
       "mentor": "Eliot Laidlaw",
       "area": "Graphics",
