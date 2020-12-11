@@ -24,7 +24,7 @@
       "devpost": "https://devpost.com/software/blink-1470"
    },
    {
-      "title": "TempleFlow: Using reinforcement learning to play the classic game Temple Run",
+      "title": "TempleFlow: An AI Player for the game Temple Run",
       "members": "Hunter Karas, Arun Kavishwar",
       "mentor": "Griffin Kupsaw",
       "area": "Vision",
@@ -560,7 +560,7 @@
       "devpost": "https://devpost.com/software/video-clip-generation-from-a-still-image"
    },
    {
-      "title": "Learning continuous texture representation for conditional and unconditional texture synthesis of 3d meshes",
+      "title": "VJAM MeshTexture: Learning to Texture 3D Shapes from 2D Images",
       "members": "Angelina Grosso, Joshua Pierce, Vikas Thamizharasan, Moyi Tian",
       "mentor": "Eliot Laidlaw",
       "area": "Graphics",
