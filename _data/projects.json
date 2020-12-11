@@ -664,7 +664,7 @@
       "devpost": "https://devpost.com/software/language-detection"
    },
    {
-      "title": "Wow, I love that: detecting irony and sarcasm with transformers",
+      "title": "Wow, I love that: detecting sarcasm and irony with neural networks",
       "members": "Ariana Barzinpour, Charlie Cutting, Jacob DiSpirito",
       "mentor": "Tucker Berckmann",
       "area": "Natural Language Processing",
