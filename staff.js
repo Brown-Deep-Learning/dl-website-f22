@@ -1,19 +1,19 @@
 
-function changeImage(login) {
-  const imagePath = `img/hover/${login.id}.jpg`;
-  $(login).css(
-    'background-image',
-    `url(${imagePath}), url(assets/blueno_staff.png)`
-  );
-}
+// function changeImage(login) {
+//   const imagePath = `img/hover/${login.id}.jpg`;
+//   $(login).css(
+//     'background-image',
+//     `url(${imagePath}), url(assets/blueno_staff.png)`
+//   );
+// }
 
-function restoreImage(login) {
-  const imagePath = `img/portrait/${login.id}.jpg`;
-  $(login).css(
-    'background-image',
-    `url(${imagePath}), url(assets/blueno_staff.png)`
-  );
-}
+// function restoreImage(login) {
+//   const imagePath = `img/portrait/${login.id}.jpg`;
+//   $(login).css(
+//     'background-image',
+//     `url(${imagePath}), url(assets/blueno_staff.png)`
+//   );
+// }
 
 function createStaffCard(staffObject) {
   let {
@@ -33,8 +33,7 @@ function createStaffCard(staffObject) {
           class="staff-pic"
           style="background-image:url(${imagePath}), url(assets/blueno_staff.png)"
           alt="${name} is doing something fun!"
-          onmouseover="changeImage(this)"
-          onmouseout="restoreImage(this)" >
+           >
         </div>
       </div>
       <div class="staff-text">
