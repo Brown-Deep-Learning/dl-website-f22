@@ -50,7 +50,7 @@ $(document).ready(function () {
   const htas = ['lliu58', 'ubhalla', 'cander23'];
   $.ajax({
     type: "GET",
-    url: "./staff_info_F2021.csv",
+    url: "./staff_info_F2022.csv",
     dataType: "text",
     success: function (response) {
       const table = $.csv.toArrays(response).splice(1);

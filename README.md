@@ -1,4 +1,4 @@
-# Brown University 2020 CSCI 1470 Deep Learning Course Website
+# Brown University 2022 CSCI 1470 Deep Learning Course Website
 
 ## TO STUDENTS CURRENTLY TAKING THIS CLASS
 
