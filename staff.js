@@ -1,4 +1,3 @@
-
 // function changeImage(login) {
 //   const imagePath = `img/hover/${login.id}.jpg`;
 //   $(login).css(
@@ -55,8 +54,9 @@ $(document).ready(function () {
     success: function (response) {
       const table = $.csv.toArrays(response).splice(1);
       table.forEach(row => {
-        const [fullname, name, pronouns, login, intro] = row;
-        const staffObject = {name, login, pronouns, intro};
+        const [timestamp, fullname, name, pronouns, login, profpic, intro,
+          sgd, cnn, lstm, transformers, graphs, rl, gans, web] = row;
+        const staffObject = { name, login, pronouns, intro};
         if (instructors.includes(login)) {
           $('#instructors').append(createStaffCard(staffObject));
         } else if (htas.includes(login)) {
@@ -68,3 +68,5 @@ $(document).ready(function () {
     }
   });
 });
+//   const instructors = ['rsingh47'];
+  // const htas = ['vkudlay', 'spai9'];
