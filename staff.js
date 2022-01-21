@@ -55,8 +55,7 @@ $(document).ready(function () {
     success: function (response) {
       const table = $.csv.toArrays(response).splice(1);
       table.forEach(row => {
-        const [timestamp, fullname, name, pronouns, login, profpic, intro,
-          sgd, cnn, lstm, transformers, graphs, rl, gans, web] = row;
+        const [fullname, name, pronouns, login, profpic, intro] = row;
         const staffObject = { name, login, pronouns, intro};
         if (instructors.includes(login)) {
           $('#instructors').append(createStaffCard(staffObject));
