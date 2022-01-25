@@ -46,7 +46,7 @@ function createStaffCard(staffObject) {
 
 $(document).ready(function () {
   const instructors = ['rsingh47'];
-  const htas = ['vkudlay', 'spai9', 'mroy6'];
+  const htas = ['vkudlay', 'spai9', 'mroy6', 'szhi'];
   $.ajax({
     type: "GET",
     url: "./staff_info_F2022.csv",
