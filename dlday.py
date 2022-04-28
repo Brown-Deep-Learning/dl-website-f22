@@ -51,7 +51,7 @@ def generate_html(rows):
                 <a class="nav-link" href="labs.html">Labs</a>
                 <a class="nav-link" href="calendar.html">Calendar &amp; Hours</a>
                 <a class="nav-link" href="staff.html">Staff</a>
-                <a class="nav-link" href="dlday.html">DL Day</a>
+                <!--a class="nav-link" href="dlday.html">DL Day</a-->
             </nav>
         </div>
     </header>
