@@ -63,9 +63,9 @@ def generate_html(rows):
                 <thead>
                     <tr>
                         <th style="width:20%">Time</th>
-                        <th style="width:60%">Title</th>
+                        <th style="width:40%">Title</th>
                         <th style="width:20%">Recording or Live</th>
-                        <th style="width:80%">Team Name</th>
+                        <th style="width:20%">Team Name</th>
                         <th style="width:30%">Team Type</th>
                         <th style="width:80%">Members</th>
                     </tr>
