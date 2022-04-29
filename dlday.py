@@ -75,7 +75,7 @@ def generate_html(rows):
             <table style='background-color: #4e70c6;'>
                 <thead>
                     <tr style="font-size: 1.4em">
-                        <th style="width:10%; padding: 10px; text-align:center;">Time</th>
+                        <th style="width:12%; padding: 10px; text-align:center;">Time</th>
                         <th style="width:50%; padding: 10px;">Title</th>
                         <th style="width:40%; padding: 10px;">Members</th>
                     </tr>
@@ -122,11 +122,14 @@ def generate_rows(file_path):
                 tr_tags = f'<tr style="background-color: #1B2367 !important;">', '</tr>'
             elif 'Parallel' in c2_txt:
                 tr_tags = f'<tr class="week-header" style="font-size: 1.2em; background-color: {group_colors[group_idx]} !important;">', '</tr>'
+                c1_txt = f'<span style="font-size: 0.9em !important;">{c1_txt}</span>'
             elif any(head in c2_txt for head in ['Opening', 'Closing', 'Session', 'Lunch Break']):
                 group_idx += 1
                 tr_tags = f'<tr class="week-header" style="font-size: 1.4em; background-color: {group_colors[group_idx]} !important;">', '</tr>'
+                c1_txt = f'<span style="font-size: 0.8em !important;">{c1_txt}</span>'
                 if 'Session' in c2_txt:
                     c3_txt = cal_pics.pop(0)
+                c3_txt = f'<span style="font-size: 0.8em !important;">{c3_txt}</span>'
             else: 
                 tr_tags = '<tr>', '</tr>'
                 cut_char = '!' if '!' in c2_txt[:-1] else ''
