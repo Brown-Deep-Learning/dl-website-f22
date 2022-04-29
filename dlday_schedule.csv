@@ -1,87 +1,87 @@
-time,title,recording_live,team_name,team_type,members
-,,,,,
-9:00,Opening remarks,Live,,,
-,,,,,
-,Session 1: Computer Vision,,,,
-9:15,Database Assisted Object-Retrieval 3D Room Reconstruction,,Database Assisted Object-Retrieval 3D Room Reconstruction,2470,"Sagarika Ramesh, Ramya Harikrishnan, Chiang-Heng Chien"
-9:27,Style Transfer Who,,Polite Pythons,2470," Pooja Barai (pbarai), Emily Nomura (enomura), Megan Sindhi (msindhi)"
-9:39,Using GAN to Convert Hand-Drawn Sketch to Image,,Sketch to Image Generation,2470,Yifei Wang(ywang502)/ Siyang Li(sli144)/ Tianran Zhang (tzhang96)/ Neal Yin(zyin15)
-9:51,Compositional Sketch Generator,,Compositional Sketch Generator,2470,"Jiahao Liu, Zheyuan Zhou, Yun Li"
-10:03,Facial Expression Detection and Emoji Conversion,,Facial Expression Detection and Emoji Conversion,2470,"Elbert Wu (ewu12), Bohao Wang (bwang98), Ying Sun(ysun141)"
-10:15,You Can't See Me: style transfer for optimal camouflage,,,2470,"Katie O’Leary (koleary1), Mike Tapia (mtapia1), Harrison Cho (hcho57), Andrew Wang (awang270)"
-10:30-11:00,Poster Session (parallel):,,,,
-,Calculating Potential Urban Solar Output Using CNNs for Satellite Image Segmentation,,DLGeo,1470,"Alexander Kamper (akamper), Siddhartha Prasad (sprasa13), Nathan Benavides-Luu (nluu1)"
-,Image Colorization,,Image Colorization,1470,"Mazine Suliman (msulima2), Sabrina Chwalek (schwalek), Nathan Mugerwa (jmugerwa)"
-,DL to remove blocking artifacts from compressed images,,Fixing Blocking Artifacts from JPEG Images,1470,Jesse Gallant (jgallan1) Oren Kohavi (okohavi) Michael Li (mli103)
-,"Generative Adversarial Networks (GANs) to aid in facial recognition and restoration ",,Facial Restoration with GANs,1470,
-,Brunonian QuickDraw by the Sasketchewan Selects,,QuickDraw by Sasketchewan Selects,1470,"Kenny Ihenatu [iihenatu], Kris Diallo [kdiallo2], Chris Chae [cchae2], Samuel Musker [smusker]"
-,Colorizing Black&White images.,,Color Blind Zebra,1470,
-,Detect humans in crowds using an architecture inspired by YOLOv3,,Object detection with YOLOv3,1470,
-,CNNs and Transformers to detect objects present in images,,,1470,"Titas Grusnius, Zainab Iftikhar, Tyler Jacobson, Manar Abdelatty"
-,Image classification model using Visual Transformers,,Deep Yearning,1470,"Ethan Asis (easis), Isabelle Towle (itowle), Riki Fameli (rfameli1), Obi Chikezie (cchikezie)"
-,SinGAN: Reimplementing a generative model from a single natural image,,SinGAN,1470,Keitaro NIshijima: knishiji Zachary Chan: zchan1 Raghav Puri: rpuri6
-,Analysis of the effects of different regularization methods on model explainability on images.,,Regularization Explainability Analysis,1470,"Jay Gopal (jgopal), Yousef Elgodamy (yelgodam)"
-,,,,,
-,Session 2: Biology and health,,,,
-11:00,A semi-supervised 2-D convolutional neural network with capsules that classifies 18 categories of arrhythmia from ECG signals.,,Arrhythmia classification using capsules,2470,Andrei Petrus (apetrus) Jason Hooker (jhooker2) Varun Kumar(vkumar24)
-11:12,Deep learning for single-cell age prediction,,aging single cell,2470,
-11:24,"Prediction of miRNA Diseases Associations Using Graph Convolutional Network ",,Prediction of miRNA Diseases by GCN,2470,"Xuya Gao(xgao39), Zeming Liu(zliu185), Tongtong Zhao(tzhao34)"
-11:36,Deep learning model to develop a recommender system for dental care,,Dental Care Recommendations,2470,"Yijing Gao (ygao98), Yutong Liu(yliu381), Qingyan Guo (qguo11), Wangsan Tian(wtian8)"
-11:50 - 12:20,Poster Session (parallel):,,,,
-,Automatic Chemical Design Using Data Driven Molecular Representations,,Automatic Chemical Design Using Molecular Representations,1470,"Krishna Tewari(ktewari1), Ray Vecchio(rdelvecc), Cody Sims(csims)"
-,DNA Sequence Classification using DL,,DLNA,1470,"Samuel Murk Caya (smurkcay), Gabriel Gallardo (ggallar2), Liam O’Connor (loconno3), Jacques von Steuben (jvonsteu)"
-,Generate New Skin Tone Data for Melanoma,,DL on the dl,1470,"Alexander Le, Deniz Toruner, Kento Abeywardane, Michelle Mai"
-,DL model to predict recurrence in ovarian cancer,,DL Final Project TCGA,1470,
-,Tumor segmentation for better tumor visualization for better treatment outcomes,,,1470,"Abigail Marks (amarks3), Ria Panjwani (rpanjwa2), Priyanka Solanky (psolanky)"
-,Biologically-informed neural architecture to improve prediction of prostate cancer states,,Re-Implementing P-NET,1470,Liyuan Ao (lao1) Liza Kolev (lkolev) Bumjin Joo (bjoo2) Brian Kirz (bkirz)
-,Melanoma Classification from Skin Images,,Melanoma Classification from Skin Images,1470,
-,,,,,
-12:20 - 1:00,Lunch break,,,,
-,,,,,
-,Session 3: Natural Language Processing,,,,
-1:00,Ukrainian War Sentiment Analysis + Topic Modeling,,Ukrainian War Sentiment Analysis + Topic Modeling,2470,"Keying Gong, Yifei Song, Zhirui Li, Hanjun Wei"
-1:12,A deep learning model that predicts which real and fake tweets from Twitter about disasters,,Tweet Disasters,2470,"Kelly Patel (kpatel85), Jialiang Zhou (jzhou88), Jiahao Wei (jwei10)"
-1:24,Prediction of the NYT Best Seller Book using an NLP model,,,2470,"Logan Heft(lheft), Samaye Lohan(slohan), Dongjun Shin(djshin25), Youn Kyeong Chang(ychang10)"
-1:36,A Text Summarization and Q&A Chatbot for Extracting Information From Papers,,AlphaText,2470,"Bochen Fu, Jiatao Yuan, Tianqi Liu, Zhuoran Han"
-1:50 - 2:20,Poster Session (parallel):,,,,
-,Neural Temporal Opinion Modelling for Opinion Prediction on Twitter,,app-pinion,1470,"John Sullivan, Troy Conklin, Nicholas Bottone, Robert Koch"
-,Predicting Yelp Star Ratings Using Natural Language Processing of Yelp Written Reviews,,Yip Yap Yelp,1470,"Bridget Griswold, bgriswol Madison Peters, mpeter35 Hannah O’Keeffe, hokeeffe Cal Stellato, cstellat"
-,A Deep Learning Sitcom Script Generator,,The Reboot,1470,"Grace Lee, Jian Cong Loh, Riya Dulepet"
-,Fake Reviews Classification,,Fake Reviews Classification,1470,"Peter Van Katwyk, Alice Marbach, Ricky Zhong"
-,Abstract-Based Sentiment Analysis using Gated Convolutional Neural Network on Challenge Dataset,,,1470,Eric Tang (etang14) Shreyas Mishra (smishr22) Sanyu Rajakumar (srajakum) Alex Bao (aboa5)
-,Grounding Language to Non-Markovian Tasks with No Supervision of Task Specifications,,Learning Linear Temporal Logic!,1470,"Andrew Li, Ben Schornstein, Celina Ye, Rob Scheidegger"
-,Using Child Language Data to Train Good Language Models,,CS1470 Final: BabyBERTa,,
-,,,,,
-,Session 4: Time series and RL,,,,
-2:20,Arkanoid Breakout Game,,Arkanoid Breakout Game,2470,"Mingye Zhang, Cathy Gao"
-2:32,Deep Q-Learning for Atari River Raid,,,2470,"Nange Li (nli32), Yingfei Hong (yhong28), Yuetian Li (yli41), Yash Mehta (ymehta3)"
-2:44,New self-driving system trained on new dataset and how to attack it,,Vadimaniacs' Heresy,2470,
-2:45 - 3:15,Poster Session (parallel):,,,,
-,Snake Implementation using Deep Q Learning (Reinforcement Learning),,,1470,"Eseoghene Ajueyitsi, Kendra Lee, Daniel Li, Ezra Rocha"
-,Deep learning for sports betting strategy,,Sports Bets,1470,"Noah Ehrhardt (nehrhar2), Geoff Grossman-Mckee (ggrossm1), Michael Chung (mchung18)"
-,Building a Model to Classify Periodic Time-Series Data (And using it to generate some cute animations),,Deep Learning Final Project,1470,Advay Mansingka (amansin1) Momoka Kobayashi (mkobaya1) Joanna Tasmin (jtasmin)
-,Predicting future crypto prices using an LSTM model,,Predicting future crypto prices using an LSTM model,1470,"Adam Bredvik : abredvik, Max Dekle: mdekle, Damon Burdell: dburdell"
-,Deep learning based forecasting in game item prices based on past market metrics,,Price Predictor/Portfolio Manager for Old School Runescape,1470,"Will Jaekle, David Boles, Emmanuel Peters"
-,,,,,
-,"Session 5: Art, music, and other applications",,,,
-3:15,Music Mood Classification,,Music Mood Classification,2470,Breese Sherman: bsherma3 Nathan Plano: nplano Elizabeth Chen: ecc1 Qingyang Xie: qxie6
-3:27,system for matching text with emotionally resonant music,,AmbianceNet,2470,Yeunun Choo Jin Hyeok Noh Theodora Kunicki
-3:39,Object to painting with CycleGAN model architecture,,,2470,
-3:51,Free-Hand Sketch Recognition and Image Retrieval,,Free-Hand Sketch Recognition and Image Retrieval,2470,Yiqing Liang (yliang51) / Shijie Mao (smao5) / Ziyin Li (zli255)
-4:03,Composing Sketched Scenes from Text Descriptions for Interactive Applications,,Doddlebot,2470,"Radhika Mehrotra, Salvador Brandi, Shipra Priyadarshini, Patrick Connor"
-4:15,Credit Card Fraud Detection by Deep Learning Methods,,Credit Card Fraud Detection by Deep Learning Methods,2470,Haolin Chen (hchen156) Yadi Yang (yy1568) Yutian Zhang (yzhan179)
-4:30 - 5:00,Poster Session (parallel):,,,,
-,Creatively Captioning Culinary Cuisines,,Creatively Captioning Culinary Cuisines,1470,"Ian Acosta, Meera Kurup, Sophia Tu, Kelly Wang"
-,Generating a song with lyrics from words of choice,,Acouztic,1470,
-,Deep learning framework for transforming outlines of portraits to faces,,line2picture,1470,"Truong Cai (tcai7), Neophytos Christou (nchrist9),Wangdrak Dorji (wdorji), TaShawn Arabian(tarabian)"
-,Classifying pieces of fine art by genre.,,fine art classification,1470,"Anna Dai (adai10), Rena Jiang (rjiang6), Ezra Muratoglu (emuratog)"
-,generate suitable and creative logos for companies using a deep learning model.,,Logo Generation,1470,"Alex Duchnowski, Hongyi Li, Qinan Yu, Sidharth Anand"
-,Style-specific music generation with biaxial LSTM,,,1470,"Xin Lian (xlian1), Yanyu Tao (ytao5), Yezhi Pan (ypan34), Yongjeong Kim (ykim235)"
-,Sign Language Translation,,,1470,"Cormac Collins (ccolli20), Dylan Hu (dhu24), Jenny Yu (jyu111), Tianren Dong(tdong6)"
-,generate coherent songs involving singing and lyrics from multiple musical genres and artists’ styles.,,Ode to Code,1470,"Brian Kim (bkim53), Dana Lee (dlee151), Rachel Ma (rma20), Kenya Kimata (kkimata)"
-,Creative Adversarial Networks: Generating Art in New Styles,,,1470,"Marc Mapeke (mmapeke), Alana White (awhite35), Maceo Thompson (mthomp13), Carlos Perez-Ruiz (cperezru)"
-,Automatic Poetry Generation from Prosaic Text,,Generating Poetry from Prose Text,1470,
-,Zoo Crew,,Zoo Crew,1470,William McLaren Andrew Kirk Seungje Lee Nicholas Alioto-Pier
-,Music Classification Using Convolutional Recurrent Neural Networks,,,1470,"Brandon Diaz, Colin Savage, Jasmine Shum, Parker Simon"
-,,,,,
-5:00,Closing Remarks,Live,,,
+Time,Title,Members
+,,
+9:00 AM,Opening remarks,
+,,
+,Session 1: Computer Vision,
+9:15 AM,Database Assisted Object-Retrieval 3D Room Reconstruction,"Sagarika Ramesh, Ramya Harikrishnan, Chiang-Heng Chien"
+9:27 AM,Compositional Sketch Generator: No one knows sketching better than me!,"Jiahao Liu, Zheyuan Zhou, Yun Li"
+9:39 AM,Facial Expression Detection and Emoji Conversion,"Elbert Wu, Bohao Wang, Ying Sun"
+9:51 AM,You Can't See Me: Style Transfer for Optimal Camouflage,"Katie O’Leary, Mike Tapia, Harrison Cho, Andrew Wang"
+10:03 AM,Free-Hand Sketch Recognition and Image Retrieval,"Yiqing Liang, Shijie Mao, Ziyin Li"
+10:15 AM,Poster Session (parallel):,
+,DLGeo: Calculating Potential Urban Solar Output Using CNNs for Satellite Image Segmentation,"Alexander Kamper, Siddhartha Prasad, Nathan Benavides-Luu"
+,Image Colorization: We're colorizing black and white images!,"Mazine Suliman, Sabrina Chwalek, Nathan Mugerwa"
+,Remove Blocking Artifacts From Compressed Images w/ Deep Learning,"Jesse Gallant, Oren Kohavi, Michael Li"
+,Facial Recognition and Restoration with GANs,"Anika Ahluwalia, Lauren Choi, Naomi Park, Galen Winsor"
+,Color Blind Zebra: Colorizing Black & White Images,"Esha Lakhotia, Anoop Manjal, Sam Devorsetz, Jason Eveleth"
+,Detecting Humans In Crowds With Inspiration From YOLOv3,"Edward Huh, Sam Bessey, Paul Xu"
+,CNNs and Transformers to detect objects present in images,"Titas Grusnius, Zainab Iftikhar, Tyler Jacobson, Manar Abdelatty"
+,Deep Yearning: Image Classification Model using Visual Transformers,"Ethan Asis, Isabelle Towle, Riki Fameli, Obi Chikezie"
+,SinGAN: Reimplementing a generative model from a single natural image,"Keitaro NIshijima, Zachary Chan, Raghav Puri"
+,Regularization Explainability Analysis: On the effects of different regularization methods for image model explainability,"Jay Gopal, Yousef Elgodamy"
+,Creatively Captioning Culinary Cuisines,"Ian Acosta, Meera Kurup, Sophia Tu, Kelly Wang"
+,Learning Linear Temporal Logic! Grounding Language to Non-Markovian Tasks with No Supervision of Task Specifications,"Andrew Li, Ben Schornstein, Celina Ye, Rob Scheidegger"
+,,
+,Session 2: Biology and health,
+10:45 AM,Arrhythmia classification using capsules: A semi-supervised capsule-aided CNN model for classifying arrhythmia types from ECG signals,"Andrei Petrus, Jason Hooker, Varun Kumar"
+10:57 AM,Aging Single Cell: Deep learning for single-cell age prediction,"Yihuan Hu, Manlin Li, Guanjie Linghu, Doudou Yu"
+11:09 AM,Prediction of miRNA Diseases Associations Using Graph Convolutional Network ,"Xuya Gao, Zeming Liu, Tongtong Zhao"
+11:21 AM,Dental Care Recommendations: Deep learning model to develop a recommender system for dental care,"Yijing Gao, Yutong Liu, Qingyan Guo, Wangsan Tian"
+11:35 AM,Poster Session (parallel):,
+,Neural Chemistry: Automatic Chemical Design Using Data-Driven Molecular Representations,"Krishna Tewari, Ray Vecchio, Cody Sims"
+,DLNA: DNA Sequence Classification using Deep Learning,"Samuel Murk Caya, Gabriel Gallardo, Liam O’Connor, Jacques von Steuben"
+,DL on the dl: Generate New Skin Tone Data for Melanoma,"Alexander Le, Deniz Toruner, Kento Abeywardane, Michelle Mai"
+,TCGA: Predicting recurrence in ovarian cancer using deep learning,"Reetam Ganguli, Theodore Akpinar, Jeffrey Dai"
+,Tumor segmentation for better tumor visualization for better treatment outcomes,"Abigail Marks, Ria Panjwani, Priyanka Solanky"
+,Re-Implementing P-NET: Biologically-informed neural architecture to improve prediction of prostate cancer states,"Liyuan Ao, Liza Kolev, Bumjin Joo, Brian Kirz"
+,Melanoma Classification from Skin Images,"Preeti Nagalamadaka, Aayush Setty, Anishansu Pradhan"
+,ACE: Classifying WebMD Drug Reviews,"Evan Li, Austin Lang, Camzhang Zhang "
+,,
+12:05 PM,Lunch Break,
+,,
+,Session 3: Time series and RL,
+12:40 PM,Arkanoid Breakout Game,"Mingye Zhang, Cathy Gao"
+12:52 PM,Deep Q-Learning for Atari River Raid,"Nange Li, Yingfei Hong, Yuetian Li, Yash Mehta"
+1:04 PM,Vadimaniacs' Heresy: New self-driving system trained on new dataset and how to attack it,"Hardy Bright, Robyn Logan, Shane Parr, Ye Wang"
+1:16 PM,Credit Card Fraud Detection With Deep Learning,"Haolin Chen, Yadi Yang, Yutian Zhang"
+1:30 PM,Poster Session (parallel):,
+,Snake Implementation using Deep Q-Learning,"Eseoghene Ajueyitsi, Kendra Lee, Daniel Li, Ezra Rocha"
+,Sports Bets: Deep learning for sports betting strategy,"Noah Ehrhardt, Geoff Grossman-Mckee, Michael Chung"
+,Building a Model to Classify Periodic Time-Series Data (And using it to generate some cute animations),"Advay Mansingka, Momoka Kobayashi, Joanna Tasmin"
+,Predicting future crypto prices using an LSTM model,"Adam Bredvik, Max Dekle, Damon Burdell"
+,Price Predictor / Portfolio Manager for Old School Runescape: Deep learning based forecasting in game item prices based on past market metrics,"Will Jaekle, David Boles, Emmanuel Peters"
+,,
+,Session 4: Natural Language Processing,
+2:00 PM,Ukrainian War Sentiment Analysis + Topic Modeling,"Keying Gong, Yifei Song, Zhirui Li, Hanjun Wei"
+2:12 PM,Tweet Disasters: A deep learning model that predicts which real and fake tweets from Twitter about disasters,"Kelly Patel, Jialiang Zhou, Jiahao Wei"
+2:24 PM,Prediction of the NYT Best Seller Book using an NLP model,"Logan Heft, Samaye Lohan, Dongjun Shin, Youn Kyeong Chang"
+2:36 PM,AlphaText: A Text Summarization and Q&A Chatbot for Extracting Information From Papers,"Bochen Fu, Jiatao Yuan, Tianqi Liu, Zhuoran Han"
+2:48 PM,Polite Pythons: Politeness text style transfer," Pooja Barai, Emily Nomura, Megan Sindhi"
+3:00 PM,Poster Session (parallel):,
+,App-pinion: Neural Temporal Opinion Modelling for Opinion Prediction on Twitter,"John Sullivan, Troy Conklin, Nicholas Bottone, Robert Koch"
+,Yip Yap Yelp: Predicting Yelp Star Ratings Using Natural Language Processing of Yelp Written Reviews,"Bridget Griswold, Madison Peters, Hannah O’Keeffe, Cal Stellato"
+,The Reboot: A Deep Learning Sitcom Script Generator,"Grace Lee, Jian Cong Loh, Riya Dulepet"
+,Fake Reviews Classification,"Peter Van Katwyk, Alice Marbach, Ricky Zhong"
+,Abstract-Based Sentiment Analysis using Gated Convolutional Neural Network on Challenge Dataset,"Eric Tang, Shreyas Mishra, Sanyu Rajakumar, Alex Bao"
+,BabySitter! Using Child Language Data to Train Good Language Models,"Mingxuan Ji, Grace Ouedraogo, Yanwan Zhu"
+,,
+,"Session 5: Art, music, and other applications",
+3:30 PM,Music Mood Classification,"Breese Sherman, Nathan Plano, Elizabeth Chen, Qingyang Xie"
+3:42 PM,AmbienceNet: System for matching text with emotionally resonant music,"Yeunun Choo, Jin Hyeok Noh, Theodora Kunicki"
+3:54 PM,Object to painting with CycleGAN model architecture,"Mark Adut, Kaan Aygen, Lukas Kania, Emre Toner"
+4:06 PM,Doddlebot: Composing Sketched Scenes from Text Descriptions for Interactive Applications,"Radhika Mehrotra, Salvador Brandi, Shipra Priyadarshini, Patrick Connor"
+4:18 PM,Sketch to Image Generation: Using GANs for Converting Hand-Drawn Sketches to Images,"Yifei Wang, Siyang Li, Tianran Zhang, Neal Yin"
+4:30 PM,Poster Session (parallel):,
+,Acouztic: Generating a song with lyrics from words of choice,"Fiona Aga, Phunn Boonchouchouy, Chayathorn Kulthonchalanan"
+,line2picture: Deep learning framework for transforming outlines of portraits to faces,"Truong Cai, Neophytos Christou,Wangdrak Dorji, TaShawn Arabian"
+,Fine Art Classification: Classifying pieces of fine art by genre,"Anna Dai, Rena Jiang, Ezra Muratoglu"
+,Logo Generation: Generate suitable and creative logos for companies using a deep learning model,"Alex Duchnowski, Hongyi Li, Qinan Yu, Sidharth Anand"
+,Style-specific music generation with biaxial LSTM,"Xin Lian, Yanyu Tao, Yezhi Pan, Yongjeong Kim"
+,Sign Language Translation,"Cormac Collins, Dylan Hu, Jenny Yu, Tianren Dong"
+,Ode to Code: Generating coherent songs involving singing and lyrics from multiple musical genres and artist styles,"Brian Kim, Dana Lee, Rachel Ma, Kenya Kimata"
+,Creative Adversarial Networks: Generating Art in New Styles,"Marc Mapeke, Alana White, Maceo Thompson, Carlos Perez-Ruiz"
+,Automatic Poetry Generation from Prosaic Text,"Arrington Harper, Fernando Cisneros, Pedro Monteiro Borges, Paloma Salseda"
+,The Deep Learners: Music Classification Using Convolutional Recurrent Neural Networks,"Brandon Diaz, Colin Savage, Jasmine Shum, Parker Simon"
+,Brunonian QuickDraw by the Sasketchewan Selects,"Kenny Ihenatu, Kris Diallo, Chris Chae, Samuel Musker"
+,,
+5:00 PM,Closing Remarks,

@@ -58,16 +58,13 @@ def generate_html(rows):
     <main class="dark">
         <section style="padding-bottom: 60px;">
             <h1>Deep Learning Day!</h1>
-            <font size="2">
-            <table>
+            <font size="2" style='line-height: 1.5'>
+            <table style='background-color: #4e70c6;'>
                 <thead>
-                    <tr>
-                        <th style="width:20%">Time</th>
-                        <th style="width:40%">Title</th>
-                        <th style="width:20%">Recording or Live</th>
-                        <th style="width:20%">Team Name</th>
-                        <th style="width:30%">Team Type</th>
-                        <th style="width:80%">Members</th>
+                    <tr style="font-size: 1.4em">
+                        <th style="width:10%; padding: 10px; text-align:center;">Time</th>
+                        <th style="width:50%; padding: 10px;">Title</th>
+                        <th style="width:40%; padding: 10px;">Members</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -92,43 +89,45 @@ def generate_html(rows):
 """
     with open("dlday.html", "w+") as out:
         out.write(html_template)
-    out.close()
 
 
 def generate_rows(file_path):
     rows = []
+    group_colors = [None, 'none', 'deepskyblue', 'orchid', 'none', 'yellowgreen', 'orange', 'tomato', 'none']
+    group_idx = 0
     with open(file_path, 'r+') as f:
         data = csv.DictReader(f)
         for row in data:
             r = dict(row)
-            if r.get("title") is None or r.get("title") == "":
+            if r.get("Title") is None:
                 continue
-            if "Session" in r.get("title") or "Poster Session" in r.get("title") or "Opening" in r.get(
-                    "title") or "Closing" in r.get("title"):
-                rows.append(f"""
-                <tr class="week-header">
-                            <td>{r.get("time")}</td>
-                            <td>{r.get("title")}</td>
-                            <td>{r.get("recording_live")}</td>
-                            <td>{r.get("team_name")}</td>
-                            <td>{r.get("team_type")}</td>
-                            <td>{r.get("members")}</td>
-                </tr>
-                \n""")
-            else:
-                rows.append(
-                    f"""
-                                <tr>
-                                            <td>{r.get("time")}</td>
-                                            <td>{r.get("title")}</td>
-                                            <td>{r.get("recording_live")}</td>
-                                            <td>{r.get("team_name")}</td>
-                                            <td>{r.get("team_type")}</td>
-                                            <td>{r.get("members")}</td>
-                                </tr>
-                                \n"""
-                )
-    f.close()
+            c1_txt = r.get("Time")
+            c2_txt = r.get("Title")
+            c3_txt = r.get("Members")
+            if all(value == '' for value in [c1_txt, c2_txt, c3_txt]):
+                tr_tags = f'<tr style="background-color: #1B2367 !important;">', '</tr>'
+            elif 'parallel' in c2_txt:
+                tr_tags = f'<tr class="week-header" style="font-size: 1.2em; background-color: {group_colors[group_idx]} !important;">', '</tr>'
+            elif any(head in c2_txt for head in ['Opening', 'Closing', 'Session', 'Lunch Break']):
+                group_idx += 1
+                tr_tags = f'<tr class="week-header" style="font-size: 1.4em; background-color: {group_colors[group_idx]} !important;">', '</tr>'
+            else: 
+                tr_tags = '<tr>', '</tr>'
+                cut_char = '!' if '!' in c2_txt[:-1] else ''
+                cut_char = ':' if ':' in c2_txt[:-1] else cut_char
+                if cut_char != '':
+                    cut_idx = c2_txt.index(cut_char)+1
+                    c2_txt = f'<b>{c2_txt[:cut_idx]}</b><br>{c2_txt[cut_idx:]}'
+                else: 
+                    c2_txt = f'<b>{c2_txt}</b>'
+                        
+            rows.append(f"""
+                {tr_tags[0]}
+                    <td style='text-align:center;'>{c1_txt}</td>
+                    <td style='padding-left:3px;'>{c2_txt}</td>
+                    <td>{c3_txt}</td>
+                {tr_tags[1]}
+            \n""")
     return "".join(rows)
 
 
