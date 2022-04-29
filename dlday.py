@@ -6,6 +6,15 @@ import csv
 #         data = csv.DictReader(f)
 #     return data
 
+cal_links = [
+    'https://calendar.google.com/event?action=TEMPLATE&tmeid=MHFmazJkcGIwdDMwZjhuM21jZXAxNGw3cmogY19jNjlraHBzZTVsNG5yY2NmMHJqaTRvZHBia0Bn&tmsrc=c_c69khpse5l4nrccf0rji4odpbk%40group.calendar.google.com',
+    'https://calendar.google.com/event?action=TEMPLATE&tmeid=MmduZGtnamVsYXEwb3RpbDZiNzk4c24zOGcgY19jNjlraHBzZTVsNG5yY2NmMHJqaTRvZHBia0Bn&tmsrc=c_c69khpse5l4nrccf0rji4odpbk%40group.calendar.google.com',
+    'https://calendar.google.com/event?action=TEMPLATE&tmeid=NmkwaHFmbGJlcjg4YTdxOWdwYm42YnZudGogY19jNjlraHBzZTVsNG5yY2NmMHJqaTRvZHBia0Bn&tmsrc=c_c69khpse5l4nrccf0rji4odpbk%40group.calendar.google.com',
+    'https://calendar.google.com/event?action=TEMPLATE&tmeid=MDhsdmppczVnNXN1dm52bm9iNDYxamVvdHQgY19jNjlraHBzZTVsNG5yY2NmMHJqaTRvZHBia0Bn&tmsrc=c_c69khpse5l4nrccf0rji4odpbk%40group.calendar.google.com',
+    'https://calendar.google.com/event?action=TEMPLATE&tmeid=MzhsY28zZGU2ZmUxN2pyNHFjdnFhNHZyM28gY19jNjlraHBzZTVsNG5yY2NmMHJqaTRvZHBia0Bn&tmsrc=c_c69khpse5l4nrccf0rji4odpbk%40group.calendar.google.com',
+    'https://calendar.google.com/event?action=TEMPLATE&tmeid=MzA0bW9hZTYzNjVyazZjbmFmZWtldmR1cWUgY19jNjlraHBzZTVsNG5yY2NmMHJqaTRvZHBia0Bn&tmsrc=c_c69khpse5l4nrccf0rji4odpbk%40group.calendar.google.com'
+]
+
 
 def generate_html(rows):
     html_template = f"""
@@ -51,13 +60,17 @@ def generate_html(rows):
                 <a class="nav-link" href="labs.html">Labs</a>
                 <a class="nav-link" href="calendar.html">Calendar &amp; Hours</a>
                 <a class="nav-link" href="staff.html">Staff</a>
-                <!--a class="nav-link" href="dlday.html">DL Day</a-->
+                <a class="nav-link" href="dlday.html">DL Day</a>
             </nav>
         </div>
     </header>
     <main class="dark">
         <section style="padding-bottom: 60px;">
             <h1>Deep Learning Day!</h1>
+            <b>When:</b> <a target="_blank" href="{cal_links[0]}" style="color:white;">Friday, May 13th, 9:00AM - 5:00PM</a><br>
+            <b>Where:</b> <a target="_blank" href="https://goo.gl/maps/Yb1AxUMHMqcGD5U38" style="color:white;">Brown University Alumnae Hall</a><br>
+            <b>Why:</b> Final Project Presentations For All Who Are Interested!<br><br>
+                    
             <font size="2" style='line-height: 1.5'>
             <table style='background-color: #4e70c6;'>
                 <thead>
@@ -94,6 +107,7 @@ def generate_html(rows):
 def generate_rows(file_path):
     rows = []
     group_colors = [None, 'none', 'deepskyblue', 'orchid', 'none', 'yellowgreen', 'orange', 'tomato', 'none']
+    cal_pics = [f'<a target="_blank" href="{link}" style=color:white;''>(Google Calendar Event)</a>' for link in cal_links[1:]]
     group_idx = 0
     with open(file_path, 'r+') as f:
         data = csv.DictReader(f)
@@ -106,11 +120,13 @@ def generate_rows(file_path):
             c3_txt = r.get("Members")
             if all(value == '' for value in [c1_txt, c2_txt, c3_txt]):
                 tr_tags = f'<tr style="background-color: #1B2367 !important;">', '</tr>'
-            elif 'parallel' in c2_txt:
+            elif 'Parallel' in c2_txt:
                 tr_tags = f'<tr class="week-header" style="font-size: 1.2em; background-color: {group_colors[group_idx]} !important;">', '</tr>'
             elif any(head in c2_txt for head in ['Opening', 'Closing', 'Session', 'Lunch Break']):
                 group_idx += 1
                 tr_tags = f'<tr class="week-header" style="font-size: 1.4em; background-color: {group_colors[group_idx]} !important;">', '</tr>'
+                if 'Session' in c2_txt:
+                    c3_txt = cal_pics.pop(0)
             else: 
                 tr_tags = '<tr>', '</tr>'
                 cut_char = '!' if '!' in c2_txt[:-1] else ''
