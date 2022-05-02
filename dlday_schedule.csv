@@ -4,7 +4,7 @@ Time,Title,Members
 ,,
 9:15 AM,Session 1: Computer Vision,
 9:15 AM,Database Assisted Object-Retrieval 3D Room Reconstruction,"Sagarika Ramesh, Ramya Harikrishnan, Chiang-Heng Chien"
-9:27 AM,Compositional Sketch Generator: No one knows sketching better than me!,"Jiahao Liu, Zheyuan Zhou, Yun Li"
+9:27 AM,Neural Picasso: Compositional Sketch Generator,"Jiahao Liu, Zheyuan Zhou, Yun Li"
 9:39 AM,Facial Expression Detection and Emoji Conversion,"Elbert Wu, Bohao Wang, Ying Sun"
 9:51 AM,You Can't See Me: Style Transfer for Optimal Camouflage,"Katie O’Leary, Mike Tapia, Harrison Cho, Andrew Wang"
 10:03 AM,Free-Hand Sketch Recognition and Image Retrieval,"Yiqing Liang, Shijie Mao, Ziyin Li"
@@ -16,11 +16,11 @@ Time,Title,Members
 ,Color Blind Zebra: Colorizing Black & White Images,"Esha Lakhotia, Anoop Manjal, Sam Devorsetz, Jason Eveleth"
 ,Detecting Humans In Crowds With Inspiration From YOLOv3,"Edward Huh, Sam Bessey, Paul Xu"
 ,CNNs and Transformers to detect objects present in images,"Titas Grusnius, Zainab Iftikhar, Tyler Jacobson, Manar Abdelatty"
-,Deep Yearning: Image Classification Model using Visual Transformers,"Ethan Asis, Isabelle Towle, Riki Fameli, Obi Chikezie"
 ,SinGAN: Reimplementing a generative model from a single natural image,"Keitaro NIshijima, Zachary Chan, Raghav Puri"
 ,Regularization Explainability Analysis: On the effects of different regularization methods for image model explainability,"Jay Gopal, Yousef Elgodamy"
 ,Creatively Captioning Culinary Cuisines,"Ian Acosta, Meera Kurup, Sophia Tu, Kelly Wang"
 ,Learning Linear Temporal Logic! Grounding Language to Non-Markovian Tasks with No Supervision of Task Specifications,"Andrew Li, Ben Schornstein, Celina Ye, Rob Scheidegger"
+,Zoo Crew: Animal Classification Using CNN and KNN Combination,"Seungje (Felix) Lee, William Mclaren, Drew Kirk, and Nico Aliotopier"
 ,,
 10:45 AM,Session 2: Biology and Health,
 10:45 AM,Arrhythmia classification using capsules: A semi-supervised capsule-aided CNN model for classifying arrhythmia types from ECG signals,"Andrei Petrus, Jason Hooker, Varun Kumar"
@@ -31,7 +31,7 @@ Time,Title,Members
 ,Neural Chemistry: Automatic Chemical Design Using Data-Driven Molecular Representations,"Krishna Tewari, Ray Vecchio, Cody Sims"
 ,DLNA: DNA Sequence Classification using Deep Learning,"Samuel Murk Caya, Gabriel Gallardo, Liam O’Connor, Jacques von Steuben"
 ,DL on the dl: Generate New Skin Tone Data for Melanoma,"Alexander Le, Deniz Toruner, Kento Abeywardane, Michelle Mai"
-,TCGA: Predicting recurrence in ovarian cancer using deep learning,"Reetam Ganguli, Theodore Akpinar, Jeffrey Dai"
+,Tumor Predictors: Predicting recurrence in ovarian cancer using deep learning,"Reetam Ganguli, Theodore Akpinar, Jeffrey Dai"
 ,Tumor segmentation for better tumor visualization for better treatment outcomes,"Abigail Marks, Ria Panjwani, Priyanka Solanky"
 ,Re-Implementing P-NET: Biologically-informed neural architecture to improve prediction of prostate cancer states,"Liyuan Ao, Liza Kolev, Bumjin Joo, Brian Kirz"
 ,Melanoma Classification from Skin Images,"Preeti Nagalamadaka, Aayush Setty, Anishansu Pradhan"
@@ -42,7 +42,7 @@ Time,Title,Members
 12:40 PM,Session 3: Time Series and RL,
 12:40 PM,Arkanoid Breakout Game,"Mingye Zhang, Cathy Gao"
 12:52 PM,Deep Q-Learning for Atari River Raid,"Nange Li, Yingfei Hong, Yuetian Li, Yash Mehta"
-1:04 PM,Vadimaniacs' Heresy: New self-driving system trained on new dataset and how to attack it,"Hardy Bright, Robyn Logan, Shane Parr, Ye Wang"
+1:04 PM,New self-driving system trained on new dataset and how to attack it! Team Vadimaniacs' Heresy,"Hardy Bright, Robyn Logan, Shane Parr, Ye Wang"
 1:16 PM,Credit Card Fraud Detection With Deep Learning,"Haolin Chen, Yadi Yang, Yutian Zhang"
 1:30 PM,Poster Session (Parallel):,
 ,Snake Implementation using Deep Q-Learning,"Eseoghene Ajueyitsi, Kendra Lee, Daniel Li, Ezra Rocha"
@@ -75,13 +75,14 @@ Time,Title,Members
 ,Acouztic: Generating a song with lyrics from words of choice,"Fiona Aga, Phunn Boonchouchouy, Chayathorn Kulthonchalanan"
 ,line2picture: Deep learning framework for transforming outlines of portraits to faces,"Truong Cai, Neophytos Christou,Wangdrak Dorji, TaShawn Arabian"
 ,Fine Art Classification: Classifying pieces of fine art by genre,"Anna Dai, Rena Jiang, Ezra Muratoglu"
-,Logo Generation: Generate suitable and creative logos for companies using a deep learning model,"Alex Duchnowski, Hongyi Li, Qinan Yu, Sidharth Anand"
+,Generating effective and creative logos for companies using GANs! Team Losers Studying The Matrix,"Alex Duchnowski, Hongyi Li, Qinan Yu, Sidharth Anand"
 ,Style-specific music generation with biaxial LSTM,"Xin Lian, Yanyu Tao, Yezhi Pan, Yongjeong Kim"
 ,Sign Language Translation,"Cormac Collins, Dylan Hu, Jenny Yu, Tianren Dong"
 ,Ode to Code: Generating coherent songs involving singing and lyrics from multiple musical genres and artist styles,"Brian Kim, Dana Lee, Rachel Ma, Kenya Kimata"
-,Creative Adversarial Networks: Generating Art in New Styles,"Marc Mapeke, Alana White, Maceo Thompson, Carlos Perez-Ruiz"
+,Creative Adversarial Networks: Generating Art in New Styles! Team CAM,"Marc Mapeke, Alana White, Maceo Thompson, Carlos Perez-Ruiz"
 ,Automatic Poetry Generation from Prosaic Text,"Arrington Harper, Fernando Cisneros, Pedro Monteiro Borges, Paloma Salseda"
 ,The Deep Learners: Music Classification Using Convolutional Recurrent Neural Networks,"Brandon Diaz, Colin Savage, Jasmine Shum, Parker Simon"
 ,Brunonian QuickDraw by the Sasketchewan Selects,"Kenny Ihenatu, Kris Diallo, Chris Chae, Samuel Musker"
+,Deep Yearning: Image Classification Model using Visual Transformers,"Ethan Asis, Isabelle Towle, Riki Fameli, Obi Chikezie"
 ,,
 5:00 PM,Closing Remarks,
