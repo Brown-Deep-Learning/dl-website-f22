@@ -42,7 +42,7 @@ Time,Title,Members
 12:40 PM,Session 3: Time Series and RL,
 12:40 PM,Arkanoid Breakout Game,"Mingye Zhang, Cathy Gao"
 12:52 PM,Deep Q-Learning for Atari River Raid,"Nange Li, Yingfei Hong, Yuetian Li, Yash Mehta"
-1:04 PM,New self-driving system trained on new dataset and how to attack it! Team Vadimaniacs' Heresy,"Hardy Bright, Robyn Logan, Shane Parr, Ye Wang"
+1:04 PM,New self-driving system trained on new dataset and how to attack it - Team Vadimaniacs' Heresy,"Hardy Bright, Robyn Logan, Shane Parr, Ye Wang"
 1:16 PM,Credit Card Fraud Detection With Deep Learning,"Haolin Chen, Yadi Yang, Yutian Zhang"
 1:30 PM,Poster Session (Parallel):,
 ,Snake Implementation using Deep Q-Learning,"Eseoghene Ajueyitsi, Kendra Lee, Daniel Li, Ezra Rocha"
@@ -59,7 +59,7 @@ Time,Title,Members
 2:48 PM,Polite Pythons: Politeness text style transfer," Pooja Barai, Emily Nomura, Megan Sindhi"
 3:00 PM,Poster Session (Parallel):,
 ,App-pinion: Neural Temporal Opinion Modelling for Opinion Prediction on Twitter,"John Sullivan, Troy Conklin, Nicholas Bottone, Robert Koch"
-,Yip Yap Yelp: Predicting Yelp Star Ratings Using Natural Language Processing of Yelp Written Reviews,"Bridget Griswold, Madison Peters, Hannah O’Keeffe, Cal Stellato"
+,Yip Yap Yelp: Predicting Yelp Star Ratings from Written Reviews,"Bridget Griswold, Madison Peters, Hannah O’Keeffe, Cal Stellato"
 ,The Reboot: A Deep Learning Sitcom Script Generator,"Grace Lee, Jian Cong Loh, Riya Dulepet"
 ,Fake Reviews Classification,"Peter Van Katwyk, Alice Marbach, Ricky Zhong"
 ,Abstract-Based Sentiment Analysis using Gated Convolutional Neural Network on Challenge Dataset,"Eric Tang, Shreyas Mishra, Sanyu Rajakumar, Alex Bao"
@@ -75,11 +75,11 @@ Time,Title,Members
 ,Acouztic: Generating a song with lyrics from words of choice,"Fiona Aga, Phunn Boonchouchouy, Chayathorn Kulthonchalanan"
 ,line2picture: Deep learning framework for transforming outlines of portraits to faces,"Truong Cai, Neophytos Christou,Wangdrak Dorji, TaShawn Arabian"
 ,Fine Art Classification: Classifying pieces of fine art by genre,"Anna Dai, Rena Jiang, Ezra Muratoglu"
-,Generating effective and creative logos for companies using GANs! Team Losers Studying The Matrix,"Alex Duchnowski, Hongyi Li, Qinan Yu, Sidharth Anand"
+,Generating effective and creative logos for companies using GANs - Team Losers Studying The Matrix,"Alex Duchnowski, Hongyi Li, Qinan Yu, Sidharth Anand"
 ,Style-specific music generation with biaxial LSTM,"Xin Lian, Yanyu Tao, Yezhi Pan, Yongjeong Kim"
 ,Sign Language Translation,"Cormac Collins, Dylan Hu, Jenny Yu, Tianren Dong"
 ,Ode to Code: Generating coherent songs involving singing and lyrics from multiple musical genres and artist styles,"Brian Kim, Dana Lee, Rachel Ma, Kenya Kimata"
-,Creative Adversarial Networks: Generating Art in New Styles! Team CAM,"Marc Mapeke, Alana White, Maceo Thompson, Carlos Perez-Ruiz"
+,Creative Adversarial Networks: Generating Art in New Styles - Team CAM,"Marc Mapeke, Alana White, Maceo Thompson, Carlos Perez-Ruiz"
 ,Automatic Poetry Generation from Prosaic Text,"Arrington Harper, Fernando Cisneros, Pedro Monteiro Borges, Paloma Salseda"
 ,The Deep Learners: Music Classification Using Convolutional Recurrent Neural Networks,"Brandon Diaz, Colin Savage, Jasmine Shum, Parker Simon"
 ,Brunonian QuickDraw by the Sasketchewan Selects,"Kenny Ihenatu, Kris Diallo, Chris Chae, Samuel Musker"

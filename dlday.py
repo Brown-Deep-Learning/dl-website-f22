@@ -132,11 +132,22 @@ def generate_rows(file_path):
                 c3_txt = f'<span style="font-size: 0.8em !important;">{c3_txt}</span>'
             else: 
                 tr_tags = '<tr>', '</tr>'
-                cut_char = '!' if '!' in c2_txt[:-1] else ''
-                cut_char = ':' if ':' in c2_txt[:-1] else cut_char
-                if cut_char != '':
-                    cut_idx = c2_txt.index(cut_char)+1
-                    c2_txt = f'<b>{c2_txt[:cut_idx]}</b><br>{c2_txt[cut_idx:]}'
+                if any(cut in c2_txt[:-1] for cut in ['!', ':', '(', '-']):
+                    cut_idx = len(c2_txt)
+                    if '!' in c2_txt: 
+                        c2_txt = c2_txt.replace('!', '!<br>')
+                        cut_idx = min(c2_txt.index('!') + 1, cut_idx)
+                    if ':' in c2_txt: 
+                        c2_txt = c2_txt.replace(':', ':<br>')
+                        cut_idx = min(c2_txt.index(':') + 1, cut_idx)
+                    if '(' in c2_txt: 
+                        c2_txt = c2_txt.replace('(', '<br>(')
+                        cut_idx = min(c2_txt.index('(') + 1, cut_idx)
+                    if ' - T' in c2_txt: 
+                        cut_idx = min(c2_txt.find(' - T'), cut_idx)
+                        c2_txt = c2_txt.replace(' - T', '<br>T')
+                    c2_txt = f'<b>{c2_txt[:cut_idx]}</b>{c2_txt[cut_idx:]}'
+
                 else: 
                     c2_txt = f'<b>{c2_txt}</b>'
                         
