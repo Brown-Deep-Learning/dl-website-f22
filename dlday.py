@@ -123,7 +123,7 @@ def generate_rows(file_path):
             elif 'Parallel' in c2_txt:
                 tr_tags = f'<tr class="week-header" style="font-size: 1.2em; background-color: {group_colors[group_idx]} !important;">', '</tr>'
                 c1_txt = f'<span style="font-size: 0.9em !important;">{c1_txt}</span>'
-            elif any(head in c2_txt for head in ['Opening', 'Closing', 'Session', 'Lunch Break']):
+            elif any(head in c2_txt for head in ['Opening Remarks', 'Closing Remarks', 'Session', 'Lunch Break']):
                 group_idx += 1
                 tr_tags = f'<tr class="week-header" style="font-size: 1.4em; background-color: {group_colors[group_idx]} !important;">', '</tr>'
                 c1_txt = f'<span style="font-size: 0.8em !important;">{c1_txt}</span>'
@@ -158,6 +158,9 @@ def generate_rows(file_path):
                     <td>{c3_txt}</td>
                 {tr_tags[1]}
             \n""")
+
+            if 'Opening Remarks' in c2_txt: break
+            
     return "".join(rows)
 
 

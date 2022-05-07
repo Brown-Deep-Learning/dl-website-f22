@@ -5,7 +5,7 @@ Time,Title,Members
 9:10 AM,Session 1: Computer Vision,
 9:10 AM,DeepVerse: Database Assisted Object-Retrieval 3D Room Reconstruction,"Sagarika Ramesh, Ramya Harikrishnan, Chiang-Heng Chien"
 9:22 AM,Facial Expression Detection and Emoji Conversion,"Elbert Wu, Bohao Wang, Ying Sun"
-9:34 AM,Free-Hand Sketch Recognition and Image Retrieval,"Yiqing Liang, Shijie Mao, Ziyin Li"
+9:34 AM,You Can't See Me: Style Transfer for Optimal Camouflage,"Katie O’Leary, Mike Tapia, Harrison Cho, Andrew Wang"
 9:46 AM,Neural Picasso: Compositional Sketch Generator,"Jiahao Liu, Zheyuan Zhou, Yun Li"
 10:00 AM,Poster Session (Parallel):,
 ,Attention-Based Object Detection: CNNs and Transformers to detect objects present in images,"Titas Grusnius, Zainab Iftikhar, Tyler Jacobson, Manar Abdelatty"
@@ -15,7 +15,7 @@ Time,Title,Members
 ,Detecting Humans In Crowds With Inspiration From YOLOv3,"Edward Huh, Sam Bessey, Paul Xu"
 ,DLGeo: Calculating Potential Urban Solar Output Using CNNs for Satellite Image Segmentation,"Alexander Kamper, Siddhartha Prasad, Nathan Benavides-Luu"
 ,Facial Recognition and Restoration with GANs,"Anika Ahluwalia, Lauren Choi, Naomi Park, Galen Winsor"
-,Image Colorization: We're colorizing black and white images! - Team Coloring Book,"Mazine Suliman, Sabrina Chwalek, Nathan Mugerwa"
+,Image Colorization: We're colorizing black and white images! Team Coloring Book,"Mazine Suliman, Sabrina Chwalek, Nathan Mugerwa"
 ,Learning Linear Temporal Logic! Grounding Language to Non-Markovian Tasks with No Supervision of Task Specifications,"Andrew Li, Ben Schornstein, Celina Ye, Rob Scheidegger"
 ,line2picture: Deep learning framework for transforming outlines of portraits to faces,"Truong Cai, Neophytos Christou,Wangdrak Dorji, TaShawn Arabian"
 ,Regularization Explainability Analysis: On the effects of different regularization methods for image model explainability,"Jay Gopal, Yousef Elgodamy"
@@ -37,7 +37,7 @@ Time,Title,Members
 ,Neural Chemistry: Automatic Chemical Design Using Data-Driven Molecular Representations,"Krishna Tewari, Ray Vecchio, Cody Sims"
 ,Re-Implementing P-NET: Biologically-informed neural architecture to improve prediction of prostate cancer states,"Liyuan Ao, Liza Kolev, Bumjin Joo, Brian Kirz"
 ,Tumor Predictors: Predicting recurrence in ovarian cancer using deep learning,"Reetam Ganguli, Theodore Akpinar, Jeffrey Dai"
-,Tumor segmentation for better tumor visualization for better treatment outcomes,"Abigail Marks, Ria Panjwani, Priyanka Solanky"
+,Liver tumor segmentation for improving visualization and treatment outcomes,"Abigail Marks, Ria Panjwani, Priyanka Solanky"
 ,,
 12:00 PM,Lunch Break,
 ,,
@@ -71,7 +71,7 @@ Time,Title,Members
 3:30 PM,"Session 5: Art, Music, and Other Applications",
 3:30 PM,Music Mood Classification,"Breese Sherman, Nathan Plano, Elizabeth Chen, Qingyang Xie"
 3:42 PM,AmbienceNet: System for matching text with emotionally resonant music,"Yeunun Choo, Jin Hyeok Noh, Theodora Kunicki"
-3:54 PM,You Can't See Me: Style Transfer for Optimal Camouflage,"Katie O’Leary, Mike Tapia, Harrison Cho, Andrew Wang"
+3:54 PM,Free-Hand Sketch Recognition and Image Retrieval,"Yiqing Liang, Shijie Mao, Ziyin Li"
 4:06 PM,Doddlebot: Composing Sketched Scenes from Text Descriptions for Interactive Applications,"Radhika Mehrotra, Salvador Brandi, Shipra Priyadarshini, Patrick Connor"
 4:18 PM,Sketch to Image Generation: Using GANs for Converting Hand-Drawn Sketches to Images,"Yifei Wang, Siyang Li, Tianran Zhang, Neal Yin"
 4:30 PM,Poster Session (Parallel):,
@@ -88,3 +88,21 @@ Time,Title,Members
 ,The Deep Learners: Music Classification Using Convolutional Recurrent Neural Networks,"Brandon Diaz, Colin Savage, Jasmine Shum, Parker Simon"
 ,,
 5:00 PM,Closing Remarks,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+10,Minutes for opening remarks,
+12,Minutes per presentation,
+30,Minutes per poster cluster,
+40,Minutes for lunch,
