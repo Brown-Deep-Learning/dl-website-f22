@@ -159,8 +159,8 @@ def generate_rows(file_path):
                 {tr_tags[1]}
             \n""")
 
-            if 'Opening Remarks' in c2_txt: break
-            
+            if 'Closing Remarks' in c2_txt: break
+
     return "".join(rows)
 
 
