@@ -22,6 +22,7 @@ Time,Title,Members
 ,Remove Blocking Artifacts From Compressed Images w/ Deep Learning,"Jesse Gallant, Oren Kohavi, Michael Li"
 ,SinGAN: Reimplementing a generative model from a single natural image,"Keitaro NIshijima, Zachary Chan, Raghav Puri"
 ,Zoo Crew: Animal Classification Using CNN and KNN Combination,"Seungje (Felix) Lee, William Mclaren, Drew Kirk, and Nico Aliotopier"
+,Sketch to Image Generation: Using GANs for Converting Hand-Drawn Sketches to Images,"Yifei Wang, Siyang Li, Tianran Zhang, Neal Yin"
 ,,
 10:30 AM,Session 2: Biology and Health,
 10:30 AM,Arrhythmia classification using capsules: A semi-supervised capsule-aided CNN model for classifying arrhythmia types from ECG signals,"Andrei Petrus, Jason Hooker, Varun Kumar"
@@ -31,13 +32,14 @@ Time,Title,Members
 11:18 AM,Dental Care Recommendations: Deep learning model to develop a recommender system for dental care,"Yijing Gao, Yutong Liu, Qingyan Guo, Wangsan Tian"
 11:30 AM,Poster Session (Parallel):,
 ,Classifying WebMD Drug Reviews - Team ACE,"Evan Li, Austin Lang, Camille Zhang "
-,DLNA: DNA Sequence Classification using Deep Learning,"Samuel Murk Caya, Gabriel Gallardo, Liam O’Connor, Jacques von Steuben"
 ,Generation of Diverse Image Data Using Style Transfer for Debiasing Melanoma Classification Models - Team DL on the dl,"Alexander Le, Deniz Toruner, Kento Abeywardane, Michelle Mai"
 ,Melanoma Classification from Skin Images,"Preeti Nagalamadaka, Aayush Setty, Anishansu Pradhan"
 ,Neural Chemistry: Automatic Chemical Design Using Data-Driven Molecular Representations,"Krishna Tewari, Ray Vecchio, Cody Sims"
 ,Re-Implementing P-NET: Biologically-informed neural architecture to improve prediction of prostate cancer states,"Liyuan Ao, Liza Kolev, Bumjin Joo, Brian Kirz"
 ,Tumor Predictors: Predicting recurrence in ovarian cancer using deep learning,"Reetam Ganguli, Theodore Akpinar, Jeffrey Dai"
 ,Liver tumor segmentation for improving visualization and treatment outcomes,"Abigail Marks, Ria Panjwani, Priyanka Solanky"
+,HiC > Fanta: HiCPlus In Tensorflow,"Hannah Julius, Ijeoma Meremikwu, Ivan Pineda-Dominguez, Elizabeth Wu"
+,Verifying m6A site-prediction abilities of Gene2Vec against direct m6A-seq-generated data,"Jonathan Arditi, Henry Rayner"
 ,,
 12:00 PM,Lunch Break,
 ,,
@@ -73,12 +75,11 @@ Time,Title,Members
 3:42 PM,AmbienceNet: System for matching text with emotionally resonant music,"Yeunun Choo, Jin Hyeok Noh, Theodora Kunicki"
 3:54 PM,Free-Hand Sketch Recognition and Image Retrieval,"Yiqing Liang, Shijie Mao, Ziyin Li"
 4:06 PM,Doddlebot: Composing Sketched Scenes from Text Descriptions for Interactive Applications,"Radhika Mehrotra, Salvador Brandi, Shipra Priyadarshini, Patrick Connor"
-4:18 PM,Sketch to Image Generation: Using GANs for Converting Hand-Drawn Sketches to Images,"Yifei Wang, Siyang Li, Tianran Zhang, Neal Yin"
-4:30 PM,Poster Session (Parallel):,
-,Acouztic: Generating a song with lyrics from words of choice,"Fiona Aga, Phunn Boonchouchouy, Chayathorn Kulthonchalanan"
+4:20 PM,Poster Session (Parallel):,
+,Acouztic: Generating a song with lyrics from words of choice,"Nop Toemtrisna, Phunn Boonchouchouy, Chayathorn Kulthonchalanan"
 ,Automatic Poetry Generation from Prosaic Text,"Arrington Harper, Fernando Cisneros, Pedro Monteiro Borges, Paloma Salseda"
 ,Brunonian QuickDraw by the Sasketchewan Selects,"Kenny Ihenatu, Kris Diallo, Chris Chae, Samuel Musker"
-,Creative Adversarial Networks: Generating Art in New Styles - Team CAM,"Marc Mapeke, Alana White, Maceo Thompson, Carlos Perez-Ruiz"
+,Creative Adversarial Networks: Generating Art in New Styles - Team CAM,"Marc Mapeke, Alana White, Carlos Perez-Ruiz"
 ,Deep Yearning: Image Classification Model using Visual Transformers,"Ethan Asis, Isabelle Towle, Riki Fameli, Obi Chikezie"
 ,Fine Art Classification: Classifying pieces of fine art by genre,"Anna Dai, Rena Jiang, Ezra Muratoglu"
 ,Generating effective and creative logos for companies using GANs - Team Losers Studying The Matrix,"Alex Duchnowski, Hongyi Li, Qinan Yu, Sidharth Anand"
@@ -86,8 +87,10 @@ Time,Title,Members
 ,Sign Language Translation,"Cormac Collins, Dylan Hu, Jenny Yu, Tianren Dong"
 ,Style-specific music generation with biaxial LSTM,"Xin Lian, Yanyu Tao, Yezhi Pan, Yongjeong Kim"
 ,The Deep Learners: Music Classification Using Convolutional Recurrent Neural Networks,"Brandon Diaz, Colin Savage, Jasmine Shum, Parker Simon"
+,Predicting Housing Prices with Deep Learning,"Akshaan Parikh, Kunj Padh, Cruz Fernandes"
 ,,
-5:00 PM,Closing Remarks,
+4:50 PM,Closing Remarks,
+,,
 ,,
 ,,
 ,,
