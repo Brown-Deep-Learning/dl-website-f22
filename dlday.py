@@ -110,14 +110,16 @@ def generate_rows(file_path):
     cal_pics = [f'<a target="_blank" href="{link}" style=color:white;''>(Google Calendar Event)</a>' for link in cal_links[1:]]
     group_idx = 0
     with open(file_path, 'r+') as f:
-        data = csv.DictReader(f)
+        data = csv.DictReader(f, delimiter=',')
         for row in data:
             r = dict(row)
+            print(row)
             if r.get("Title") is None:
                 continue
             c1_txt = r.get("Time")
             c2_txt = r.get("Title")
             c3_txt = r.get("Members")
+            print(c1_txt, c2_txt, c3_txt)
             if all(value == '' for value in [c1_txt, c2_txt, c3_txt]):
                 tr_tags = f'<tr style="background-color: #1B2367 !important;">', '</tr>'
             elif 'Parallel' in c2_txt:
