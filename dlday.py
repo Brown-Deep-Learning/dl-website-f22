@@ -67,10 +67,10 @@ def generate_html(rows):
     <main class="dark">
         <section style="padding-bottom: 60px;">
             <h1>Deep Learning Day!</h1>
-            <b>When:</b> <a target="_blank" href="{cal_links[0]}" style="color:white;">Friday, May 13th, 9:00AM - 5:00PM</a><br>
-            <b>Where:</b> <a target="_blank" href="https://goo.gl/maps/Yb1AxUMHMqcGD5U38" style="color:white;">Brown University Alumnae Hall</a><br>
-            <b>Why:</b> Final Project Presentations For All Who Are Interested!<br><br>
-                    
+            <h3><b>When:</b> <a target="_blank" href="{cal_links[0]}" style="color:white;">Friday, May 13th, 9:00AM - 5:00PM</a><br></h3>
+            <h3><b>Where:</b> <a target="_blank" href="https://goo.gl/maps/Yb1AxUMHMqcGD5U38" style="color:white;">Brown University Alumnae Hall</a><br></h3>
+            <h3><b>Why:</b> <span style="color:white;">Final Project Presentations For All Who Are Interested!</span><br></h3>
+            <h3><b>ZOOM:</b> <a target="_blank" href="https://brown.zoom.us/j/94672594681" style="color:white;">https://brown.zoom.us/j/94672594681</a> <br></h3>
             <font size="2" style='line-height: 1.5'>
             <table style='background-color: #4e70c6;'>
                 <thead>
