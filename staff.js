@@ -46,7 +46,8 @@ function createStaffCard(staffObject) {
 
 $(document).ready(function () {
   const instructors = ['rsingh47'];
-  const htas = ['vkudlay', 'spai9', 'mroy6', 'szhi', 'jsander8'];
+  const htas = ['vkudlay', 'mramesh5'];
+  const stas = ['khanda1', 'mramesh5'];
   $.ajax({
     type: "GET",
     url: "./staff_info_F2022.csv",
@@ -61,12 +62,13 @@ $(document).ready(function () {
           $('#instructors').append(createStaffCard(staffObject));
         } else if (htas.includes(login)) {
           $('#htas').append(createStaffCard(staffObject));
-        } else {
+        } else if (stas.includes(login)) {
+          $('#stas').append(createStaffCard(staffObject));
+        }
+        else {
           $('#tas').append(createStaffCard(staffObject));
         }
       });
     }
   });
 });
-//   const instructors = ['rsingh47'];
-  // const htas = ['vkudlay', 'spai9'];
