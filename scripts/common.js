@@ -52,7 +52,30 @@ function hideLabContent(labNumber) {
         'pointer-events': 'none',
     });
 }
-$(document).ready(function() {
+
+function randomBowtie(img) {
+    var num_bowties = 7;
+    var i = Math.floor(Math.random() * num_bowties) + 1;
+    img.src = 'assets/sparkles/sparkle' + i + '.png';
+}
+
+function load_randoms() {
+    var img_elements = $('.random-earmuffs');
+    for (var i = 0; i < img_elements.length; i++) {
+        randomBowtie(img_elements[i]);
+        img_elements[i].style.visibility = 'visible';
+    }
+};
+
+
+$(window).on('load', () => {
+    $('footer').load('footer.html', null, () => {
+        load_randoms();
+    });
+});
+
+$(window).on('ready', () => {
+
     // disable assignment hiding until after the website launch date or if
     // debug search param in url is set
     const currentDate = new Date();

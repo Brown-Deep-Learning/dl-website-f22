@@ -1,8 +1,11 @@
 /* -------------------- CSS VARIABLES -------------------- */
 :root {
-    --dark-blue: #1B2367;
-    --accent-yellow: #F7BF5C;
-    --bright-yellow: #E4E841;
+    /* --header-col: #1B2367;
+    --dark-blue: #1B2367; */
+    --header-col: #327eb4;
+    --dark-blue: #2C394B;
+    --accent-yellow: #ffdca0;
+    --bright-yellow: #F3F6F6;
 }
 
 
@@ -14,7 +17,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(assets/inter-latin.woff2) format('woff2');
+    src: url(../assets/inter-latin.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
@@ -22,7 +25,7 @@
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url(assets/inter-latin.woff2) format('woff2');
+    src: url(../assets/inter-latin.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
@@ -30,7 +33,7 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url(assets/inter-latin.woff2) format('woff2');
+    src: url(../assets/inter-latin.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
@@ -38,7 +41,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: local('Krona One'), local('KronaOne-Regular'), url(assets/krona-one-latin.woff2) format('woff2');
+    src: local('Krona One'), local('KronaOne-Regular'), url(../assets/krona-one-latin.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
@@ -87,13 +90,14 @@ a:hover {
 /* -------------------- FRONT PAGE HEADER -------------------- */
 
 body>header {
+    min-height: 250px;
     overflow-x: hidden;
     display: block;
     padding-top: 0;
     padding-bottom: 0;
     position: relative;
     width: 100%;
-    background: var(--dark-blue);
+    background: var(--header-col);
     border-bottom: 1px solid var(--bright-yellow);
     color: var(--bright-yellow);
     font-family: 'Krona One', sans-serif;
@@ -187,7 +191,7 @@ body>header {
 
 .dark__sidebar {
     flex: 1;
-    padding: 10px;
+    padding: 10px 20px 10px 60px;
 }
 
 .dark a {
@@ -245,7 +249,7 @@ body>header {
     top: 0px;
     position: fixed;
     z-index: 1;
-    background: var(--dark-blue);
+    background: var(--header-col);
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -417,6 +421,11 @@ code {
 table {
     border-collapse: collapse;
     width: 100%;
+    background: var(--header-col);
+}
+
+table tr th {
+    padding: .8em .8em;
 }
 
 table tbody tr {
@@ -433,16 +442,16 @@ th {
 }
 
 td {
-    padding: .8em .5em;
+    padding: .8em .8em;
 }
 
-table tbody tr.week-header {
+.week-header {
     background-color: #1558b0 !important;
     color: #FFFFFF;
     font-weight: bold;
 }
 
-tr.week-header td {
+.week-header td {
     padding: 0.5em;
 }
 
@@ -453,6 +462,12 @@ tr.no-lecture {
 ul.menu {
     list-style-type: none;
     padding: 0;
+}
+
+hr {
+    height: var(--accent-yellow);
+    background-color: rgb(144, 141, 103);
+    border: none;
 }
 
 #instructors, #htas, #tas {

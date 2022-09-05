@@ -28,13 +28,13 @@ def generate_html(rows):
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i&display=swap" rel="stylesheet">
     <link rel="preload" as="font" type="font/woff2" href="assets/inter-latin.woff2" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="assets/krona-one-latin.woff2" crossorigin>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
-    <script type="text/javascript" src="random-bowties.js"></script>
-    <script type="text/javascript" src="common.js"></script>
+    <script type="text/javascript" src="scripts/random-bowties.js"></script>
+    <script type="text/javascript" src="scripts/common.js"></script>
 </head>
 
 <body>
