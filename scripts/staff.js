@@ -20,10 +20,11 @@ function createStaffCard(staffObject) {
   } = staffObject;
 
   // Formatting and seeting defaults
-  pronouns = pronouns.toLowerCase();
+  if (pronouns)
+    pronouns = pronouns.toLowerCase();
   if (intro === '') { intro = 'The mystery deepens...'; }
 
-  const imagePath = `img/portrait/${login}.jpg`;
+  const imagePath = `img/portrait/${name.replaceAll(' ', '_').replaceAll('(', '\\(').replaceAll(')', '\\)')}.png`;
   return (`
     <div class="staff">
       <div class="staff-img-container">
@@ -45,18 +46,18 @@ function createStaffCard(staffObject) {
 }
 
 $(document).ready(function () {
-  const instructors = ['rsingh47'];
-  const htas = ['vkudlay', 'mramesh5'];
-  const stas = ['khanda1', 'mramesh5'];
+  const instructors = ['chen_sun4'];
+  const htas = ['vkudlay', 'mramesh5', 'yguo62'];
+  const stas = ['khanda1', 'achinta2'];
   $.ajax({
     type: "GET",
-    url: "./staff_info_F2022.csv",
+    url: "./sheets/DL_TA_List.csv",
     dataType: "text",
     success: function (response) {
-      const table = $.csv.toArrays(response).splice(1);
+      const table = response.split(/\n/).slice(1);
       table.forEach(row => {
-        const [timestamp, fullname, name, pronouns, login, profpic, intro,
-          sgd, cnn, lstm, transformers, graphs, rl, gans, web] = row;
+        row = $.csv.toArray(row)
+        const [timestamp, name, login, conc, pronouns, intro, profpic, home] = row;
         const staffObject = { name, login, pronouns, intro};
         if (instructors.includes(login)) {
           $('#instructors').append(createStaffCard(staffObject));

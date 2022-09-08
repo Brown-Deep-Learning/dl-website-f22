@@ -12,15 +12,30 @@ const random = (min, max) => {
     return min + Math.random() * (max - min);
 };
 
-window.onresize = () => {
-    container_dims = document.getElementById('orbit-container').getBoundingClientRect();
+$(window).on('resize', () => {
+    element = document.getElementById('orbit-container');
+    if (!element) return;
+    container_dims = element.getBoundingClientRect();
     for (let i = 0; i < NUM_PLANETS; i++) {
         document.getElementById(`orbit${i + 1}`).style.top = `${container_dims.height / 2}px`
     }
-}
+});
 
-window.onload = () => {
-    container_dims = document.getElementById('orbit-container').getBoundingClientRect();
+$(window).on('load', () => {
+
+    element = document.getElementById('orbit-container-maybe');
+    sub_img = false
+    if (element && random(0, 1000) < 1) {
+        element.id = 'orbit-container';
+        sub_img = (random(0, 5) < 1);
+    } else {
+        element = document.getElementById('orbit-container');
+        sub_img = (random(0, 1000) < 1);
+    }
+    repl_idx = sub_img ? Math.round(random(0, NUM_PLANETS-1)) : -1;
+    if (!element) return;
+
+    container_dims = element.getBoundingClientRect();
 
     const timestepOffset = random(3800, 4000);
 
@@ -28,19 +43,19 @@ window.onload = () => {
         const bodyLength = LARGEST_BODY_LENGTH * ((i + 1) / (NUM_PLANETS)) + 30;
         const planet = document.createElement("img");
         planet.id = `orbit${i + 1}`;
-        planet.src = `assets/planets/${i + 1}.png`;
+        planet.src = i == repl_idx ? `assets/planets/bl_uno1.png` : `assets/planets/${i + 1}.png`;
         planet.height = bodyLength;
         planet.width = i === 5 ? bodyLength * 1.5 : bodyLength; // account for saturn lol
         planet.style = `position: absolute; top: ${container_dims.height / 2}px; left: 0; right: 0; margin: auto; opacity: 0.8;`;
         planet.draggable = false;
-        document.getElementById('orbit-container').appendChild(planet);
+        element.appendChild(planet);
         orbitBody(
             `orbit${i + 1}`,
             timestepOffset * i,
             bodyLength,
         );
     }
-}
+});
 
 function orbitBody(id, time = 0, bodyLength) {
     const a = container_dims.height / 2 - bodyLength / 2;
