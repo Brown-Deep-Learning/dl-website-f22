@@ -470,7 +470,7 @@ hr {
     border: none;
 }
 
-#instructors, #htas, #tas {
+#instructors, #htas, #tas, #stas {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
